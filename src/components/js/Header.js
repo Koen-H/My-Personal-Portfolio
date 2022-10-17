@@ -16,7 +16,6 @@ export default Header;
 
 
 function Navigation() {
-
   const navItems = [
     {
       title: "Home",

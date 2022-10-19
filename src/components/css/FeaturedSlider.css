@@ -1,10 +1,67 @@
+.featured {
+    width: 1000px;
+    margin-bottom: 100px;
+}
 
-.single-featured-slider{
+
+.featured-slider-container {
+    width: 100%;
+    position: relative;
+}
+
+.featured-slider-nav {
+    position: absolute;
+    color: white;
+    height: 25%;
+    vertical-align: middle;
+    top: 50%;
+    background-color: aquamarine;
+    font-size: 50px;
+}
+
+.featured-slider-nav>svg {
+    vertical-align: middle;
+}
+
+.featured-slider-prev {
+    transform: translate(-50%, -50%);
+    left: -15px;
+}
+
+.featured-slider-next {
+    transform: translate(50%, -50%);
+    right: -15px;
+}
+
+.featured-pagination {
+    position: absolute;
+    /* left: 50%; */
+    bottom: -40px;
+    width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.featured-pagination-bullet {
+    background-color: red;
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.featured-pagination-bullet-active {
+    background-color: blueviolet;
+}
+
+
+.single-featured-slider {
     height: 360px;
     display: flex;
 }
 
-.single-featured-slider-thumbnail{
+.single-featured-slider-thumbnail {
     height: 100%;
     width: 640px;
     background-repeat: no-repeat;
@@ -12,35 +69,43 @@
     background-position: center center;
 }
 
-.single-featured-slider-projectname{
-    max-height: 50px;
+.single-featured-slider-projectname {
+    height: 60px;
     overflow: hidden;
-    font-size: 24px;
+    font-size: 0px;
+    line-height: 1.1;
     padding-bottom: 4px;
-    padding-top: 4px;
-    line-height: 26px;
+
 }
-.single-featured-slider-info-box{
+
+.single-featured-slider-projectname>span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 24px;
+}
+
+.single-featured-slider-info-box {
     margin: 0 6px;
     width: 360px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.single-featured-slider-info{
 
-}
-.single-featured-slider-info-box-bottom{
+.single-featured-slider-info {}
+
+.single-featured-slider-info-box-bottom {
     display: flex;
     justify-content: space-between;
 }
 
-.single-featured-slider-subthumbnails{
+.single-featured-slider-subthumbnails {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
-.single-featured-slider-single-subthumbnail{
+
+.single-featured-slider-single-subthumbnail {
     height: 95px;
     width: 170px;
     background-repeat: no-repeat;
@@ -49,10 +114,10 @@
     opacity: 0.6;
 }
 
-.single-featured-slider-info{
+.single-featured-slider-info {
     overflow: hidden;
 }
 
-.icons{
+.icons {
     font-size: 0;
 }

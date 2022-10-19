@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import PropTypes from 'prop-types';
 import '../css/FeaturedSlider.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,6 +6,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
@@ -77,7 +78,6 @@ FeaturedSlider.propTypes = {
 export default FeaturedSlider;
 
 function SingleFeaturedSlider(props) {
-
   const defaultThumbnailImage = placeHolderImage;
   const subThumbnailImage1 = placeHolderImage1;
   const subThumbnailImage2 = placeHolderImage2;
@@ -85,8 +85,8 @@ function SingleFeaturedSlider(props) {
   const subThumbnailImage4 = placeHolderImage4;
   const projectName = props.projectName;
 
-
   const [thumbnailImage, setThumbnailImage] = useState(defaultThumbnailImage);
+  const [coverClasses, setCoverClasses] = useState('cover-img hidden');
 
   function handleSubThumbnailHoverEnter(e, hoverThumbnail) {
     e.currentTarget.style.opacity = 1;
@@ -99,13 +99,35 @@ function SingleFeaturedSlider(props) {
     setThumbnailImage(placeHolderImage);
   }
 
-
+  function handleThumbnailVideoHover(e, isHover) {
+    if (isHover) {
+      e.target.play()
+      setCoverClasses('cover-img hidden')
+    }
+    else {
+      e.target.pause()
+      setCoverClasses('cover-img')
+    }
+    console.log(coverClasses);
+  }
 
   return (
     <div>
       <div className='single-featured-slider'>
-        <div className='single-featured-slider-thumbnail' style={{ backgroundImage: `url(${thumbnailImage})` }}></div>
-
+        <div className='single-featured-slider-thumbnail-box'
+          onMouseEnter={(e) => handleThumbnailVideoHover(e, true)}
+          onMouseLeave={(e) => handleThumbnailVideoHover(e, false)}>
+          {/* <div className='single-featured-slider-thumbnail' style={{ backgroundImage: `url(${thumbnailImage})` }}></div> */}
+          <div className='single-featured-slider-thumbnail-trailer' style={{ backgroundImage: `url(${thumbnailImage})` }}>
+            <video
+              poster={thumbnailImage}
+              src='/videos/superxenongalaxytrailer-1.mp4'
+              muted
+              loop
+            />
+            <img className={coverClasses} src={thumbnailImage} />
+          </div>
+        </div>
         <div className='single-featured-slider-info-box'>
           <div className='single-featured-slider-info-box-top'>
             <div className='single-featured-slider-projectname'><span>{projectName}</span></div>
@@ -129,7 +151,7 @@ function SingleFeaturedSlider(props) {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 SingleFeaturedSlider.propTypes = {

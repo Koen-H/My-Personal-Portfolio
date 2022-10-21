@@ -11,11 +11,9 @@
 
 .featured-slider-nav {
     position: absolute;
-    color: white;
     height: 25%;
     vertical-align: middle;
     top: 50%;
-    background-color: aquamarine;
     font-size: 50px;
 }
 
@@ -46,13 +44,11 @@
 }
 
 .featured-pagination-bullet {
-    background-color: red;
     padding: 0 10px;
     margin: 0 10px;
 }
 
 .featured-pagination-bullet-active {
-    background-color: blueviolet;
 }
 
 
@@ -79,6 +75,7 @@
 }
 
 .single-featured-slider-thumbnail-trailer>video {
+    object-fit: fill;
     height: 100%;
     width: 100%;
 }
@@ -99,20 +96,27 @@
 }
 
 .single-featured-slider-info-box {
-    margin: 0 6px;
+    padding: 0 6px;
     width: 360px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.single-featured-slider-info {}
+.single-featured-slider-usp{
+    height: 72px;
+    max-height: 72px;
+    overflow: hidden;
+}
 
 single-featured-slider-thumbnail-box{
     font-size: 0px;
 }
 
 .single-featured-slider-info-box-bottom {
+    
+}
+.single-featured-slider-CTA-box{
     display: flex;
     justify-content: space-between;
 }
@@ -120,12 +124,12 @@ single-featured-slider-thumbnail-box{
 .single-featured-slider-subthumbnails {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 15px 40px;
 }
 
 .single-featured-slider-single-subthumbnail {
-    height: 95px;
-    width: 170px;
+    height: 80px;
+    width: 143px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -136,9 +140,7 @@ single-featured-slider-thumbnail-box{
     overflow: hidden;
 }
 
-.icons {
-    font-size: 0;
-}
+
 
 
 .cover-img {

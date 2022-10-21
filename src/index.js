@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import './style.css';
+import './css/index.css';
+import './css/style.css';
+import './css/modern.css';
+//import './css/matrix.css';
 import reportWebVitals from './reportWebVitals';
 import Header from './components/js/Header';
-//import ProjectBox from './components/js/ProjectBox';
-import FeaturedSlider from './components/js/FeaturedSlider'
+import WelcomeBox from './components/js/WelcomeBox';
+import FeaturedSlider from './components/js/FeaturedSlider';
+import CategoriesSlider from './components/js/CategoriesSlider';
+
 // import { Col, Container, Row } from 'react-bootstrap';
 
 
@@ -18,14 +22,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header />
-    <div className='my-container-flex'>
-      <div className='my-col'> This is on the side </div>
-      <div className='my-col-prio'><FeaturedSlider /></div>
-      <div className='my-col'> This is on the side</div>
-    </div>
+    <section className='content'>
+      <div className='my-container-flex'>
+        <div className='my-col'><WelcomeBox /></div>
+        <div className='my-col-prio'>
+          <FeaturedSlider />
+          <CategoriesSlider/>
+        </div>
+        <div className='my-col'> This is on the right side</div>
+      </div>
+    </section>
 
-
-    {/* <ProjectBox projectName={'Test project'} thumbnailPath={placeHolderImage}/> */}
+    {/*  */}
     {/* <ProjectBox projectName={'A new project'} thumbnailPath={placeHolderImage}/> */}
   </React.StrictMode>
 );

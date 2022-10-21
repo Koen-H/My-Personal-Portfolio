@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    /* background: rgb(6, 6, 6); */
+    /* background: linear-gradient(90deg, rgba(6, 6, 6, 1) 0%, rgba(27, 27, 101, 1) 28%, rgba(27, 27, 101, 1) 74%, rgba(0, 0, 0, 1) 100%); */
+    /* color: white; */
+}
+
+header {
+    width: 100%;
+    padding: 20px 0 0 0;
+}
+.header-content{
+    width: 75vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-side-of-header{
+    display: flex;
+    gap: 10px;
+}
+
+.header-nav {
+
+    font-size: 0px;
+}
+
+.header-nav-ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.header-nav-ul>a {
+    font-size: 30px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.golden-text {
+    background-image: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 130%, #8A6E2F 10%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}

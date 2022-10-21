@@ -1,11 +1,13 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../css/FeaturedSlider.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -23,7 +25,7 @@ function FeaturedSlider() {
   return (
     <section className='featured'>
       <h1> Featured </h1>
-      <div className='featured-slider-container'>
+      <div className='featured-slider-container featured bg-color-1'>
         <Swiper
           modules={[Autoplay, EffectFade, Navigation, Pagination]}
           direction={'horizontal'}
@@ -57,7 +59,7 @@ function FeaturedSlider() {
           }
 
         >
-          <SwiperSlide><SingleFeaturedSlider projectName='Projectname is very long and now this is on the second line!' /></SwiperSlide>
+          <SwiperSlide><SingleFeaturedSlider projectName='Projectname can go up to 50 characters. Should be enough.' /></SwiperSlide>
           <SwiperSlide><SingleFeaturedSlider projectName='The second one!' /></SwiperSlide>
           <SwiperSlide><SingleFeaturedSlider projectName='The third one!' /></SwiperSlide>
           <SwiperSlide><SingleFeaturedSlider projectName='The last one!' /></SwiperSlide>
@@ -108,7 +110,6 @@ function SingleFeaturedSlider(props) {
       e.target.pause()
       setCoverClasses('cover-img')
     }
-    console.log(coverClasses);
   }
 
   return (
@@ -124,6 +125,8 @@ function SingleFeaturedSlider(props) {
               src='/videos/superxenongalaxytrailer-1.mp4'
               muted
               loop
+              width={"100%"}
+              height={"100%"}
             />
             <img className={coverClasses} src={thumbnailImage} />
           </div>
@@ -137,17 +140,22 @@ function SingleFeaturedSlider(props) {
               <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage3)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)} style={{ backgroundImage: `url(${subThumbnailImage3})` }}></div>
               <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage4)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)} style={{ backgroundImage: `url(${subThumbnailImage4})` }}></div>
             </div>
-            <div className='single-featured-slider-usp'>
-              This is a unique selling point that simply describes this project! There is enough space so it can go up to 3 lines, awesome right!!
-            </div>
+
           </div>
           <div className='single-featured-slider-info-box-bottom'>
-            <a href='/'>Check it out!</a>
-            <ul className='icons'>
-              {/* TODO: Tooltip */}
-              {/* TODO: Variable */}
-              <li><img src='/images/icons/GitHubTransparant.png' width={20} height={20} alt='' loading='lazy'></img></li>
-            </ul>
+            <div className='single-featured-slider-usp'>
+              This is a unique selling point that simply describes this project! It can hold up to 110 characters! Just enough space for 3 lines.
+            </div>
+            <div className='single-featured-slider-CTA-box'>
+
+              <a href='/'>Check it out!</a>
+             
+              <div className='icons'>
+                {/* TODO: Tooltip */}
+                {/* TODO: Variable */}
+                <FontAwesomeIcon icon={faGithub}/>
+              </div>
+            </div>
           </div>
         </div>
       </div>

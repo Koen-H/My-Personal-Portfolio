@@ -10,6 +10,7 @@ import Header from './components/js/Header';
 import WelcomeBox from './components/js/WelcomeBox';
 import FeaturedSlider from './components/js/FeaturedSlider';
 import CategoriesSlider from './components/js/CategoriesSlider';
+import OverviewFilter from './components/js/OverviewFilter';
 
 // import { Col, Container, Row } from 'react-bootstrap';
 
@@ -26,12 +27,14 @@ root.render(
       <div className='my-container-flex'>
         <div className='my-col'><WelcomeBox /></div>
         <div className='my-col-prio'>
-          <FeaturedSlider />
+          <FeaturedSlider/>
           <CategoriesSlider/>
+          <OverviewFilter/>
         </div>
-        <div className='my-col'> This is on the right side</div>
+        {/* <div className='my-col'> This is on the right side</div> */}
       </div>
     </section>
+    <footer>footer</footer>
 
     {/*  */}
     {/* <ProjectBox projectName={'A new project'} thumbnailPath={placeHolderImage}/> */}

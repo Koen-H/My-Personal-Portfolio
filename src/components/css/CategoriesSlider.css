@@ -1,3 +1,7 @@
+.categories{
+    margin-bottom: 100px;
+}
+
 .category-slide {
     display: flex;
     flex-wrap: wrap;

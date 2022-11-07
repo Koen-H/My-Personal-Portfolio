@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../css/FeaturedSlider.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,13 +15,21 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-const placeHolderImage = '/images/placeholder/placeholder.png';
-const placeHolderImage1 = '/images/placeholder/placeholder1.png';
-const placeHolderImage2 = '/images/placeholder/placeholder2.png';
-const placeHolderImage3 = '/images/placeholder/placeholder3.png';
-const placeHolderImage4 = '/images/placeholder/placeholder4.png';
+// const placeHolderImage = '/images/placeholder/placeholder.png';
+// const placeHolderImage1 = '/images/placeholder/placeholder1.png';
+// const placeHolderImage2 = '/images/placeholder/placeholder2.png';
+// const placeHolderImage3 = '/images/placeholder/placeholder3.png';
+// const placeHolderImage4 = '/images/placeholder/placeholder4.png';
 
-function FeaturedSlider() {
+function FeaturedSlider(props) {
+  const projects = props.projects;
+
+  //Console error talking about two childs, can't be aovided as swiper re-renders the slides causing this to happen.
+  const sliders = projects.map((project) =>
+    <SwiperSlide key={project.id}><SingleFeaturedSlider project={project} /></SwiperSlide>
+  );
+
+
   return (
     <section className='featured'>
       <h1> Featured </h1>
@@ -31,7 +39,6 @@ function FeaturedSlider() {
           direction={'horizontal'}
           spaceBetween={50}
           slidesPerView={1}
-          loop={true}
           allowTouchMove={false}
           autoplay={{
             delay: 5000,
@@ -57,13 +64,10 @@ function FeaturedSlider() {
             },
           }
           }
-
         >
-          <SwiperSlide><SingleFeaturedSlider projectName='Projectname can go up to 50 characters. Should be enough.' /></SwiperSlide>
-          <SwiperSlide><SingleFeaturedSlider projectName='The second one!' /></SwiperSlide>
-          <SwiperSlide><SingleFeaturedSlider projectName='The third one!' /></SwiperSlide>
-          <SwiperSlide><SingleFeaturedSlider projectName='The last one!' /></SwiperSlide>
+         {sliders}
         </Swiper>
+        
         <div className='featured-pagination'></div>
         <div className="featured-slider-prev featured-slider-nav"><FontAwesomeIcon icon={faChevronLeft} /></div>
         <div className="featured-slider-next featured-slider-nav"><FontAwesomeIcon icon={faChevronRight} /></div>
@@ -74,41 +78,55 @@ function FeaturedSlider() {
 
 
 FeaturedSlider.propTypes = {
-
+  projects: PropTypes.array,
 };
 
 export default FeaturedSlider;
 
 function SingleFeaturedSlider(props) {
-  const defaultThumbnailImage = placeHolderImage;
-  const subThumbnailImage1 = placeHolderImage1;
-  const subThumbnailImage2 = placeHolderImage2;
-  const subThumbnailImage3 = placeHolderImage3;
-  const subThumbnailImage4 = placeHolderImage4;
-  const projectName = props.projectName;
+  const project = props.project;
+  const defaultThumbnailImage = project.imageurl[0];
+  const subThumbnailImage1 = project.imageurl[0];
+  const subThumbnailImage2 = project.imageurl[1];
+  const subThumbnailImage3 = project.imageurl[2];
+  const subThumbnailImage4 = project.imageurl[3];
+  const projectName = project.name;
 
   const [thumbnailImage, setThumbnailImage] = useState(defaultThumbnailImage);
   const [coverClasses, setCoverClasses] = useState('cover-img hidden');
+  const [sliderClasses, setSliderClasses] = useState('featured-volume-slider hidden');
+  const [volume, setVolume] = useState(0);
+  const videoPlayer = useRef(null);
+
+
 
   function handleSubThumbnailHoverEnter(e, hoverThumbnail) {
-    e.currentTarget.style.opacity = 1;
+    e.currentTarget.classList.add("on-hover")
     setThumbnailImage(hoverThumbnail);
   }
-
   function handleSubThumbnailHoverLeave(e) {
 
-    e.currentTarget.style.opacity = 0.6;
-    setThumbnailImage(placeHolderImage);
+    e.currentTarget.classList.remove("on-hover")
+    setThumbnailImage(defaultThumbnailImage);
+  }
+
+  function changeVolume(e){
+    setVolume(e.target.value);
+    videoPlayer.current.muted = false;
+    videoPlayer.current.volume = volume/100;
   }
 
   function handleThumbnailVideoHover(e, isHover) {
     if (isHover) {
-      e.target.play()
+      videoPlayer.current.play()
+
       setCoverClasses('cover-img hidden')
+      setSliderClasses('featured-volume-slider ')
     }
     else {
-      e.target.pause()
+      videoPlayer.current.pause()
       setCoverClasses('cover-img')
+      setSliderClasses('featured-volume-slider hidden')
     }
   }
 
@@ -122,12 +140,14 @@ function SingleFeaturedSlider(props) {
           <div className='single-featured-slider-thumbnail-trailer' style={{ backgroundImage: `url(${thumbnailImage})` }}>
             <video
               poster={thumbnailImage}
-              src='/videos/superxenongalaxytrailer-1.mp4'
+              src={project.videourl}
               muted
               loop
               width={"100%"}
               height={"100%"}
+              ref={videoPlayer}
             />
+            <input className={sliderClasses} type='range' orient='vertical' min={-1} max={100} value={volume} onChange={(e) => changeVolume(e)}/>
             <img className={coverClasses} src={thumbnailImage} />
           </div>
         </div>
@@ -142,18 +162,20 @@ function SingleFeaturedSlider(props) {
             </div>
 
           </div>
+          
+
           <div className='single-featured-slider-info-box-bottom'>
             <div className='single-featured-slider-usp'>
-              This is a unique selling point that simply describes this project! It can hold up to 110 characters! Just enough space for 3 lines.
+              {project.usp}
             </div>
             <div className='single-featured-slider-CTA-box'>
 
               <a href='/'>Check it out!</a>
-             
+
               <div className='icons'>
                 {/* TODO: Tooltip */}
                 {/* TODO: Variable */}
-                <FontAwesomeIcon icon={faGithub}/>
+                <FontAwesomeIcon icon={faGithub} />
               </div>
             </div>
           </div>
@@ -163,5 +185,5 @@ function SingleFeaturedSlider(props) {
   );
 }
 SingleFeaturedSlider.propTypes = {
-  projectName: PropTypes.string.isRequired,
+  project: PropTypes.object,
 };

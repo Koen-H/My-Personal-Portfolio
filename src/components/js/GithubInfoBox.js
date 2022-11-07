@@ -18,7 +18,6 @@ function GithubInfoBox(/*props*/) {
             "https://api.github.com/users/Koen-H/repos"
         ).then((response) => response.json());
         setRepositoryItems(response.map((repository) => {
-            console.log(repository);
             if (repositoryBlacklist.includes(repository.id)) return;
             else return <li key={repository.id}>
                 <RepositoryItem repository={repository} />
@@ -52,8 +51,6 @@ function GithubInfoBox(/*props*/) {
     //     console.log(fetchi);
     // console.log(recentRepositories);
 
-
-    // <a href={href} key={title}><li>{title}</li></a>
     return (
         <section id="github-infobox">
             <h1>I’m also active on GitHub!</h1>

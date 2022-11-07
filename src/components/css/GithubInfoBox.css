@@ -3,6 +3,7 @@
     margin-bottom: 100px;
     padding: 3px;
     border-radius: 9px;
+    min-height: 600px;
 }
 
 .github-container {

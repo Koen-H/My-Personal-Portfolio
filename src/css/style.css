@@ -31,7 +31,8 @@ body{
 }
 
 .my-col-prio {
-  flex: 0 0 auto;
+  /* flex: 0 0 48vw; */
+  flex: 0 0;
 }
 
 .my-col {

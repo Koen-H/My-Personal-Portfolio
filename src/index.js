@@ -11,6 +11,7 @@ import WelcomeBox from './components/js/WelcomeBox';
 import FeaturedSlider from './components/js/FeaturedSlider';
 import CategoriesSlider from './components/js/CategoriesSlider';
 import OverviewFilter from './components/js/OverviewFilter';
+import GithubInfoBox from './components/js/GithubInfoBox';
 
 // import { Col, Container, Row } from 'react-bootstrap';
 
@@ -29,6 +30,7 @@ root.render(
         <div className='my-col-prio'>
           <FeaturedSlider/>
           <CategoriesSlider/>
+          <GithubInfoBox/>
           <OverviewFilter/>
         </div>
         {/* <div className='my-col'> This is on the right side</div> */}

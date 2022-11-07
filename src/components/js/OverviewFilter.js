@@ -192,6 +192,7 @@ function SingleOverviewItem(props) {
 
     // const customCategories = props.customCategories;
 
+
     return (
         <div className='single-overview-item'>
             <div className='single-overview-thumbnail-container'>
@@ -202,7 +203,7 @@ function SingleOverviewItem(props) {
             <div className='single-overview-info-container'>
                 <div className='single-overview-projectname'>{props.name}</div>
                 <div className='single-overview-info'>
-                    <div className='single-overview-categories'>Games Vr</div>
+                    <div className='single-overview-categories'>{props.projectCategories}</div>
                     <div className='single-overview-date-icons'><span>{props.date} </span>
                         <div className='icons'>
                             <FontAwesomeIcon icon={faGithub} />

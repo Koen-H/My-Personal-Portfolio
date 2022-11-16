@@ -69,6 +69,19 @@
     linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
     linear-gradient(0deg, transparent 0%, #000000 100%);
 }
+.welcome-box{
+  border: black solid 3px;
+  border-radius: 9px;
+  background-color: white;
+}
+
+#github-infobox {
+  border: black solid 3px;
+  border-radius: 9px;
+}
+.repository-item {
+  border: black solid 1px;
+}
 
 .single-category-borderbox {
   box-shadow: 10px 10px rgba(0, 0, 0, 0.5);
@@ -115,4 +128,57 @@
   background: black;
   border: solid white 1px;
   cursor: e-resize;
+}
+
+.single-overview-item {
+  /* background:  linear-gradient(180deg, rgb(0, 172, 172) 0%, rgba(0,0,1,1) 100%); */
+  color: black;
+  background: #F2F2F2;
+  /* border-left: 3px black solid; */
+
+}
+
+.project-archive {
+  background-color: white;
+  /* box-shadow: 4px 0 10px rgb(0 0 0 / 25%); */
+  border: black solid 3px;
+  background-clip: border-box;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: var(--default-border-radius);
+}
+
+.project-categories {
+  background-color: white;
+  /* box-shadow: 4px 0 10px rgb(0 0 0 / 25%); */
+  border-radius: var(--default-border-radius);
+  border: black solid 3px;
+  /* border-right: none; */
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.project-category.category-active {
+  border-left: 4px solid orange;
+}
+
+.custom-category.category-active {
+  border-bottom: 4px solid orange;
+}
+
+.project-categories ul {
+  background-color: white;
+}
+
+.custom-categories {
+  background-color: white;
+  border-radius: var(--default-border-radius);
+  border: black solid 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: solid black 2px;
+}
+
+.single-overview-date-icons .icons {
+  color: black;
 }

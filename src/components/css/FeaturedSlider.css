@@ -151,6 +151,7 @@ single-featured-slider-thumbnail-box {
     height: 100%;
     opacity: 1;
     transition: opacity 0.5s;
+    aspect-ratio: 16 / 9;
 }
 
 .cover-img.hidden {

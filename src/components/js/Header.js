@@ -1,14 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 
 import '../css/Header.css';
-import ThemeSelector from './ThemeSelector';
+// import ThemeSelector from './ThemeSelector';
 
 function Header() {
   return (
     <header>
       <div className='header-content'>
         <div className='left-side-of-header'>
-          <ThemeSelector />
+          {/* <ThemeSelector /> */}
           <h1 className='golden-text '>Koen Hankel</h1>
         </div>
         <Navigation />

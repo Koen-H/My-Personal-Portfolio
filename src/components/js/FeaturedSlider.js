@@ -39,6 +39,7 @@ function FeaturedSlider(props) {
           direction={'horizontal'}
           spaceBetween={50}
           slidesPerView={1}
+          loop={true}
           allowTouchMove={false}
           autoplay={{
             delay: 5000,

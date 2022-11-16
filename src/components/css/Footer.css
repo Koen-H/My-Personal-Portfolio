@@ -1,0 +1,14 @@
+footer{
+    width:  100%;
+    height: 100px;
+}
+.footer-content{
+    width: 75vw;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end
+}
+.footer-developedby{
+    margin-top: 50px;
+}

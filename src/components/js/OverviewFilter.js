@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import '../css/OverviewFilter.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
-const placeHolderImage = '/images/placeholder/placeholder.png';
 
-function OverviewFilter() {
+function OverviewFilter(props) {
 
     const [projectCategoriesFilterIsActive, setprojectCategoriesFilterIsActive] = useState(false);
     const [customCategoriessFilterIsActive, setcustomCategoriesFilterIsActive] = useState(false);
@@ -49,33 +49,8 @@ function OverviewFilter() {
     ]);
 
     //Currently defined here, will be imported by a database in the future, perhaps using an api based on the filter instead of looping through like this. But for now using react to learn it :)
-    const projects = [
-        {
-            id: 0,
-            name: 'Porject One',
-            date: '22-10-2022',
-            usp: 'One awesome project, the very first one ever',
-            projectCategories: [
-                'Games', 'Virtual Reality'
-            ],
-            customCategories: [
-                'Recent', 'My Recommendations'
-            ],
-        },
-        {
-            id: 1,
-            name: 'Porject Two',
-            date: '22-11-2022',
-            usp: 'Second awesome project, the second one ever, currently in development',
-            projectCategories: [
-                'Games', 'Application'
-            ],
-            customCategories: [
-                'Upcoming', 'My Recommendations'
-            ],
-        },
-
-    ]
+   
+    const projects = props.projects;
 
     const singleProjectItems = projects.map(project => {
         let meetsCriteria = true;
@@ -96,7 +71,7 @@ function OverviewFilter() {
 
         if (meetsCriteria) {
             return (
-                <SingleOverviewItem key={project.id} name={project.name} date={project.date} usp={project.usp} projectCategories={project.projectCategories} customCategories={project.customCategories} />
+                <SingleOverviewItem key={project.id} project={project}/>
             );
         }
     });
@@ -162,7 +137,7 @@ function OverviewFilter() {
                     {customCategoriesItems}
                 </ul>
                 <div className='search-container'>
-                    <input></input>
+                    <input placeholder='Does not work, api mayb?'></input>
                 </div>
             </div>
             <div className='project-archive-container'>
@@ -183,7 +158,7 @@ function OverviewFilter() {
 
 
 OverviewFilter.propTypes = {
-
+    projects: propTypes.array
 };
 
 export default OverviewFilter;
@@ -191,25 +166,25 @@ export default OverviewFilter;
 function SingleOverviewItem(props) {
 
     // const customCategories = props.customCategories;
-
+    const project = props.project;
 
     return (
         <div className='single-overview-item'>
             <div className='single-overview-thumbnail-container'>
                 <a>
-                    <img src={placeHolderImage}></img>
+                    <img src={project.imageurl[0]}></img>
                 </a>
             </div>
             <div className='single-overview-info-container'>
-                <div className='single-overview-projectname'>{props.name}</div>
+                <div className='single-overview-projectname'>{project.name}</div>
                 <div className='single-overview-info'>
-                    <div className='single-overview-categories'>{props.projectCategories}</div>
-                    <div className='single-overview-date-icons'><span>{props.date} </span>
+                    <div className='single-overview-categories'>{project.projectCategories}</div>
+                    <div className='single-overview-date-icons'><span>{project.date} </span>
                         <div className='icons'>
                             <FontAwesomeIcon icon={faGithub} />
                         </div>
                     </div>
-                    <div className='single-overview-usp'>{props.usp}</div>
+                    <div className='single-overview-usp'>{project.usp}</div>
                 </div>
             </div>
         </div>
@@ -217,9 +192,5 @@ function SingleOverviewItem(props) {
 }
 
 SingleOverviewItem.propTypes = {
-    name: PropTypes.string,
-    date: PropTypes.string,
-    usp: PropTypes.string,
-    projectCategories: PropTypes.array,
-    customCategories: PropTypes.array,
+    project: PropTypes.object
 };

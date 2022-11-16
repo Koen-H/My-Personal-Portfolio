@@ -1,32 +1,25 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import '../css/WelcomeBox.css';
-import me from '../../images/me.jpg';
-
 
 function WelcomeBox() {
+    //Todo, Add a play button next to the figure, which will fade in too a video. The same button can be used to pause the video and it will fade back to the thumbnail image.
     return (
-        <section>
-            <h2>Welcome!</h2>
-            <div className='welcome-box'>
-                <div className='welcome-picture'>
-                    <img src={me} />
-                </div>
-                <div className='welcome-text'>
+        <section className='welcome-box'>
+            <h2> Hello and welcome to my portfolio!</h2>
+            <p>
+                I’m Koen Hankel, I’m a gamedeveloper with webdevelopment knowledge. I’m currently a CMGT student at Saxion University of Applied Sciences.<br/>
+                While I enjoy making games, I also enjoy making websites. I decided to make an awesome portfolio to show off my awesome project’s I’ve worked on.
+                With my portfolio I would like to showcase my web development skills, this portfolio is 100% made in React.<br/>
+                If you want to know more about me or my past, you can find me on LinkedIn.</p>
 
-                    Hello and welcome to my portfolio!<br /><br />
-
-                    I’m Koen Hankel, I’m a gamedeveloper with webdevelopment knowledge. I’m currently a CMGT student at Saxion University of Applied Sciences.<br/>
-                    I’ve spent a lot of time on this portfolio and hope you will like it. If you want to try out a different theme you can do that in the top left.<br/>
-                </div>
-            </div>
         </section>
     );
 }
 
 
-WelcomeBox.propTypes = {
-
-};
-
 export default WelcomeBox;
+
+
+
+
+

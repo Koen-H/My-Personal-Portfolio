@@ -23,7 +23,7 @@
     line-height: 100px;
     vertical-align: bottom;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-direction: column;
     background-repeat: no-repeat;
     background-size: cover;

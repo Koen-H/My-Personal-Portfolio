@@ -31,7 +31,7 @@ function FeaturedSlider(props) {
 
 
   return (
-    <section className='featured'>
+    <section className='featured d-none'>
       <h1> Featured </h1>
       <div className='featured-slider-container featured bg-color-1'>
         <Swiper

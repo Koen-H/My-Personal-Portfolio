@@ -68,12 +68,16 @@
     min-height: 500px;
 }
 
+
+
 .single-overview-item{
     width: 100%;
-    height: 140px;
+    /* height: 140px; */
     /* margin-bottom: 4px; */
     position: relative;
-    display: flex;
+    /* display: flex; */
+    border-top: black 1px solid;
+
 }
 
 .single-overview-thumbnail{
@@ -82,23 +86,32 @@
 .single-overview-thumbnail-container{
 
 }
+.overview-filter-single-project{
+}
 .single-overview-thumbnail-container img{
     /* height: 102px;
     width: 219px; */
-    width: 220px;
+    width: 140px;
     margin: 4px;
     aspect-ratio: 16 / 9;
 }
 
 .single-overview-info-container{
     padding: 4px;
+    margin-top: auto;
+    flex-grow: 1;
 }
 
 .single-overview-projectname{
    font-size: 20px;
+   padding-left: 5px;
 }
 
 .single-overview-date-icons{
 display: flex;
 gap: 10px;
+}
+
+.single-overview-usp{
+    flex-basis: 50%;
 }

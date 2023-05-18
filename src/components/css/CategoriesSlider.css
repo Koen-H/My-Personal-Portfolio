@@ -5,16 +5,22 @@
 .category-slide {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 20px;
 }
 
 .single-category-borderbox {
-    flex: 0 1 22%;
-    aspect-ratio: 1/1;
-    
+    flex: 0 2 21%;
+    aspect-ratio: 1/1; 
 }
-
+@media only screen and (max-width: 768px ) {
+    .single-category-borderbox {
+        flex-basis:  43%;
+    }
+    .category-slide {
+        gap: 10px;
+    }
+}
 
 .single-category {
     width: 100%;

@@ -49,29 +49,29 @@ function OverviewFilter(props) {
     ]);
 
     //Currently defined here, will be imported by a database in the future, perhaps using an api based on the filter instead of looping through like this. But for now using react to learn it :)
-   
+
     const projects = props.projects;
 
     const singleProjectItems = projects.map(project => {
         let meetsCriteria = true;
         if (projectCategoriesFilterIsActive) projectCategories.map(cat => {
             if (cat.isActive) {
-                if (!project.projectCategories.includes(cat.name)){
+                if (!project.projectCategories.includes(cat.name)) {
                     meetsCriteria = false;
-                } 
+                }
             }
         });
         if (customCategoriessFilterIsActive) customCategories.map(cat => {
             if (cat.isActive) {
-                if (!project.customCategories.includes(cat.name)){
+                if (!project.customCategories.includes(cat.name)) {
                     meetsCriteria = false;
-                } 
+                }
             }
         });
 
         if (meetsCriteria) {
             return (
-                <SingleOverviewItem key={project.id} project={project}/>
+                <SingleOverviewItem key={project.id} project={project} />
             );
         }
     });
@@ -132,7 +132,7 @@ function OverviewFilter(props) {
 
     return (
         <section className='overview-filter'>
-            <div className='custom-categories'>
+            <div className='custom-categories '>
                 <ul>
                     {customCategoriesItems}
                 </ul>
@@ -141,7 +141,7 @@ function OverviewFilter(props) {
                 </div>
             </div>
             <div className='project-archive-container'>
-                <div className='project-categories'>
+                <div className='project-categories d-none d-xxl-block'>
                     <ul>
                         {projectCategoriesItems}
                     </ul>
@@ -170,22 +170,27 @@ function SingleOverviewItem(props) {
 
     return (
         <div className='single-overview-item'>
-            <div className='single-overview-thumbnail-container'>
-                <a>
-                    <img src={project.imageurl[0]}></img>
-                </a>
-            </div>
-            <div className='single-overview-info-container'>
-                <div className='single-overview-projectname'>{project.name}</div>
-                <div className='single-overview-info'>
-                    <div className='single-overview-categories'>{project.projectCategories}</div>
-                    <div className='single-overview-date-icons'><span>{project.date} </span>
-                        <div className='icons'>
-                            <FontAwesomeIcon icon={faGithub} />
-                        </div>
-                    </div>
-                    <div className='single-overview-usp'>{project.usp}</div>
+            <div className='single-overview-projectname'>{project.name}</div>
+
+            <div className='d-flex'>
+                <div className='single-overview-thumbnail-container'>
+                    <a>
+                        <img src={project.imageurl[0]}></img>
+                    </a>
                 </div>
+                <div className='single-overview-info-container'>
+                    <div className='single-overview-info'>
+                        <div className='single-overview-categories'>{project.projectCategories}</div>
+                        <div className='single-overview-date-icons'><span>{project.date} </span>
+                            <div className='icons'>
+                                <FontAwesomeIcon icon={faGithub} />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div className='single-overview-usp d-none d-lg-block'>{project.usp}</div>
+
             </div>
         </div>
     );

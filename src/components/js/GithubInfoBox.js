@@ -15,7 +15,7 @@ function GithubInfoBox(/*props*/) {
 
     const getRecentRepositories = async () => {
         const response = await fetch(
-            "https://api.github.com/users/Koen-H/repos?per_page=13&sort=pushed"
+            "https://api.github.com/users/Koen-H/repos?per_page=7&sort=pushed"
         ).then((response) => response.json());
         setRepositoryItems(response.map((repository) => {
             if (repositoryBlacklist.includes(repository.id)) return;

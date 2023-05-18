@@ -23,8 +23,6 @@ body{
 }
 
 .my-container-flex {
-  width: 75vw;
-  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -33,7 +31,11 @@ body{
 
 .my-col-prio {
   /* flex: 0 0 48vw; */
-  flex: 0 0;
+  flex: 0 1;
+  margin: auto;
+  flex-basis: 1000px;
+  max-width: 1000px;
+  padding: 0 50px;
 }
 
 .my-col {

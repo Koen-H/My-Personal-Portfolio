@@ -9,15 +9,31 @@
     flex-wrap: wrap;
     width: 100%;
 }
+#github-infobox>h1 {
+    padding: 5px;
+}
+#github-infobox>.row {
+    padding: 5px;
+}
+
+.github-calendar{
+    justify-content: center;
+    display: flex;
+}
 
 .recent-repository {
     flex: 1 1 50%;
+    margin-top: 10px;
 }
 
 .recent-repository>ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+.recent-repository>ul>li {
+    padding: 5px;
+    margin: 0 0px;
 }
 
 .repository-title{
@@ -27,8 +43,8 @@
 
 .repository-item {
     padding: 6px;
-    margin: 5px;
     min-height: 100px;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -41,6 +57,7 @@
 .repository-language{
     padding-top:3px;
     font-size: 12px;
+    margin-top:auto;
 }
 
 .calendar {

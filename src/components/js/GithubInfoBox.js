@@ -15,11 +15,11 @@ function GithubInfoBox(/*props*/) {
 
     const getRecentRepositories = async () => {
         const response = await fetch(
-            "https://api.github.com/users/Koen-H/repos"
+            "https://api.github.com/users/Koen-H/repos?per_page=13&sort=pushed"
         ).then((response) => response.json());
         setRepositoryItems(response.map((repository) => {
             if (repositoryBlacklist.includes(repository.id)) return;
-            else return <li key={repository.id}>
+            else return <li key={repository.id} className='col-6'>
                 <RepositoryItem repository={repository} />
             </li>
         },
@@ -54,16 +54,22 @@ function GithubInfoBox(/*props*/) {
     return (
         <section id="github-infobox">
             <h1>I’m also active on GitHub!</h1>
-            <p>Almost all of my projects are available on GitHub to read trough. <br/>Here are my recent ones:</p>
+
+            <div className='row'>
+            <div className="col-6">
+                <p>Almost all of my projects are available on GitHub! <br />Here are my most recent ones:</p>
+            </div>
+            <div className="col-6 github-calendar">
+                <GitHubCalendar username="Koen-H" transformData={selectedArea} hideTotalCount hideColorLegend />
+            </div>
+            </div>
             <div className='github-container'>
                 <div className='recent-repository'>
-                    <ul>
+                    <ul className='row'>
                         {repositoryItems}
                     </ul>
                 </div>
-                <div className='calendar'>
-                    <GitHubCalendar username="Koen-H" transformData={selectedArea} hideTotalCount hideColorLegend />
-                </div>
+
             </div>
         </section>
     );

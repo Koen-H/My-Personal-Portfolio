@@ -137,7 +137,6 @@ function SingleFeaturedSlider(props) {
         <div className='single-featured-slider-thumbnail-box'
           onMouseEnter={(e) => handleThumbnailVideoHover(e, true)}
           onMouseLeave={(e) => handleThumbnailVideoHover(e, false)}>
-          {/* <div className='single-featured-slider-thumbnail' style={{ backgroundImage: `url(${thumbnailImage})` }}></div> */}
           <div className='single-featured-slider-thumbnail-trailer' style={{ backgroundImage: `url(${thumbnailImage})` }}>
             <video
               poster={thumbnailImage}

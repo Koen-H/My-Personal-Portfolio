@@ -4,8 +4,64 @@ import PropTypes from 'prop-types';
 import '../css/OverviewFilter.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { propTypes } from 'react-bootstrap/esm/Image';
+const projects = [
+    {
+        id: 0,
+        name: "Super Xenon Galaxy",
+        usp: "In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!",
+        date: '29-11-2021',
+        imageurl: ["/soft-coded/xenon/Image1.png", "/soft-coded/xenon/Image2.png", "/soft-coded/xenon/Image3.png", "/soft-coded/xenon/Image4.png"],
+        videourl: "/soft-coded/xenon/superxenongalaxytrailer-1.mp4",
+        projectCategories: [
+            'Games',
+        ],
+        customCategories: [
+            'My Recommendations'
+        ],
+    },
+    {
+        id: 1,
+        name: "Tetris",
+        usp: "Tetris is the same Tetris game as everyone knows, but in this version the levels are shaped in patterns making it harder (or easier) to play.",
+        date: '27-01-2022',
+        imageurl: ["/soft-coded/tetris/Image1.png", "/soft-coded/tetris/Image2.png", "/soft-coded/tetris/Image3.png", "/soft-coded/tetris/Image4.png"],
+        videourl: "/soft-coded/tetris/movie.mkv",
+        projectCategories: [
+            'Games',
+        ],
+        customCategories: [
+            'My Recommendations'
+        ],
+    },
+    {
+        id: 2,
+        name: "The Rolling cones",
+        usp: "In The Rolling Cones, you play around as a pinecone, placeobjects around the level to reach new areas and solve puzzles.",
+        date: '12-05-2022',
+        imageurl: ["/soft-coded/cones/image1.png", "/soft-coded/cones/image2.png", "/soft-coded/cones/image3.png", "/soft-coded/cones/image4.png"],
+        videourl: "/soft-coded/cones/Trailercones.mp4",
+        projectCategories: [
+            'Games',
+        ],
+        customCategories: [
 
+        ],
+    },
+    {
+        id: 3,
+        name: "Sea of Debris",
+        usp: "The sea is full of junk, plastic is everywhere. In this fun VR experience it's your job to clean up the ocean!",
+        date: '23-09-2022',
+        imageurl: ["/soft-coded/sea/Image1.png", "/soft-coded/sea/Image2.gif", "/soft-coded/sea/Image3.gif", "/soft-coded/sea/Image4.png"],
+        videourl: "/soft-coded/sea/TrailerAE_V3.mp4",
+        projectCategories: [
+            'Games', 'Virtual Reality'
+        ],
+        customCategories: [
+            'My Recommendations', 'Recent'
+        ],
+    }
+]
 
 function OverviewFilter(props) {
 
@@ -48,9 +104,10 @@ function OverviewFilter(props) {
         },
     ]);
 
+    const loadProject = props.handleNewProjectPage;
+
     //Currently defined here, will be imported by a database in the future, perhaps using an api based on the filter instead of looping through like this. But for now using react to learn it :)
 
-    const projects = props.projects;
 
     const singleProjectItems = projects.map(project => {
         let meetsCriteria = true;
@@ -71,13 +128,10 @@ function OverviewFilter(props) {
 
         if (meetsCriteria) {
             return (
-                <SingleOverviewItem key={project.id} project={project} />
+                <SingleOverviewItem key={project.id} project={project} loadProject={loadProject} />
             );
         }
     });
-
-
-
 
     function handleProjectCategories(clickedCategory) {
         const newState = projectCategories.map(cat => {
@@ -120,9 +174,6 @@ function OverviewFilter(props) {
         updateCustomCategories(newState);
     }
 
-
-
-
     const projectCategoriesItems = projectCategories.map(({ name, isActive }) =>
         <a key={name}><li className={isActive ? 'project-category category-active' : 'projectCategory '} onClick={() => handleProjectCategories(name)}>{name}</li></a>
     );
@@ -155,11 +206,10 @@ function OverviewFilter(props) {
         </section>
     );
 }
-
-
 OverviewFilter.propTypes = {
-    projects: propTypes.array
+    handleNewProjectPage: PropTypes.func
 };
+
 
 export default OverviewFilter;
 
@@ -167,9 +217,13 @@ function SingleOverviewItem(props) {
 
     // const customCategories = props.customCategories;
     const project = props.project;
+    const loadProject = props.loadProject;
+    const handleClick = () => {
+        loadProject(project.id); 
+      };
 
     return (
-        <div className='single-overview-item'>
+        <div className='single-overview-item' onClick={handleClick}>
             <div className='single-overview-projectname'>{project.name}</div>
 
             <div className='d-flex'>
@@ -197,5 +251,6 @@ function SingleOverviewItem(props) {
 }
 
 SingleOverviewItem.propTypes = {
-    project: PropTypes.object
+    project: PropTypes.object,
+    loadProject: PropTypes.func
 };

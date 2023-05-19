@@ -57,3 +57,13 @@ body{
 .bg-color-1 {
   background-color:slateblue;
 } */
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}

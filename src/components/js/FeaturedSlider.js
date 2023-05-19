@@ -26,7 +26,7 @@ function FeaturedSlider(props) {
 
   //Console error talking about two childs, can't be aovided as swiper re-renders the slides causing this to happen.
   const sliders = projects.map((project) =>
-    <SwiperSlide key={project.id}><SingleFeaturedSlider project={project} /></SwiperSlide>
+    <SwiperSlide key={project.id}><SingleFeaturedSlider project={project} handleNewProjectPage={props.handleNewProjectPage}/></SwiperSlide>
   );
 
 
@@ -80,6 +80,7 @@ function FeaturedSlider(props) {
 
 FeaturedSlider.propTypes = {
   projects: PropTypes.array,
+  handleNewProjectPage: PropTypes.func
 };
 
 export default FeaturedSlider;
@@ -131,6 +132,10 @@ function SingleFeaturedSlider(props) {
     }
   }
 
+  const handleProjectClick = () => {
+    props.handleNewProjectPage(project.id);
+  };
+
   return (
     <div>
       <div className='single-featured-slider'>
@@ -170,7 +175,7 @@ function SingleFeaturedSlider(props) {
             </div>
             <div className='single-featured-slider-CTA-box'>
 
-              <a href='/'>Check it out!</a>
+              <a href="#" onClick={handleProjectClick}>Check it out!</a>
 
               <div className='icons'>
                 {/* TODO: Tooltip */}
@@ -186,4 +191,5 @@ function SingleFeaturedSlider(props) {
 }
 SingleFeaturedSlider.propTypes = {
   project: PropTypes.object,
+  handleNewProjectPage: PropTypes.func
 };

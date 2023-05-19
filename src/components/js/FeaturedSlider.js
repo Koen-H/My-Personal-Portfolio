@@ -31,7 +31,7 @@ function FeaturedSlider(props) {
 
 
   return (
-    <section className='featured d-none'>
+    <section className='featured'>
       <h1> Featured </h1>
       <div className='featured-slider-container featured bg-color-1'>
         <Swiper
@@ -155,10 +155,10 @@ function SingleFeaturedSlider(props) {
           <div className='single-featured-slider-info-box-top'>
             <div className='single-featured-slider-projectname'><span>{projectName}</span></div>
             <div className='single-featured-slider-subthumbnails'>
-              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage1)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)} style={{ backgroundImage: `url(${subThumbnailImage1})` }}></div>
-              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage2)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)} style={{ backgroundImage: `url(${subThumbnailImage2})` }}></div>
-              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage3)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)} style={{ backgroundImage: `url(${subThumbnailImage3})` }}></div>
-              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage4)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)} style={{ backgroundImage: `url(${subThumbnailImage4})` }}></div>
+              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage1)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage1}/></div>
+              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage2)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage2}/></div>
+              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage3)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage3}/></div>
+              <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage4)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage4}/></div>
             </div>
 
           </div>
@@ -166,7 +166,7 @@ function SingleFeaturedSlider(props) {
 
           <div className='single-featured-slider-info-box-bottom'>
             <div className='single-featured-slider-usp'>
-              {project.usp}
+              <p>{project.usp}</p>
             </div>
             <div className='single-featured-slider-CTA-box'>
 

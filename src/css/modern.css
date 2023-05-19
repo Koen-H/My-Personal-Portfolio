@@ -35,6 +35,31 @@
   border-bottom-left-radius: 0px;
 }
 
+@media only screen and (max-width: 992px) {
+  .single-featured-slider-info-box {
+    border-left: black solid 3px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: var(--default-border-radius);
+  }
+  .single-featured-slider-thumbnail-trailer {
+    border-top-right-radius: var(--default-border-radius);
+    border-bottom-left-radius: 0px;
+  }
+  
+  .single-featured-slider-thumbnail-trailer>img {
+    border-top-right-radius: var(--default-border-radius);
+    border-bottom-left-radius: 0px;
+  }
+  
+  .single-featured-slider-thumbnail-trailer>video {
+    border-top-right-radius: var(--default-border-radius);
+    border-bottom-left-radius: 0px;
+  }
+  .single-featured-slider-subthumbnails{
+    margin-top: 5px;
+  }
+}
+
 .icons {
   color: black;
 }

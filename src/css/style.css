@@ -33,9 +33,15 @@ body{
   /* flex: 0 0 48vw; */
   flex: 0 1;
   margin: auto;
-  flex-basis: 1000px;
-  max-width: 1000px;
+  flex-basis: 50%;
+  max-width: 45vw;
   margin: 0 50px;
+}
+@media only screen and (max-width: 992px) {
+  .my-col-prio {
+    flex-basis: 90%;
+    max-width: 80vw;
+  }
 }
 
 .my-col {

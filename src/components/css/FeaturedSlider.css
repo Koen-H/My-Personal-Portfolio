@@ -1,5 +1,4 @@
 .featured {
-   /*width: 1000px;*/
     margin-bottom: 100px;
 }
 
@@ -58,7 +57,7 @@
 
 .single-featured-slider-thumbnail {
     height: 100%;
-    width: 640px;
+    /* width: 640px; */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -66,11 +65,12 @@
 
 .single-featured-slider-thumbnail-trailer {
     position: relative;
-    height: 100%;
-    max-width: 640px;
+    /* height: 100%; */
+    /* max-width: 640px; */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    aspect-ratio: 16/9;
 }
 
 .single-featured-slider-thumbnail-trailer>video {
@@ -80,7 +80,6 @@
 }
 
 .single-featured-slider-projectname {
-    height: 60px;
     overflow: hidden;
     font-size: 0px;
     line-height: 1.1;
@@ -96,25 +95,31 @@
 
 .single-featured-slider-info-box {
     padding: 0 6px;
-    width: 360px;
+    width: 36%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .single-featured-slider-usp {
-    height: 72px;
-    max-height: 72px;
-    overflow: overlay;
+    /* height: 72px; */
+    max-height: 80px; 
+    overflow: auto;
     padding-right: 7px;
     line-height: 1.25;
 }
 
-single-featured-slider-thumbnail-box {
+.single-featured-slider-thumbnail-box {
     font-size: 0px;
+    width: 64%;
 }
 
-.single-featured-slider-info-box-bottom {}
+.single-featured-slider-info-box-bottom {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .single-featured-slider-CTA-box {
     display: flex;
@@ -135,6 +140,9 @@ single-featured-slider-thumbnail-box {
     background-position: center center;
     aspect-ratio: 16/9;
     flex-basis: calc(50%);
+}
+.single-featured-slider-single-subthumbnail>img{
+    width: 100%;
 }
 
 .single-featured-slider-info {
@@ -193,4 +201,9 @@ single-featured-slider-thumbnail-box {
     .single-featured-slider-single-subthumbnail {
         flex-basis: calc(25%);
     }
+    .single-featured-slider-thumbnail-box{
+        width: auto;
+    }
+
+
 }

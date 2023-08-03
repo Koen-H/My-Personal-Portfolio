@@ -45,6 +45,8 @@
 .featured-pagination-bullet {
     padding: 4px 10px;
     margin: 0 10px;
+    border-radius: 10px;
+
 }
 
 .featured-pagination-bullet-active {}

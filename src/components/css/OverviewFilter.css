@@ -1,6 +1,8 @@
 .overview-filter {
     width: 100%;
     margin-bottom: 100px;
+    justify-content: center;
+    display: flex;
 }
 
 .custom-categories {

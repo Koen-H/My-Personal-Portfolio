@@ -183,23 +183,25 @@ function OverviewFilter(props) {
 
     return (
         <section className='overview-filter'>
-            <div className='custom-categories '>
-                <ul>
-                    {customCategoriesItems}
-                </ul>
-                <div className='search-container'>
-                    <input placeholder='Does not work, api mayb?'></input>
-                </div>
-            </div>
-            <div className='project-archive-container'>
-                <div className='project-categories d-none d-xxl-block'>
+            <div className='col-8'>
+                <div className='custom-categories '>
                     <ul>
-                        {projectCategoriesItems}
+                        {customCategoriesItems}
                     </ul>
+                    <div className='search-container'>
+                        <input placeholder='Does not work, api mayb?'></input>
+                    </div>
                 </div>
-                <div className='project-archive'>
-                    <div className='overview-filter-single-project'>
-                        {singleProjectItems}
+                <div className='project-archive-container'>
+                    <div className='project-categories d-none d-xxl-block'>
+                        <ul>
+                            {projectCategoriesItems}
+                        </ul>
+                    </div>
+                    <div className='project-archive'>
+                        <div className='overview-filter-single-project'>
+                            {singleProjectItems}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,8 +221,8 @@ function SingleOverviewItem(props) {
     const project = props.project;
     const loadProject = props.loadProject;
     const handleClick = () => {
-        loadProject(project.id); 
-      };
+        loadProject(project.id);
+    };
 
     return (
         <div className='single-overview-item' onClick={handleClick}>

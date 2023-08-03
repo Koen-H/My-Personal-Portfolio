@@ -71,11 +71,12 @@ function Home(props) {
   return (
     <section id='home'>
       <div className='my-container-flex'>
-        <div className={`my-col-prio col `}>
+        <div className='col-11 col-lg-10 col-xl-8 '>
+
           <FeaturedSlider projects={projects} handleNewProjectPage={props.handleNewProjectPage} />
+          <GithubInfoBox />
           {/* <WelcomeBox /> */}
           {/* <CategoriesSlider /> */}
-          <GithubInfoBox />
           <OverviewFilter handleNewProjectPage={props.handleNewProjectPage} />
         </div>
       </div>

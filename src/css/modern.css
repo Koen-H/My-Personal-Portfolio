@@ -29,7 +29,7 @@
 }
 
 .single-featured-slider-info-box {
-  border: black solid 3px;
+  /* border: black solid 3px; */
   background-clip: border-box;
   border-left: none;
   border-radius: var(--default-border-radius);
@@ -39,7 +39,7 @@
 
 @media only screen and (max-width: 992px) {
   .single-featured-slider-info-box {
-    border-left: black solid 3px;
+    /* border-left: black solid 3px; */
     border-top-right-radius: 0px;
     border-bottom-left-radius: var(--default-border-radius);
   }
@@ -69,21 +69,21 @@
 .featured-slider-nav {
   background-color: #FFFFFF;
   color: black;
-  border: black solid 3px;
+  border: rgba(0, 0, 0, 0.5) solid 1px;
   border-radius: var(--default-border-radius);
 }
 
 .featured-pagination-bullet {
   background-color: #FFFFFF;
-  color: black;
-  border: black solid 3px;
+  color: rgba(0, 0, 0, 0.5);
+  border: black solid 1px;
   border-radius: var(--default-border-radius);
 }
 
 .featured-pagination-bullet-active {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.1);
   color: #FFFFFF;
-  border: black solid 3px;
+  border: black solid 2px;
   border-radius: var(--default-border-radius);
 }
 
@@ -102,10 +102,10 @@
   background-color: white;
 }
 
-#github-infobox {
+/* #github-infobox {
   border: black solid 3px;
   border-radius: 9px;
-}
+} */
 .repository-item {
   border: black solid 1px;
 }
@@ -168,7 +168,7 @@
 .project-archive {
   background-color: white;
   /* box-shadow: 4px 0 10px rgb(0 0 0 / 25%); */
-  border: black solid 3px;
+  border: black solid 1px;
   background-clip: border-box;
   border-bottom-right-radius: var(--default-border-radius);
 }
@@ -177,7 +177,7 @@
   background-color: white;
   /* box-shadow: 4px 0 10px rgb(0 0 0 / 25%); */
   border-radius: var(--default-border-radius);
-  border: black solid 3px;
+  border: black solid 1px;
   border-right: none;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
@@ -198,7 +198,7 @@
 .custom-categories {
   background-color: white;
   border-radius: var(--default-border-radius);
-  border: black solid 3px;
+  border: black solid 1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   border-bottom: unset;

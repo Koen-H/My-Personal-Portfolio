@@ -57,7 +57,7 @@ function GithubInfoBox(/*props*/) {
 
             <div className='row'>
             <div className="col-6">
-                <p>Almost all of my projects are available on GitHub! <br />Here are my most recent ones:</p>
+                <p>Almost all of my projects have their source code publicly available on GitHub! <br/>Sorted based on latest commits</p>
             </div>
             <div className="col-6 github-calendar">
                 <GitHubCalendar username="Koen-H" transformData={selectedArea} hideTotalCount hideColorLegend />

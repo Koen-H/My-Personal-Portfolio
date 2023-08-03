@@ -6,10 +6,24 @@ body {
     /* color: white; */
 }
 
-header {
+
+.header {
     width: 100%;
     padding: 20px 0 0 0;
+    position: fixed;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
 }
+.scrolled {
+    background-color: var(--header-background-color);
+}
+
+@media only screen and (max-width: 992px) {
+    #header {
+        position: unset;
+    }
+}
+
 .header-content{
     width: 75vw;
     margin: auto;

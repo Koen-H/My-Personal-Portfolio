@@ -1,5 +1,7 @@
 :root {
-  --default-border-radius: 9px;
+  /* --default-border-radius: 9px; */
+  --default-border-radius: 0px;
+  --header-background-color: rgba(255, 255, 255,1);
 }
 
 .content {

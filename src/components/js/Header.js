@@ -1,11 +1,28 @@
 /* eslint-disable react/react-in-jsx-scope */
-
+import React, { useState, useEffect } from 'react';
 import '../css/Header.css';
 // import ThemeSelector from './ThemeSelector';
 
 function Header() {
+
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header>
+    <header id='header' className={scrolled ? 'header scrolled' : 'header'}>
       <div className='header-content'>
         <div className='left-side-of-header'>
           {/* <ThemeSelector /> */}

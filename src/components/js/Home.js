@@ -1,8 +1,10 @@
 import React from 'react';
+// import HomeThumbnailHeader from './HomeThumbnailHeader';
 import WelcomeBox from './WelcomeBox';
 import FeaturedSlider from './FeaturedSlider';
 import CategoriesSlider from './CategoriesSlider';
 import GithubInfoBox from './GithubInfoBox';
+import OverviewFilter from './OverviewFilter';
 import PropTypes from 'prop-types';
 
 //TODO: Import from a database
@@ -71,12 +73,13 @@ function Home(props) {
       <div className='my-container-flex'>
         <div className={`my-col-prio col `}>
           <FeaturedSlider projects={projects} handleNewProjectPage={props.handleNewProjectPage} />
-          <WelcomeBox />
-          <CategoriesSlider />
+          {/* <WelcomeBox /> */}
+          {/* <CategoriesSlider /> */}
           <GithubInfoBox />
+          <OverviewFilter handleNewProjectPage={props.handleNewProjectPage} />
         </div>
       </div>
-    </section >
+    </section>
   );
 }
 

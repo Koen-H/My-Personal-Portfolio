@@ -1,6 +1,6 @@
 import Home from './Home';
 import ProjectPage from './ProjectPage';
-import OverviewFilter from './OverviewFilter';
+// import OverviewFilter from './OverviewFilter';
 import { useState} from 'react';
 
 /* eslint-disable react/react-in-jsx-scope */
@@ -24,10 +24,10 @@ function Content() {
   };
 
   return (
-    <section className= {`content ${fade ? 'fade-out' : 'fade-in'}`} >
+    <section className= {`${fade ? 'fade-out' : 'fade-in'}`} >
 
           {selectedProjectPage === null ? <Home handleNewProjectPage={handleNewProjectPage}/> : <ProjectPage projectId={selectedProjectPage} />}
-          <OverviewFilter handleNewProjectPage={handleNewProjectPage} />
+          {/* <OverviewFilter handleNewProjectPage={handleNewProjectPage} /> */}
 
     </section>
   );

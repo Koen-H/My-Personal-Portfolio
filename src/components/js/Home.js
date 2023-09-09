@@ -1,8 +1,8 @@
 import React from 'react';
 // import HomeThumbnailHeader from './HomeThumbnailHeader';
-import WelcomeBox from './WelcomeBox';
+// import WelcomeBox from './WelcomeBox';
 import FeaturedSlider from './FeaturedSlider';
-import CategoriesSlider from './CategoriesSlider';
+// import CategoriesSlider from './CategoriesSlider';
 import GithubInfoBox from './GithubInfoBox';
 import OverviewFilter from './OverviewFilter';
 import PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ const projects = [
   {
     id: 0,
     name: "Super Xenon Galaxy",
-    usp: "In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!",
+    usp: "In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!In Super Xenon Galaxy you use a custom controller to match color and collect cookies around space!",
     date: '29-11-2021',
     imageurl: ["/soft-coded/xenon/Image1.png", "/soft-coded/xenon/Image2.png", "/soft-coded/xenon/Image3.png", "/soft-coded/xenon/Image4.png"],
     videourl: "/soft-coded/xenon/superxenongalaxytrailer-1.mp4",

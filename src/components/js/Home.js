@@ -7,7 +7,7 @@ import GithubInfoBox from './GithubInfoBox';
 import OverviewFilter from './OverviewFilter';
 import PropTypes from 'prop-types';
 
-//TODO: Import from a database
+
 const projects = [
   {
     id: 0,

@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 // import PropTypes from 'prop-types';
 import '../css/OverviewFilter.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 const projects = [
     {
         id: 0,
@@ -182,7 +180,11 @@ function OverviewFilter(props) {
 
     return (
         <section className='overview-filter'>
-            <div className='col-8'>
+            <div className='archive-filter'>
+                <ul>
+                    {customCategoriesItems}
+                </ul>
+                {/* <div className='col-8'>
                 <div className='custom-categories '>
                     <ul>
                         {customCategoriesItems}
@@ -197,12 +199,14 @@ function OverviewFilter(props) {
                             {projectCategoriesItems}
                         </ul>
                     </div>
-                    <div className='project-archive'>
-                        <div className='overview-filter-single-project'>
-                            {singleProjectItems}
-                        </div>
-                    </div>
                 </div>
+            </div> */}
+                <ul>
+                    {projectCategoriesItems}
+                </ul>
+            </div>
+            <div className='project-archive'>
+                {singleProjectItems}
             </div>
         </section>
     );
@@ -216,30 +220,63 @@ export default OverviewFilter;
 
 function SingleOverviewItem(props) {
 
-    // const customCategories = props.customCategories;
     const project = props.project;
-    const loadProject = props.loadProject;
-    const handleClick = () => {
-        loadProject(project.id);
+    const projectThumbnails = project.imageurl;
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [backgroundImage, setBackgroundImage] = useState(projectThumbnails[0]);
+    
+    const timeoutDelay = 1500;
+    const timeoutRef = useRef(null);
+
+    const infoContainer = useRef(null);
+
+    const handleSingleItemHoverEnter = () => {
+        infoContainer.current.classList.remove("d-none");
+        clearTimeout(timeoutRef.current); // Clear any existing timeout
+        NextImage(currentIndex)
     };
 
+    const handleSingleItemHoverLeave = () => {
+        infoContainer.current.classList.add("d-none");
+        clearTimeout(timeoutRef.current); // Clear the timeout
+        setBackgroundImage(projectThumbnails[0]);
+    };
+
+    const NextImage = (prevIndex) => {
+        let nextIndex = prevIndex + 1;
+        nextIndex = nextIndex === projectThumbnails.length ? 0 : nextIndex;
+        setCurrentIndex(nextIndex);
+        setBackgroundImage(projectThumbnails[nextIndex]);
+        timeoutRef.current = setTimeout(() => NextImage(nextIndex), timeoutDelay);
+    };
+
+    // const customCategories = props.customCategories;
+    const handleClick = () => {
+        props.loadProject(project.id);
+    };
+
+
+    useEffect(() => {
+        return () => {
+          clearTimeout(timeoutRef.current); // Clear timeout in cleanup
+        };
+      }, [/* dependencies */]);
+
     return (
-        <div className='single-overview-item' onClick={handleClick}>
+        <div className='single-overview-item'
+            onClick={handleClick}
+            onMouseEnter={() => handleSingleItemHoverEnter()}
+            onMouseLeave={() => handleSingleItemHoverLeave()}
+        >
             <div className='single-overview-thumbnail-container'>
                 <a>
-                    <img src={project.imageurl[0]}></img>
+                    <img src={backgroundImage}></img>
                 </a>
             </div>
-            <div className='single-overview-info-container'>
+            <div className='single-overview-info-container d-none' ref={infoContainer}>
                 <div className='single-overview-info'>
-                    <div className='single-overview-projectname'>{project.name}</div>
-                    <div className='single-overview-usp d-none d-lg-block'>{project.usp}</div>
-                    <div className='single-overview-date-icons'>
-                        <div className='icons'>
-                            <FontAwesomeIcon icon={faGithub} />
-                        </div>
-                    </div>
-
+                    <div className='single-overview-projectname'><h3>{project.name}</h3></div>
+                    <div className='single-overview-usp'>{project.usp}</div>
                 </div>
             </div>
         </div>

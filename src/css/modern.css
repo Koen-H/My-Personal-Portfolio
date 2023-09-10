@@ -160,7 +160,6 @@
 .single-overview-item {
   /* background:  linear-gradient(180deg, rgb(0, 172, 172) 0%, rgba(0,0,1,1) 100%); */
   color: black;
-  background: #F2F2F2;
   /* border-left: 3px black solid; */
 
 }
@@ -168,19 +167,13 @@
 .project-archive {
   background-color: white;
   /* box-shadow: 4px 0 10px rgb(0 0 0 / 25%); */
-  border: black solid 1px;
   background-clip: border-box;
-  border-bottom-right-radius: var(--default-border-radius);
 }
 
 .project-categories {
   background-color: white;
   /* box-shadow: 4px 0 10px rgb(0 0 0 / 25%); */
-  border-radius: var(--default-border-radius);
-  border: black solid 1px;
-  border-right: none;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
+
 }
 
 .project-category.category-active {

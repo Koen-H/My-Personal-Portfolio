@@ -10,12 +10,8 @@ const videoFileNames = videos.keys().map(key => '/content/homepage-header-videos
 
 function HomeThumbnailHeader() {
 
-  console.log(videoFileNames);
-
-
   const [currentVideo, setCurrentVideo] = useState(0);
   const video = videoFileNames[currentVideo];
-  console.log(video);
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -58,7 +54,6 @@ function HomeThumbnailHeader() {
   function handleVideoEnded() {
     setCurrentVideo((prevCurrentProject) => {
       const nextIndex = prevCurrentProject + 1;
-      console.log("video ended" + nextIndex);
       return nextIndex === videoFileNames.length ? 0 : nextIndex;
     });
   }

@@ -4,7 +4,7 @@ import React from 'react';
 import FeaturedSlider from './FeaturedSlider';
 // import CategoriesSlider from './CategoriesSlider';
 import GithubInfoBox from './GithubInfoBox';
-import OverviewFilter from './OverviewFilter';
+import ProjectArchive from './ProjectArchive';
 import PropTypes from 'prop-types';
 
 
@@ -77,7 +77,7 @@ function Home(props) {
           <GithubInfoBox />
           {/* <WelcomeBox /> */}
           {/* <CategoriesSlider /> */}
-          <OverviewFilter handleNewProjectPage={props.handleNewProjectPage} />
+          <ProjectArchive handleNewProjectPage={props.handleNewProjectPage} />
         </div>
       </div>
     </section>

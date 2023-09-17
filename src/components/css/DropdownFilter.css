@@ -1,0 +1,30 @@
+.dropdown-filter ul{
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.filter-checkbox{
+    margin: 0 10px;
+    height: 20px;
+}
+
+.filter-item{
+    display: flex;
+    align-items: center;
+}
+.dropdown-filter{
+    position:relative;
+    cursor: pointer;
+}
+
+.dropdown-filter-popup{
+    position: absolute;
+    z-index: 1;
+    background: rgb(243, 243, 243);
+    right: 0;
+    width: 250px;
+    cursor: auto;
+}
+.filter-icon{
+    padding-right: 10px;
+}

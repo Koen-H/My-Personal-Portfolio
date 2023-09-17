@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 // import PropTypes from 'prop-types';
-import '../css/OverviewFilter.css';
+import '../css/ProjectArchive.css';
+
+import DropdownFilter from './DropdownFilter';
+
 const projects = [
     {
         id: 0,
@@ -13,9 +16,7 @@ const projects = [
         projectCategories: [
             'Games',
         ],
-        customCategories: [
-            'My Recommendations'
-        ],
+
     },
     {
         id: 1,
@@ -27,9 +28,7 @@ const projects = [
         projectCategories: [
             'Games',
         ],
-        customCategories: [
-            'My Recommendations'
-        ],
+
     },
     {
         id: 2,
@@ -41,9 +40,7 @@ const projects = [
         projectCategories: [
             'Games',
         ],
-        customCategories: [
 
-        ],
     },
     {
         id: 3,
@@ -55,168 +52,140 @@ const projects = [
         projectCategories: [
             'Games', 'Virtual Reality'
         ],
-        customCategories: [
-            'My Recommendations', 'Recent'
+
+    },
+    {
+        id: 4,
+        name: "Sea of Debris",
+        usp: "The sea is full of junk, plastic is everywhere. In this fun VR experience it's your job to clean up the ocean!",
+        date: '23-09-2022',
+        imageurl: ["/soft-coded/sea/Image1.png", "/soft-coded/sea/Image2.gif", "/soft-coded/sea/Image3.gif", "/soft-coded/sea/Image4.png"],
+        videourl: "/soft-coded/sea/TrailerAE_V3.mp4",
+        projectCategories: [
+            'Games', 'Virtual Reality'
         ],
-    }
+
+    },
+    {
+        id: 5,
+        name: "Sea of Debris",
+        usp: "The sea is full of junk, plastic is everywhere. In this fun VR experience it's your job to clean up the ocean!",
+        date: '23-09-2022',
+        imageurl: ["/soft-coded/sea/Image1.png", "/soft-coded/sea/Image2.gif", "/soft-coded/sea/Image3.gif", "/soft-coded/sea/Image4.png"],
+        videourl: "/soft-coded/sea/TrailerAE_V3.mp4",
+        projectCategories: [
+            'Games', 'Virtual Reality'
+        ],
+
+    },
 ]
 
-function OverviewFilter(props) {
+function ProjectArchive(props) {
 
-    const [projectCategoriesFilterIsActive, setprojectCategoriesFilterIsActive] = useState(false);
-    const [customCategoriessFilterIsActive, setcustomCategoriesFilterIsActive] = useState(false);
-    const [projectCategories, updateProjectCategories] = useState([
+    const [filter, setFilter] = useState([
         {
-            name: "Games",
-            isActive: false,
+            "label": "Categories",
+            "active": false,
+            "items":
+                [
+                    {
+                        name: "Games",
+                        active: false,
+                    },
+                    {
+                        name: "Applications",
+                        active: false,
+                    },
+                    {
+                        name: "Websites",
+                        active: false,
+                    },
+                    {
+                        name: "Art",
+                        active: false,
+                    },
+                    {
+                        name: "Research",
+                        active: false,
+                    },
+                ]
         },
         {
-            name: "Applications",
-            isActive: false,
-        },
-        {
-            name: "Websites",
-            isActive: false,
-        },
-        {
-            name: "Virtual Reality",
-            isActive: false,
-        },
-    ]);
-    const [customCategories, updateCustomCategories] = useState([
-        {
-            name: "Recent",
-            isActive: false,
-        },
-        {
-            name: "My Recommendations",
-            isActive: false,
-        },
-        {
-            name: "Upcoming",
-            isActive: false,
-        },
-        {
-            name: "Concepts",
-            isActive: false,
-        },
+            "label": "Tags",
+            "active": false,
+            "items":
+                [
+                    {
+                        name: "Virtual Reality",
+                        active: false,
+                    },
+                    {
+                        name: "3D Game",
+                        active: false,
+                    },
+                    {
+                        name: "2D Game",
+                        active: false,
+                    },
+                    {
+                        name: "Networking",
+                        active: false,
+                    },
+                ]
+        }
     ]);
 
     const loadProject = props.handleNewProjectPage;
 
 
-
-    const singleProjectItems = projects.map(project => {
+    //Filters the projects that meets the criteria
+    const singleProjectItems = projects.map((project) => {
         let meetsCriteria = true;
-        if (projectCategoriesFilterIsActive) projectCategories.map(cat => {
-            if (cat.isActive) {
-                if (!project.projectCategories.includes(cat.name)) {
-                    meetsCriteria = false;
-                }
+        filter.forEach((filterCategory) => {
+            if (filterCategory.active) {
+                filterCategory.items.forEach((item) => {
+                    if (item.active && !project.projectCategories.includes(item.name)) {
+                        meetsCriteria = false;
+                    }
+                });
             }
         });
-        if (customCategoriessFilterIsActive) customCategories.map(cat => {
-            if (cat.isActive) {
-                if (!project.customCategories.includes(cat.name)) {
-                    meetsCriteria = false;
-                }
-            }
-        });
-
         if (meetsCriteria) {
             return (
                 <SingleOverviewItem key={project.id} project={project} loadProject={loadProject} />
             );
         }
-    });
-
-    function handleProjectCategories(clickedCategory) {
-        const newState = projectCategories.map(cat => {
-            if (cat.name === clickedCategory) {
-
-                return { ...cat, isActive: !cat.isActive };
-            }
-
-            return cat;
-        });
-        let filterActive = false;
-        newState.map(cat => {
-            if (cat.isActive) {
-                filterActive = true;
-            }
-        });
-        setprojectCategoriesFilterIsActive(filterActive);
-
-        updateProjectCategories(newState);
-    }
-
-    function handleCustomCategories(clickedCategory) {
-        const newState = customCategories.map(cat => {
-            if (cat.name === clickedCategory) {
-
-                return { ...cat, isActive: !cat.isActive };
-            }
-
-            return cat;
-        });
-
-        let filterActive = false;
-        newState.map(cat => {
-            if (cat.isActive) {
-                filterActive = true;
-            }
-        });
-        setcustomCategoriesFilterIsActive(filterActive);
-
-        updateCustomCategories(newState);
-    }
-
-    const projectCategoriesItems = projectCategories.map(({ name, isActive }) =>
-        <a key={name}><li className={isActive ? 'project-category category-active' : 'projectCategory '} onClick={() => handleProjectCategories(name)}>{name}</li></a>
-    );
-    const customCategoriesItems = customCategories.map(({ name, isActive }) =>
-        <a key={name}><li className={isActive ? 'custom-category category-active' : 'customCategory '} onClick={() => handleCustomCategories(name)}>{name}</li></a>
-    );
-
+        // Return null for projects that don't meet the criteria
+        return null;
+    })
+        .filter((projectItem) => projectItem !== null); // Filter out null values
+    console.log(singleProjectItems)
     return (
         <section className='overview-filter'>
-            <div className='archive-filter'>
-                <ul>
-                    {customCategoriesItems}
-                </ul>
-                {/* <div className='col-8'>
-                <div className='custom-categories '>
-                    <ul>
-                        {customCategoriesItems}
-                    </ul>
-                    <div className='search-container'>
-                        <input placeholder='Does not work, api mayb?'></input>
-                    </div>
-                </div>
-                <div className='project-archive-container'>
-                    <div className='project-categories d-none d-xxl-block'>
-                        <ul>
-                            {projectCategoriesItems}
-                        </ul>
-                    </div>
-                </div>
-            </div> */}
-                <ul>
-                    {projectCategoriesItems}
-                </ul>
+            <div className='archive-top'>
+                <h2>Project archive</h2>
+                <DropdownFilter filter={filter} setFilter={setFilter} />
             </div>
             <div className='project-archive'>
-                {singleProjectItems}
+                {singleProjectItems.length === 0 ? (
+                    <div>
+                        <h4>No results found</h4>
+                        <p>Try using different filters</p>
+                    </div>
+                ) : (
+                    singleProjectItems
+                )}
             </div>
         </section>
     );
 }
-OverviewFilter.propTypes = {
+
+ProjectArchive.propTypes = {
     handleNewProjectPage: PropTypes.func
 };
 
 
-export default OverviewFilter;
+export default ProjectArchive;
 
 function SingleOverviewItem(props) {
 
@@ -224,7 +193,7 @@ function SingleOverviewItem(props) {
     const projectThumbnails = project.imageurl;
     const [currentIndex, setCurrentIndex] = useState(0);
     const [backgroundImage, setBackgroundImage] = useState(projectThumbnails[0]);
-    
+
     const timeoutDelay = 1500;
     const timeoutRef = useRef(null);
 
@@ -258,9 +227,9 @@ function SingleOverviewItem(props) {
 
     useEffect(() => {
         return () => {
-          clearTimeout(timeoutRef.current); // Clear timeout in cleanup
+            clearTimeout(timeoutRef.current); // Clear timeout in cleanup
         };
-      }, [/* dependencies */]);
+    }, [/* dependencies */]);
 
     return (
         <div className='single-overview-item'

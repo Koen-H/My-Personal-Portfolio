@@ -31,13 +31,8 @@ function HomeThumbnailHeader() {
 
   const handlePlayPause = () => {
     const videoElement = videoRef.current;
-    if (videoElement.paused) {
-      videoElement.play();
-    } else {
-      videoElement.pause();
-    }
+    videoElement.paused ? videoElement.play() : videoElement.pause();
     setIsPlaying(!videoElement.paused);
-    
   };
 
   const handleFullScreenChange = () => {
@@ -58,7 +53,6 @@ function HomeThumbnailHeader() {
     });
   }
 
-
   useEffect(() => {
     document.addEventListener('fullscreenchange', handleFullScreenChange);
     document.addEventListener('mozfullscreenchange', handleFullScreenChange);
@@ -70,13 +64,12 @@ function HomeThumbnailHeader() {
       document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
       document.removeEventListener('msfullscreenchange', handleFullScreenChange);
-      videoRef.current.removeEventListener('ended', handleVideoEnded);
+      // videoRef.current.removeEventListener('ended', handleVideoEnded);
     };
   }, []);
 
 
   return (
-    
     <section className='header-thumb'>
       <section className='header-thumb-video'>
         <video

@@ -1,0 +1,29 @@
+.project-background{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.project-background img{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.project-background video{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.project-background-video{
+    height: 100%;
+}
+.background-video-controls{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    color: white;
+    gap: 10px;
+    z-index: 10;
+}

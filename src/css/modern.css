@@ -4,6 +4,10 @@
   --header-background-color: rgba(255, 255, 255,1);
 }
 
+.page{
+  min-height: 100%;
+}
+
 .content {
   background-color: #F9F9F9;
 }

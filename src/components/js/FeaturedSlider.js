@@ -14,6 +14,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import { useNavigate } from 'react-router';
 
 // const placeHolderImage = '/images/placeholder/placeholder.png';
 // const placeHolderImage1 = '/images/placeholder/placeholder1.png';
@@ -102,6 +103,8 @@ function SingleFeaturedSlider(props) {
   const [volume, setVolume] = useState(0);
   const videoPlayer = useRef(null);
 
+  const navigate = useNavigate();
+
 
 
   function handleSubThumbnailHoverEnter(e, hoverThumbnail) {
@@ -114,13 +117,11 @@ function SingleFeaturedSlider(props) {
     e.currentTarget.classList.remove("on-hover")
     setThumbnailImage(defaultThumbnailImage);
   }
-
   function changeVolume(e) {
     setVolume(e.target.value);
     videoPlayer.current.muted = false;
     videoPlayer.current.volume = volume / 100;
   }
-
   function handleThumbnailVideoHover(e, isHover) {
     if (isHover) {
       videoPlayer.current.play()
@@ -134,10 +135,6 @@ function SingleFeaturedSlider(props) {
       setSliderClasses('featured-volume-slider hidden')
     }
   }
-
-  const handleProjectClick = () => {
-    props.handleNewProjectPage(project.id);
-  };
 
   return (
     <div>
@@ -181,7 +178,9 @@ function SingleFeaturedSlider(props) {
             </div>
             <div className='single-featured-slider-CTA-box'>
 
-              <a href="#" onClick={handleProjectClick}>Check it out!</a>
+              <a onClick={() => {
+                navigate(`/project/${project.slug}`)
+              }}>Check it out!</a>
 
               <div className='icons'>
                 {/* TODO: Tooltip */}
@@ -192,7 +191,7 @@ function SingleFeaturedSlider(props) {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 SingleFeaturedSlider.propTypes = {

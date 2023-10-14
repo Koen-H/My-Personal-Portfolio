@@ -151,6 +151,7 @@
 }
 .single-featured-slider-single-subthumbnail>img{
     width: 100%;
+    aspect-ratio: 16/9;
 }
 
 .single-featured-slider-info {

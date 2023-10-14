@@ -1,18 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProjectBackground from './ProjectBackground';
+import ProjectLogo from './ProjectLogo';
+import ProjectDetails from './ProjectDetails';
+import ProjectBlocks from './ProjectBlocks';
 
+
+import '../css/ProjectPage.css';
 
 function ProjectPage(props) {
   const project = props.project;
+
   return (
-    <section id='project-page' className='page'>
-      {/* <ThumbnailHeader project={project} /> */}
-      <ProjectBackground project={project}/>
-      <section id='project-icons' className='d-flex'>
+    <section id='project-page' className='page' style={{ color: project.css.textColor }}>
+      <ProjectBackground project={project} />
+      <section className='project-page-header' style={{ background: project.background.headerOverlay }}>
+        <ProjectLogo project={project} />
+      </section>
+      <section id='project-page-content' className='project-page-content' style={{ background: project.background.overlay }}>
+        <ProjectDetails project={project}/>
+        <section className='project-description'>
+          <p>{project.description}</p>
+        </section>
+        <ProjectBlocks project={project}/>
 
       </section>
-      Project page :D for {project.name}
     </section>
   );
 

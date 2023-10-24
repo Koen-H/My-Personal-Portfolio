@@ -58,6 +58,31 @@ const projects = [
           },
         ],
       },
+      {
+        blockType: 6,
+        title: "Images",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non ante nibh. Sed malesuada magna a risus congue pretium. Vivamus ullamcorper elementum risus, in luctus magna commodo non. Nullam eget sem rhoncus, aliquet diam non, commodo est. Donec id nunc nec erat consectetur rhoncus at non leo. Aliquam sit amet nisl rutrum, maximus dolor et, molestie neque. Nullam ultricies congue nisl faucibus fringilla. Curabitur tincidunt lacinia consequat. Aenean bibendum euismod mi et euismod. Etiam dictum elit non interdum rhoncus. Phasellus luctus sagittis eros ac vulputate. Vivamus convallis tortor ut ante imperdiet sodales. Pellentesque auctor felis non laoreet eleifend. Sed ut massa sed augue sollicitudin tincidunt. Nulla ultricies at magna a faucibus. Quisque sit amet elit in nibh mattis rutrum. Etiam a quam pellentesque, placerat velit ac, pulvinar erat. Donec orci eros, interdum auctor neque eget, elementum lacinia turpis. Mauris nibh nibh, consectetur quis interdum rutrum, fringilla quis leo. Phasellus convallis dictum odio, nec fermentum sem aliquet in. Sed fringilla turpis orci, a placerat mauris euismod eget. Suspendisse a tempus magna.",
+        gallery: {
+          images: [
+            {
+              src:  "/soft-coded/sea/Image1.png",
+              label: "The logo on top of the underwater scene",
+            },
+            {
+              src:  "/soft-coded/sea/Image2.png",
+              label: "The logo on top of the underwater scene",
+            },
+            {
+              src:  "/soft-coded/sea/Image3.png",
+              label: "The logo on top of the underwater scene",
+            },
+            {
+              src:  "/soft-coded/sea/Image4.png",
+              label: "The logo on top of the underwater scene",
+            },
+          ],
+        }
+      }
     ],
   },
   {
@@ -134,6 +159,7 @@ const projects = [
           },
         ],
       },
+     
     ],
   },
   {
@@ -197,33 +223,6 @@ const projects = [
             src:  "/soft-coded/sea/Image1.png",
             label: "The logo on top of the underwater scene",
           },
-        ],
-      },
-      {
-        blockType: 0,
-        title: "Mechanics",
-        text: "The game evolved around two main mechanics, the vacuum cleaner and the retrievable hook.",
-        innerBlocks : [
-          
-          {
-            blockType: 2,
-            title: "Block 3",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non ante nibh. Sed malesuada magna a risus congue pretium. Vivamus ullamcorper elementum risus, in luctus magna commodo non. Nullam eget sem rhoncus, aliquet diam non, commodo est. Donec id nunc nec erat consectetur rhoncus at non leo. Aliquam sit amet nisl rutrum, maximus dolor et, molestie neque. Nullam ultricies congue nisl faucibus fringilla. Curabitur tincidunt lacinia consequat. Aenean bibendum euismod mi et euismod. Etiam dictum elit non interdum rhoncus. Phasellus luctus sagittis eros ac vulputate. Vivamus convallis tortor ut ante imperdiet sodales. Pellentesque auctor felis non laoreet eleifend. Sed ut massa sed augue sollicitudin tincidunt. Nulla ultricies at magna a faucibus. Quisque sit amet elit in nibh mattis rutrum. Etiam a quam pellentesque, placerat velit ac, pulvinar erat. Donec orci eros, interdum auctor neque eget, elementum lacinia turpis. Mauris nibh nibh, consectetur quis interdum rutrum, fringilla quis leo. Phasellus convallis dictum odio, nec fermentum sem aliquet in. Sed fringilla turpis orci, a placerat mauris euismod eget. Suspendisse a tempus magna.",
-            images: [
-              {
-                src:  "/soft-coded/sea/Image1.png",
-                label: "The logo on top of the underwater scene",
-              },
-              {
-                src:  "/soft-coded/sea/Image1.png",
-                label: "The logo on top of the underwater scene",
-              },
-              {
-                src:  "/soft-coded/sea/Image1.png",
-                label: "The logo on top of the underwater scene",
-              },
-            ],
-          }
         ],
       },
       {

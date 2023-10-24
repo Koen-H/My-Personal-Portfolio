@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useViewportSize } from '@mantine/hooks';
 import NewlineText from './NewlineText';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
 
 import '../css/ProjectBlocks.css';
 
@@ -35,6 +37,9 @@ function ProjectBlocks(props) {
           break;
         case 5:
           block = <TextVideoBlock contentBlock={pageContent} />;
+          break;
+        case 6:
+          block = <SwiperSliderGallery contentBlock={pageContent} />;
           break;
         default:
           break;
@@ -170,4 +175,43 @@ function Gallery(props) {
 }
 Gallery.propTypes = {
   images: PropTypes.array
+};
+
+
+
+function SwiperSliderGallery(props) {
+  const contentBlock = props.contentBlock;
+  const gallery = contentBlock.gallery;
+  const slides = gallery.images.map((image, index) => (
+    <SwiperSlide className='image-slide' key={index}>
+      <div className='image-container' >
+        <img src={image.src} alt={image.label} width={image.width ? image.width + "%" : '100%'} />
+        {(image.showLabel && (<NewlineText text="{image.label}" />))}
+      </div>
+    </SwiperSlide>
+  ));
+
+  return (
+    <section className='swiper-slider-gallery'>
+      <Swiper
+        modules={[Autoplay]}
+        direction={'horizontal'}
+        spaceBetween={50}
+        slidesPerView={3}
+        centeredSlides={true}
+        loop={true}
+        allowTouchMove={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+      >
+        {slides}
+      </Swiper>
+    </section>
+  );
+}
+SwiperSliderGallery.propTypes = {
+  contentBlock: PropTypes.object
 };

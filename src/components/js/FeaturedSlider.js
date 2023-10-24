@@ -174,7 +174,7 @@ function SingleFeaturedSlider(props) {
 
           <div className='single-featured-slider-info-box-bottom'>
             <div className='single-featured-slider-usp'>
-              <p>{project.usp}</p>
+              <p>{project.description}</p>
             </div>
             <div className='single-featured-slider-CTA-box'>
 

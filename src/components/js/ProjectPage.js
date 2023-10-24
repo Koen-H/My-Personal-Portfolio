@@ -13,7 +13,7 @@ function ProjectPage(props) {
 
   return (
     <section id='project-page' className='page' style={{ color: project.css.textColor }}>
-      <ProjectBackground project={project} />
+      <ProjectBackground project={project}/>
       <section className='project-page-header' style={{ background: project.background.headerOverlay }}>
         <ProjectLogo project={project} />
       </section>
@@ -23,11 +23,9 @@ function ProjectPage(props) {
           <p>{project.description}</p>
         </section>
         <ProjectBlocks project={project}/>
-
       </section>
     </section>
   );
-
 
 }
 

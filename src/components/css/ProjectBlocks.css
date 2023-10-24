@@ -1,5 +1,6 @@
 .project-blocks{
     width: 80%;
+    max-width: 1200px;
 }
 
 .project-block{
@@ -8,6 +9,9 @@
 }
 .inner-block{
     display: flex;
+}
+.inner-block>.project-block>.project-block-content> *{
+    flex-grow: 1;
 }
 
 .project-block-content{
@@ -23,7 +27,6 @@
     text-align: left;
     flex-grow: 1;
 }
-
 .project-block>h2{
     text-align: center;
     padding-bottom: 15px;

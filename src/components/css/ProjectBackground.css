@@ -20,7 +20,7 @@
     height: 100%;
 }
 .background-video-controls{
-    position: absolute;
+    position: fixed;
     right: 10px;
     bottom: 10px;
     display: flex;

@@ -82,7 +82,7 @@ function TextImageBlock(props) {
     <>
       <h2>{contentBlock.title}</h2>
       <div className='project-block-content'>
-        <p><NewlineText text={contentBlock.text} /></p>
+        <div><NewlineText text={contentBlock.text} /></div>
         <Gallery images={contentBlock.images} />
       </div>
     </>
@@ -99,7 +99,9 @@ function ImageTextBlock(props) {
       <h2>{contentBlock.title}</h2>
       <div className='project-block-content'>
         <Gallery images={contentBlock.images} />
-        <p><NewlineText text={contentBlock.text} /></p>
+        <div>
+          <NewlineText text={contentBlock.text} />
+        </div>
       </div>
     </>
   );
@@ -116,7 +118,7 @@ function TextImageBelowBlock(props) {
       <div className='project-block-content'>
         <div>
           <Gallery images={contentBlock.images} />
-          <p><NewlineText text={contentBlock.text} /></p>
+          <div><NewlineText text={contentBlock.text} /></div>
         </div>
       </div>
     </>
@@ -132,7 +134,7 @@ function TextVideoBlock(props) {
     <>
       <h2>{contentBlock.title}</h2>
       <div className='project-block-content'>
-        <p>{contentBlock.text}</p>
+        <div><NewlineText text={contentBlock.text} /></div>
         <video
           src={contentBlock.video}
           muted

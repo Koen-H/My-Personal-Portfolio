@@ -1,7 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExpand, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import '../css/BackgroundVideo.css';
 
 function BackgroundVideo(props) {
@@ -9,8 +7,8 @@ function BackgroundVideo(props) {
   const project = props.project;
   const handleVideoEnded = props.handleVideoEnded;
   const backgroundVideo = project.background.video;
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = props.videoRef ? props.videoRef : useRef(null);
+
   if (backgroundVideo) {
     useEffect(() => {
       document.addEventListener('fullscreenchange', handleFullScreenChange);
@@ -26,24 +24,7 @@ function BackgroundVideo(props) {
       };
     }, []);
   }
-  const handleFullScreen = () => {
-    const videoElement = videoRef.current;
-    if (videoElement.requestFullscreen) {
-      videoElement.requestFullscreen();
-    } else if (videoElement.mozRequestFullScreen) {
-      videoElement.mozRequestFullScreen();
-    } else if (videoElement.webkitRequestFullscreen) {
-      videoElement.webkitRequestFullscreen();
-    } else if (videoElement.msRequestFullscreen) {
-      videoElement.msRequestFullscreen();
-    }
-  };
   
-  const handlePlayPause = () => {
-    const videoElement = videoRef.current;
-    videoElement.paused ? videoElement.play() : videoElement.pause();
-    setIsPlaying(!videoElement.paused);
-  };
   const handleFullScreenChange = () => {
     const fullscreenElement =
       document.fullscreenElement ||
@@ -57,21 +38,13 @@ function BackgroundVideo(props) {
 
   return (
     <section className='project-background-video'>
-          <video
-            src={backgroundVideo}
-            autoPlay
-            muted
-            ref={videoRef}
-          />
-          <section className='background-video-controls'>
-            <span onClick={handlePlayPause}>
-              <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
-            </span>
-            <span onClick={handleFullScreen} style={{ cursor: 'pointer' }}>
-              <FontAwesomeIcon icon={faExpand} />
-            </span>
-          </section>
-        </section>
+      <video
+        src={backgroundVideo}
+        autoPlay
+        muted
+        ref={videoRef}
+      />
+    </section>
   );
 }
 
@@ -79,5 +52,6 @@ export default BackgroundVideo;
 
 BackgroundVideo.propTypes = {
   project: PropTypes.object,
-  handleVideoEnded: PropTypes.func
+  videoRef: PropTypes.shape({ current: PropTypes.instanceOf(HTMLVideoElement) }),
+  handleVideoEnded: PropTypes.func,
 };

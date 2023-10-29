@@ -67,17 +67,27 @@ const projects = [
             {
               src:  "/soft-coded/sea/Image1.png",
               label: "The logo on top of the underwater scene",
+              showLabel: true,
             },
             {
-              src:  "/soft-coded/sea/Image2.png",
+              src:  "/soft-coded/sea/Image1.png",
               label: "The logo on top of the underwater scene",
             },
             {
-              src:  "/soft-coded/sea/Image3.png",
+              src:  "/soft-coded/sea/posterFINAL.png",
+              label: "The logo on top of the underwater scene",
+              showLabel: true,
+            },
+            {
+              src:  "/soft-coded/sea/posterFINAL.png",
               label: "The logo on top of the underwater scene",
             },
             {
-              src:  "/soft-coded/sea/Image4.png",
+              src:  "/soft-coded/sea/Image1.png",
+              label: "The logo on top of the underwater scene",
+            },
+            {
+              src:  "/soft-coded/sea/Image1.png",
               label: "The logo on top of the underwater scene",
             },
           ],
@@ -323,9 +333,15 @@ const projects = [
         ],
       },
       {
-        blockType: 5,
-        title: "Block 4",
-        text: "This is text for blocktype 4!",
+        blockType: 7,
+        title: "Trailer",
+        text: "This trailer was made with the campaing in mind, the gameplay is a bit outdated compared with the final.",
+        video: "/soft-coded/sea/TrailerAE_V3.mp4",
+      },
+      {
+        blockType: 7,
+        title: "Playthrough video",
+        text: "Gameplay recorded on standalone quest 3 headset",
         video: "/soft-coded/sea/TrailerAE_V3.mp4",
       },
     ],

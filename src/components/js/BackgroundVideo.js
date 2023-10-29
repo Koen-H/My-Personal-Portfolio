@@ -11,30 +11,15 @@ function BackgroundVideo(props) {
 
   if (backgroundVideo) {
     useEffect(() => {
-      document.addEventListener('fullscreenchange', handleFullScreenChange);
-      document.addEventListener('mozfullscreenchange', handleFullScreenChange);
-      document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
-      document.addEventListener('msfullscreenchange', handleFullScreenChange);
       videoRef.current.addEventListener('ended', handleVideoEnded);
+      
       return () => {
-        document.removeEventListener('fullscreenchange', handleFullScreenChange);
-        document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
-        document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
-        document.removeEventListener('msfullscreenchange', handleFullScreenChange);
+       
       };
     }, []);
   }
   
-  const handleFullScreenChange = () => {
-    const fullscreenElement =
-      document.fullscreenElement ||
-      document.mozFullScreenElement ||
-      document.webkitFullscreenElement ||
-      document.msFullscreenElement;
-
-    videoRef.current.muted = !fullscreenElement;
-    videoRef.current.volume = fullscreenElement ? 0.25 : 0;
-  };
+  
 
   return (
     <section className='project-background-video'>

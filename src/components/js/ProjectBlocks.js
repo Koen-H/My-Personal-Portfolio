@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useViewportSize } from '@mantine/hooks';
 import NewlineText from './NewlineText';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
+import VideoPlayer from './VideoPlayer';
 
 import '../css/ProjectBlocks.css';
 
@@ -40,6 +40,9 @@ function ProjectBlocks(props) {
           break;
         case 6:
           block = <SwiperSliderGallery contentBlock={pageContent} />;
+          break;
+        case 7:
+          block = <TextVideoBelowBlock contentBlock={pageContent} />;
           break;
         default:
           break;
@@ -140,20 +143,31 @@ function TextVideoBlock(props) {
       <h2>{contentBlock.title}</h2>
       <div className='project-block-content'>
         <div><NewlineText text={contentBlock.text} /></div>
-        <video
-          src={contentBlock.video}
-          muted
-          loop
-          width={"100%"}
-          height={"100%"}
-        />
+        <VideoPlayer videoSrc={contentBlock.video} />
       </div>
     </>
   );
 }
 
-
 TextVideoBlock.propTypes = {
+  contentBlock: PropTypes.object
+};
+
+function TextVideoBelowBlock(props) {
+  const contentBlock = props.contentBlock;
+  return (
+    <>
+      <h2>{contentBlock.title}</h2>
+      <div className='project-block-content'>
+        <div>
+          <VideoPlayer videoSrc={contentBlock.video} />
+          <div><NewlineText text={contentBlock.text} /></div>
+        </div>
+      </div>
+    </>
+  );
+}
+TextVideoBelowBlock.propTypes = {
   contentBlock: PropTypes.object
 };
 
@@ -186,13 +200,14 @@ function SwiperSliderGallery(props) {
     <SwiperSlide className='image-slide' key={index}>
       <div className='image-container' >
         <img src={image.src} alt={image.label} width={image.width ? image.width + "%" : '100%'} />
-        {(image.showLabel && (<NewlineText text="{image.label}" />))}
+        {(image.showLabel && (<NewlineText text={image.label} />))}
       </div>
     </SwiperSlide>
   ));
 
   return (
     <section className='swiper-slider-gallery'>
+      <h2>{contentBlock.title}</h2>
       <Swiper
         modules={[Autoplay]}
         direction={'horizontal'}

@@ -46,7 +46,7 @@ function ProjectBackground(props) {
         )}
       </section>
       {(backgroundVideo && !videoEnded) && (
-        <BackgroundVideoControls videoRef={videoRef} />
+        <BackgroundVideoControls videoRef={videoRef} autoPlay={true} />
       )}
 
     </>

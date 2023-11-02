@@ -173,7 +173,9 @@ TextVideoBelowBlock.propTypes = {
 
 
 function Gallery(props) {
-  const images = props.images.map((image, index) => (
+  const images = props.images;
+  const portraitSide = (images.length == 3 && images[0].portraitSide);
+  const imagesGallery = images.map((image, index) => (
     <div className='image-container' key={index}>
       <img src={image.src} alt={image.label} width={image.width ? image.width + "%" : '100%'} />
     </div>
@@ -182,7 +184,17 @@ function Gallery(props) {
   return (
     <section className='image-gallery-container'>
       <section className='image-gallery'>
-        {images}
+        {!portraitSide ? imagesGallery : (
+          <>
+            <div className='image-container portait'>
+              <img src={images[0].src} alt={images[0].label} width={images[0].width ? images[0].width + "%" : '100%'} />
+            </div>
+            <div className='image-container landscape'>
+              <img src={images[1].src} alt={images[1].label} width={images[1].width ? images[1].width + "%" : '100%'} />
+              <img src={images[2].src} alt={images[2].label} width={images[2].width ? images[2].width + "%" : '100%'} />
+            </div>
+          </>
+        )}
       </section>
     </section>
   );

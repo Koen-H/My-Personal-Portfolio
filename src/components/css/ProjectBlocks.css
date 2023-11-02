@@ -59,6 +59,13 @@
     flex-wrap: wrap;
     gap: 10px;
 }
+
+.image-container.landscape{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+}
+
 .image-container{
     flex: 45% 1 1;
 }

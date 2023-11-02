@@ -54,7 +54,27 @@ const projects = [
         images: [
           {
             src:  "/soft-coded/xenon/Image4.png",
-            label: "The logo on top of the underwater scene",
+            label: "The logo of super xenon galaxy",
+          },
+        ],
+      },
+      {
+        blockType: 3,
+        title: "Custom controller",
+        text: "One of the main aspects of the game is it's unique controller. It has 5 buttons on it, one white button used to select and 4 colored buttons around it to change the color of your spaceship.\n We couldn't get a joystick from the free box available so we came up with a different approach for movement; A nunchuck. The nunchuk had a long wire from the center of the motherboard and contained a thumbstick. You can put this in either hand or even lend it out to a friend to play together.\n The controller ran on an arduino and we were able to get a direct communication between the arduino and our game, where as most other teams made the arduino work as an keyboard emulator. Because of this communication we were able to change the lights on the controller based on where the player was in the game. The select button lit up whenever the player was able to pick up a cookie. A small animation would also play if the game was idling.",
+        images: [
+          {
+            src: "/soft-coded/xenon/controller.jpeg",
+            label: "The custom made controller",
+            portraitSide: true,
+          },
+          {
+            src: "/soft-coded/xenon/controller.gif",
+            label: "The custom made controller being used",
+          },
+          {
+            src: "/soft-coded/xenon/nunchuk.gif",
+            label: "The nunchuk being used",
           },
         ],
       },
@@ -65,29 +85,21 @@ const projects = [
         gallery: {
           images: [
             {
-              src:  "/soft-coded/sea/Image1.png",
+              src:  "/soft-coded/xenon/Image1.png", 
               label: "The logo on top of the underwater scene",
               showLabel: true,
             },
             {
-              src:  "/soft-coded/sea/Image1.png",
+              src:  "/soft-coded/xenon/Image2.png",
               label: "The logo on top of the underwater scene",
             },
             {
-              src:  "/soft-coded/sea/posterFINAL.png",
-              label: "The logo on top of the underwater scene",
+              src:  "/soft-coded/xenon/Image3.png",
+              label: "Once the game finishes you can insert your name with the score in the leaderboard. You can choose 3 characters by moving to a letter and selecting it.",
               showLabel: true,
             },
             {
-              src:  "/soft-coded/sea/posterFINAL.png",
-              label: "The logo on top of the underwater scene",
-            },
-            {
-              src:  "/soft-coded/sea/Image1.png",
-              label: "The logo on top of the underwater scene",
-            },
-            {
-              src:  "/soft-coded/sea/Image1.png",
+              src:  "/soft-coded/xenon/Image4.png",
               label: "The logo on top of the underwater scene",
             },
           ],

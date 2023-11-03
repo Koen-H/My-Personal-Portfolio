@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import '../css/Header.css';
 // import ThemeSelector from './ThemeSelector';
 
+import { useNavigate } from 'react-router-dom';
+
+
 function Header() {
 
 
@@ -21,12 +24,16 @@ function Header() {
     };
   }, []);
 
+  let navigate = useNavigate();
+
   return (
     <header id='header' className={scrolled ? 'header scrolled' : 'header'}>
       <div className='header-content'>
         <div className='left-side-of-header'>
           {/* <ThemeSelector /> */}
-          <h1 className='golden-text '>Koen Hankel</h1>
+            <h1 className='golden-text ' onClick={() =>{
+              navigate("/")
+            }}>Koen Hankel</h1>
         </div>
         <Navigation />
       </div>

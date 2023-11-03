@@ -15,11 +15,11 @@ function GithubInfoBox(/*props*/) {
 
     const getRecentRepositories = async () => {
         const response = await fetch(
-            "https://api.github.com/users/Koen-H/repos?per_page=7&sort=pushed"
+            "https://api.github.com/users/Koen-H/repos?per_page=4&sort=pushed"
         ).then((response) => response.json());
         setRepositoryItems(response.map((repository) => {
             if (repositoryBlacklist.includes(repository.id)) return;
-            else return <li key={repository.id} className='col-6'>
+            else return <li key={repository.id}>
                 <RepositoryItem repository={repository} />
             </li>
         },
@@ -53,24 +53,32 @@ function GithubInfoBox(/*props*/) {
 
     return (
         <section id="github-infobox">
-            <h1>I’m also active on GitHub!</h1>
+            <h1>Take a look at my code at GitHub!</h1>
 
             <div className='row'>
-            <div className="col-6">
-                <p>Almost all of my projects have their source code publicly available on GitHub! <br/>Sorted based on latest commits</p>
-            </div>
-            <div className="col-6 github-calendar">
-                <GitHubCalendar username="Koen-H" transformData={selectedArea} hideTotalCount hideColorLegend />
-            </div>
-            </div>
-            <div className='github-container'>
-                <div className='recent-repository'>
-                    <ul className='row'>
-                        {repositoryItems}
-                    </ul>
-                </div>
+                <div className="col-lg-6">
+                    <p>I’m very familair with github and use it a lot while working on my projects. A lot of them are open source and available to look through!</p>
 
+                    <div className='github-container'>
+
+                        <div className='github-calendar"'>
+                            <GitHubCalendar username="Koen-H" transformData={selectedArea} hideTotalCount hideColorLegend />
+                        </div>
+                        <img src='https://github-readme-stats.vercel.app/api/top-langs/?username=Koen-H&layout=compact&count_private=true' />
+                    </div>
+
+                </div>
+                <div className="col-lg-6">
+                    <p>Some of my projects I’ve recently been active with</p>
+
+                    <div className='recent-repository'>
+                        <ul className='row'>
+                            {repositoryItems}
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </section>
     );
 }

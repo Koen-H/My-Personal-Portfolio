@@ -1,6 +1,5 @@
 .overview-filter {
-    width: 100%;
-    margin-bottom: 100px;
+    min-height: 450px;
 }
 
 .custom-categories {
@@ -30,9 +29,6 @@
     justify-content: flex-end;
 }
 
-
-
-
 .project-categories ul {
     text-decoration: none;
     margin-bottom: 0;
@@ -56,28 +52,70 @@
     padding: 10px;
     flex-shrink: 0;
     flex-basis: 200px;
-    /* padding-right: 20px; */
-    /* margin-right: 16px; */
+}
+
+.archive-top{
+    display: flex;
+    justify-content: space-between;
 }
 
 .project-archive {
-    flex-shrink: 0;
-    flex-basis: 100%;
-    display: block;
-    width: 100%;
-    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    gap: 10px;
 }
 
 
-
 .single-overview-item{
-    width: 100%;
-    /* height: 140px; */
-    /* margin-bottom: 4px; */
+    display: flex;
+    flex-direction: column;
+    width: 30%;
     position: relative;
-    /* display: flex; */
-    border-top: black 1px solid;
+}
 
+.single-overview-info-container{
+    position:absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    height: 100%;
+    padding: 5px;
+}
+.single-overview-info{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    text-align: center;
+}
+.single-overview-usp{
+    height: 100%;
+}
+
+.single-overview-thumbnail{
+}
+.single-overview-thumbnail-container{
+
+}
+
+.single-overview-thumbnail-container img{
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+.single-overview-date-icons{
+    align-self:  flex-end;
+}
+
+
+/*
+.single-overview-item{
+    display: flex;
+    width: 100%;
+    position: relative;
+    border-top: black 1px solid;
 }
 
 .single-overview-thumbnail{
@@ -89,8 +127,6 @@
 .overview-filter-single-project{
 }
 .single-overview-thumbnail-container img{
-    /* height: 102px;
-    width: 219px; */
     width: 140px;
     margin: 4px;
     aspect-ratio: 16 / 9;
@@ -115,3 +151,4 @@ gap: 10px;
 .single-overview-usp{
     flex-basis: 50%;
 }
+*/

@@ -10,12 +10,8 @@ const videoFileNames = videos.keys().map(key => '/content/homepage-header-videos
 
 function HomeThumbnailHeader() {
 
-  console.log(videoFileNames);
-
-
   const [currentVideo, setCurrentVideo] = useState(0);
   const video = videoFileNames[currentVideo];
-  console.log(video);
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -35,13 +31,8 @@ function HomeThumbnailHeader() {
 
   const handlePlayPause = () => {
     const videoElement = videoRef.current;
-    if (videoElement.paused) {
-      videoElement.play();
-    } else {
-      videoElement.pause();
-    }
+    videoElement.paused ? videoElement.play() : videoElement.pause();
     setIsPlaying(!videoElement.paused);
-    
   };
 
   const handleFullScreenChange = () => {
@@ -58,11 +49,9 @@ function HomeThumbnailHeader() {
   function handleVideoEnded() {
     setCurrentVideo((prevCurrentProject) => {
       const nextIndex = prevCurrentProject + 1;
-      console.log("video ended" + nextIndex);
       return nextIndex === videoFileNames.length ? 0 : nextIndex;
     });
   }
-
 
   useEffect(() => {
     document.addEventListener('fullscreenchange', handleFullScreenChange);
@@ -75,13 +64,12 @@ function HomeThumbnailHeader() {
       document.removeEventListener('mozfullscreenchange', handleFullScreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullScreenChange);
       document.removeEventListener('msfullscreenchange', handleFullScreenChange);
-      videoRef.current.removeEventListener('ended', handleVideoEnded);
+      // videoRef.current.removeEventListener('ended', handleVideoEnded);
     };
   }, []);
 
 
   return (
-    
     <section className='header-thumb'>
       <section className='header-thumb-video'>
         <video

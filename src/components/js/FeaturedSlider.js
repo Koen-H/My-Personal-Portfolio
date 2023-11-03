@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import '../css/FeaturedSlider.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
-// import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-// import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -16,16 +14,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { useNavigate } from 'react-router';
 
-// const placeHolderImage = '/images/placeholder/placeholder.png';
-// const placeHolderImage1 = '/images/placeholder/placeholder1.png';
-// const placeHolderImage2 = '/images/placeholder/placeholder2.png';
-// const placeHolderImage3 = '/images/placeholder/placeholder3.png';
-// const placeHolderImage4 = '/images/placeholder/placeholder4.png';
 
 function FeaturedSlider(props) {
   const projects = props.projects;
 
-  //Console error talking about two childs, can't be avoided as swiper re-renders the slides causing this to happen.
   const sliders = projects.map((project) =>
     <SwiperSlide key={project.id}><SingleFeaturedSlider project={project} handleNewProjectPage={props.handleNewProjectPage} /></SwiperSlide>
   );
@@ -71,8 +63,6 @@ function FeaturedSlider(props) {
         </Swiper>
 
         <div className='featured-pagination'></div>
-        {/* <div className="featured-slider-prev featured-slider-nav"><FontAwesomeIcon icon={faChevronLeft} /></div> */}
-        {/* <div className="featured-slider-next featured-slider-nav"><FontAwesomeIcon icon={faChevronRight} /></div> */}
       </div>
     </section >
   );
@@ -89,12 +79,6 @@ export default FeaturedSlider;
 function SingleFeaturedSlider(props) {
   const project = props.project;
   const defaultThumbnailImage = project.imageurl[0];
-  const subThumbnailImage1 = project.imageurl[0];
-  const subThumbnailImage2 = project.imageurl[1];
-  const subThumbnailImage3 = project.imageurl[2];
-  const subThumbnailImage4 = project.imageurl[3];
-  const subThumbnailImage5 = project.imageurl[3];
-  const subThumbnailImage6 = project.imageurl[3];
   const projectName = project.name;
 
   const [thumbnailImage, setThumbnailImage] = useState(defaultThumbnailImage);
@@ -104,6 +88,17 @@ function SingleFeaturedSlider(props) {
   const videoPlayer = useRef(null);
 
   const navigate = useNavigate();
+
+  const subThumbnails = project.imageurl.slice(0, 6).map((image, index) => (
+    <div
+      key={index}
+      className='single-featured-slider-single-subthumbnail'
+      onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, image)}
+      onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}
+    >
+      <img src={image} />
+    </div>
+  ));
 
 
 
@@ -136,6 +131,8 @@ function SingleFeaturedSlider(props) {
     }
   }
 
+
+
   return (
     <div>
       <div className='single-featured-slider'>
@@ -158,12 +155,7 @@ function SingleFeaturedSlider(props) {
             </div>
           </div>
           <div className='single-featured-slider-subthumbnails'>
-            <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage1)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage1} /></div>
-            <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage2)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage2} /></div>
-            <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage3)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage3} /></div>
-            <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage4)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage4} /></div>
-            <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage5)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage5} /></div>
-            <div className='single-featured-slider-single-subthumbnail' onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, subThumbnailImage6)} onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}><img src={subThumbnailImage6} /></div>
+            {subThumbnails}
           </div>
         </div>
         <div className='single-featured-slider-info-box'>

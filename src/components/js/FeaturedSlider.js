@@ -100,8 +100,6 @@ function SingleFeaturedSlider(props) {
     </div>
   ));
 
-
-
   function handleSubThumbnailHoverEnter(e, hoverThumbnail) {
     e.currentTarget.classList.add("on-hover")
     setThumbnailImage(hoverThumbnail);
@@ -130,8 +128,6 @@ function SingleFeaturedSlider(props) {
       setSliderClasses('featured-volume-slider hidden')
     }
   }
-
-
 
   return (
     <div>

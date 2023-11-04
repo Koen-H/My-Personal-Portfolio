@@ -35,13 +35,14 @@
 .volume-slider {
   width: 75px;
   height: 4px;
-  left: 10px;
-  bottom: 10px;
+  left: 5px;
+  bottom: -46%;
   opacity: 1;
   transition: opacity 0.5s;
 }
 
 .volume-slider {
+  display: none;
   -webkit-appearance: none;
   background: #d3d3d3;
   outline: none;
@@ -49,7 +50,14 @@
   -webkit-transition: .2s;
   transition: opacity .2s;
   border-radius: 100px;
-  position:absolute;
+  position:relative;
+}
+.on-hover{
+  display:block;
+}
+
+.volume-icon{
+  width: 20px;
 }
 
 .volume-slider::-webkit-slider-thumb {
@@ -61,6 +69,7 @@
   background: black;
   border: solid white 1px;
   cursor: e-resize;
+  
 }
 
 .volume-slider::-moz-range-thumb {

@@ -1,22 +1,48 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExpand, faPause, faPlay, faVolumeXmark} from '@fortawesome/free-solid-svg-icons';
+import { faExpand, faPause, faPlay, faVolumeHigh, faVolumeMute } from '@fortawesome/free-solid-svg-icons';
 import '../css/VideoPlayer.css';
 
 function VideoPlayer(props) {
-    const [volume, setVolume] = useState(50);
+    const defaultVolume = 20;
+    const [volume, setVolume] = useState(defaultVolume);
     const videoPlayer = useRef(null);
+    const volumeSlider = useRef(null)
     const thumbnailImage = props.thumbnailSrc;
     const videoSrc = props.videoSrc;
-    const videoControls = useRef(null); // Create a ref for video controls
     const [isPlaying, setIsPlaying] = useState(props.autoPlay);
     const changeAudioWithFullscreen = true;
+    const [volumeIcon, setVolumeIcon] = useState(faVolumeHigh);
+
+    useEffect(() => {
+        if (videoPlayer.current) {
+            videoPlayer.current.volume = volume / 100;
+        }
+    }, [volume]);
 
     function changeVolume(e) {
-        setVolume(e.target.value);
-        videoPlayer.current.volume = volume / 100;
+        const newVolume = e.target.value / 100;
+        const isMuted = newVolume <= 0;
+        setVolume(isMuted ? 0 : e.target.value);
+        videoPlayer.current.muted = isMuted;
+        videoPlayer.current.volume = isMuted ? 0 : newVolume;
+        setVolumeIcon(isMuted ? faVolumeMute : faVolumeHigh);
     }
+
+    function toggleMuted() {
+        const currentlyMuted = videoPlayer.current.muted;
+        videoPlayer.current.muted = !currentlyMuted;
+        setVolumeIcon(currentlyMuted ? faVolumeHigh: faVolumeMute);
+        if(volume < 10) setVolume(defaultVolume);
+    }
+
+    function handleSoundHover(isHover) {
+        console.log(isHover)
+        if(isHover) volumeSlider.current.classList.add("on-hover")
+        else volumeSlider.current.classList.remove("on-hover");
+    }
+
 
     const handlePlayPause = () => {
         const videoElement = videoPlayer.current;
@@ -73,11 +99,13 @@ function VideoPlayer(props) {
                     onClick={handlePlayPause}
                 />
                 <section className='video-player-controls'>
-                    <div className='sound-controls'>
-                        <span>
-                            <FontAwesomeIcon icon={faVolumeXmark} />
+                    <div className='sound-controls'
+                        onMouseEnter={() => handleSoundHover(true)}
+                        onMouseLeave={() => handleSoundHover(false)}>
+                        <span onClick={toggleMuted} className='volume-icon'>
+                            <FontAwesomeIcon icon={volumeIcon} />
                         </span>
-                        <input className='volume-slider' type='range' orient='vertical' min={0} max={100} value={volume} onChange={(e) => changeVolume(e)} />
+                        <input className='volume-slider' type='range' orient='vertical' min={-1} max={100} value={volume} onChange={(e) => changeVolume(e)} ref={volumeSlider} />
                     </div>
                     <div className='misc-controls'>
                         <span onClick={handlePlayPause}>

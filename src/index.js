@@ -105,7 +105,7 @@ const projects = [
               src: "/soft-coded/xenon/ArcadeBoxSide.png",
               label: "Concept art of how the side of the arcade box would look like if we were able to customize the full sized one.",
             },
-            
+
           ],
         }
       },
@@ -210,21 +210,21 @@ const projects = [
   {
     id: 2,
     name: "The Rolling cones",
-    logo: "/soft-coded/xenon/logo.png",
+    logo: "",
     slug: "The-Rolling-Cones",
-    usp: "In The Rolling Cones, you roll around as a pinecone, place objects around the level to reach new areas and solve puzzles.",
-    description: "",
+    usp: "In the physics game, The Rolling Cones, you roll around as a pinecone, place objects around the level to reach new areas and solve puzzles.",
+    description: "In The Rolling Cones you play as a pinecone, use your round bottom half and rough top half to conquer the snowy areas and return the treasures you lost!\nYou will have access to a number of items, but beware! You can only use these items in the designated areas, so use them wisely.\nOnce you have finished the game for the first time you can replay it again using the golden play button to try and complete each level in new and faster ways.",
     github: "",
     date: '12-05-2022',
-    imageurl: ["/soft-coded/cones/image1.png", "/soft-coded/cones/image2.png", "/soft-coded/cones/image3.png", "/soft-coded/cones/image4.png"],
+    imageurl: ["/soft-coded/cones/background.png", "/soft-coded/cones/image2.png", "/soft-coded/cones/image3.png", "/soft-coded/cones/image4.png"],
     videourl: "/soft-coded/cones/Trailercones.mp4",
     projectCategories: [
       'Games',
     ],
     background: {
-      css: false,
+      css: "linear-gradient(0deg,rgb(85 100 213) 21.3%, rgb(1 201 118) 97.6%)",
       video: false,
-      images: false,
+      images: ["/soft-coded/cones/background.png"],
       headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
       overlay: "rgba(0, 0, 0,0.4)"
     },
@@ -234,20 +234,91 @@ const projects = [
     pageContent: [
       {
         blockType: 2,
-        title: "Collect and match!",
-        text: "",
+        title: "Physics based puzzling",
+        text: "The main goal is to reach the end of the level, it's a shiny silver coin. To reach the coin you can utlize 3 different items that can affect the physics of the cone. These items can only be placed within certain area's where the aurora allows it.\n The first item you unlock is the geyser. Once you roll on to the geyser it will boost you up towards the sky allowing for vertical movement.\n The second item is the aurora field and it drags you towards it's center. It can be used to gain a speed boost or change the direction you go!\n The final item is the slingbush. When entering the slingbush you can shoot yourself in to a direction! However, you need to time it wisely as your aim goes up and down.\n As a pinecone you can also widen your spikes to glide further.\n Once you manage to finish the game you'll unlock newGame+ and it unlock all the items from the start allowing you to find new and faster ways to finish the levels.",
         images: [
           {
-            src: "/soft-coded/xenon/Image4.png",
-            label: "The logo on top of the underwater scene",
+            src: "/soft-coded/cones/infographic.jpg",
+            label: "The 3 different items available",
           },
         ],
       },
+      {
+        blockType: 6,
+        title: "Mechanics",
+        gallery: {
+          images: [
+            {
+              src: "/soft-coded/cones/widecones.png",
+              label: "Widen your spikes to glide further.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/cones/slingbush.png",
+              label: "Use the busshot to sling yourself.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/cones/geyser.png",
+              label: "Use the geyser to blas yourself to higher areas.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/cones/orbitalField.png",
+              label: "Use the aurora field to alter gravity and change the direction.",
+              showLabel: true,
+            },
+          ],
+        }
+      },
+      {
+        blockType: 2,
+        title: "Tiled implementation",
+        text: "In my previous tetris project I implemented tiled with the GXP engine. For this project I had to upgrade it further to allow line collisions in our game.\n We had the designer graybox the levels in tiled and made an artist add their art on top of it. This progress was very effective and sped up the progress a lot.\n Left picture shows the level in tiled, the right pictures shows the final result.",
+        images: [
+          {
+            src: "/soft-coded/cones/conesTiled.png",
+            label: "Level 2 in tiled",
+          },
+          {
+            src: "/soft-coded/cones/level2.png",
+            label: "Level 2 in the game",
+          },
+        ],
+      },
+      {
+        blockType: 4,
+        title: "Merchandise",
+        text: "Part of the assignment was to make some merchandise (concepts) for it. We made real life plushies and stickers, alongside various",
+        images: [
 
+          {
+            src: "/soft-coded/cones/plushy.jpg",
+            label: "Level 2 in tiled",
+          },
+          {
+            src: "/soft-coded/cones/stickers.png",
+            label: "Level 2 in the game",
+          },
+        ],
+      },
+      {
+        blockType: 7,
+        title: "Trailer",
+        text: "",
+        video: "/soft-coded/cones/Trailercones.mp4",
+      },
+      {
+        blockType: 7,
+        title: "Playthrough",
+        text: "",
+        video: "/soft-coded/cones/ConePlaythrough.mp4",
+      },
     ],
   },
   {
     id: 3,
+    featured: true,
     name: "Sea of Debris",
     logo: "/soft-coded/sea/logo.png",
     slug: "Sea-of-Debris",
@@ -316,7 +387,7 @@ const projects = [
             src: "/soft-coded/sea/EndScore.png",
             label: "The end screen that shows how your score is determined",
           },
-         
+
         ],
       },
       {
@@ -352,7 +423,7 @@ const projects = [
                 src: "/soft-coded/sea/oceanverydirty.png",
                 label: "The ocean very dirty",
               },
-              
+
               {
                 src: "/soft-coded/sea/DirtyOcean.png",
                 label: "The ocean, dirty",
@@ -372,6 +443,164 @@ const projects = [
         title: "Playthrough video",
         text: "Gameplay recorded on a standalone quest 3 headset with capped 72fps.",
         video: "/soft-coded/sea/Videos/Seaofdebris Walkthrough.mp4",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Godot Space Adventure ",
+    logo: false,
+    slug: "Godot-Space-Adventure",
+    usp: "Godot Space Adventure is a 2d platformer and my first experience with Godot",
+    description: "Godot Space Adventure is a small 2d platformer game made within godot. This project was my first time with Gdscript and Godot. Within this small platformer adventure you can jump from planets to planets which will change the gravity of the player.",
+    github: "https://github.com/Koen-H/Godot-Space-Adventure",
+    date: '28-04-2023',
+    imageurl: ["/soft-coded/godot-space-adventure/background.png"],
+    videourl: "",
+    projectCategories: [
+      'Games', 'Godot', 'GDScript'
+    ],
+    background: {
+      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
+      video: false,
+      videoLoop: false,
+      disableFullScreen: false,
+      images: ["/soft-coded/godot-space-adventure/background.png"],
+      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
+      overlay: "rgba(0, 0, 0,0.4)"
+    },
+    css: {
+      textColor: "white",
+    },
+    pageContent: [
+      {
+        blockType: 2,
+        title: "Let’s a godot",
+        text: "I’ve heard a lot of good things about godot the last two years and that it might even replace unity,  that was the reason I decided to learn about Godot.\nI’m very familiar with unity so it was time to find out how this game engine worked. By the first glance, it looks like we got an inspector, a scene view. Files are bottom left, console bottom. Not that different from unity. One small (big) problem was that Godot released version 4.0 not that long ago and it has a lot of big differences compared with Godot 3. There came a thought in my mind to change to godot 3 but decided to stick with 4.0 as I didn’t see any real value in learning something outdated. ",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/godotInterface.png",
+            label: "Vacuum shooting",
+          },
+        ],
+      },
+      {
+        blockType: 1,
+        title: "Player movement",
+        text: "Since the tutorial I was following was godot 3 and I was working in godot 4 I immediately got in a problem where the player node that was used in the tutorial didn’t exist in godot 4 anymore. It has been changed and renamed to Characterbody2d. In godot 4 this already creates a movement script for the player, so I decided to use that instead of the tutorial.\n The tutorial also implemented a camera that will follow the player.  This was easily done using a RemoteTransform2D which basically tells the camera to follow the player.",
+      },
+      {
+        blockType: 4,
+        title: "Tilemap",
+        text: "In godot it’s really easy (when the option actually appears…) to make a 2d world using the tilemap. The tilemap works incredibly well with a tilesheet. Within the tilemap you can draw out collisions on the physics layer. ",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/drawCollision.png",
+            label: "Vacuum shooting",
+          },
+        ],
+      },
+
+      {
+        blockType: 3,
+        title: "Swimming",
+        text: "Within the tilemap I created a second physics layer for water and gave collision to the water. To check collision with the water I couldn’t add the player to the same physics layer as the water as this would allow the player to walk on solid water. I added a child collision to the player that only checks for the water layer. On this child I added a small script that emits two signals, these signals will change a variable in the player indicating that the player is in the water. Within the player phyics loop I added a small if check to see when the player is in the water, allowing the player to jump again (swim) and have decreased gravity on the player.",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/swim.gif",
+            label: "Vacuum shooting",
+          },
+        ],
+      },
+      {
+        blockType: 1,
+        title: "Pushing a block",
+        text: "Because I wanted to add some kind of puzzle element to the prototype I decided to make a push able block. This became a much harder challenge that I thought it would be, I added a simple box added collision and a rigidbody so it has physics, gravity and all that. But whenever I walked in to it, it didn’t want to push. When I add a second box and throw it against the other one, it works fine… I got so confused by this and played around with a lot of variables. Disabling gravity on the box, didn’t do anything when I walked in to it, but it still works when the other box collides with it…? There were a lot of tutorials but those didn’t help either as they were outdated. One tutorial added velocity to the box when it enters the body of the player. This would make some sense but surely godot should have something like that already in place? After implementing this it worked just fine. However the box couldn’t push me! I decided to re-create the player using the same Rigidbody2d as the box. This didn’t help at all as I’ve lost a lot of player functionality like checking if you are on the ground, against a wall etc. In the end I decided to revert and keep the player a CharacterBody2d as I would like to have these functions and did it by applying velocity manually.",
+      },
+      {
+        blockType: 3,
+        title: "Custom gravity",
+        text: " Within my game I wanted to have something that changes gravity. I decided to make planets with their own gravity! At first I made it so the gravity is done by the planet. For this I had to make my own on_trigger_stay function as that didn’t exist within godot… After I implemented this successfully I realized that I had to change it so the player handles the gravity (because of overlapping and jumping from planets). Now whenever a player enters the atmosphere the player will keep track of the planet that it entered and changes the gravity based on the direction of origins of the planet and player. For this I had to rewrite my player script to rotate almost every vector within the player based on the gravity direction, because left and right will still be left and right and there is no transform.left or transform.right like unity. ",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/orbitalJump.gif",
+            label: "Vacuum shooting",
+          },
+        ],
+      },
+      {
+        blockType: 2,
+        title: "Rope",
+        text: "Originally I wanted to create a grappling hook, but after trying a lot of different approaches using tutorials online it just didn't work with the Characterbody2d. I decided to change it to a rope that can be attached to cubes, allowing for an easy way to drag cubes from planet to planet.\n I managed to get a rope working using pinjoints by connecting smaller segments. Now all I need to do is to make it programmatically based on where I hit the my bullets! This took a few iterations to get it right…",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/swim.gif",
+            label: "Rope working as inteded",
+          },
+        ],
+      },
+      {
+        blockType: 6,
+        title: "Rope fails",
+        gallery: {
+          images: [
+            {
+              src: "/soft-coded/godot-space-adventure/rope1.gif",
+              label: "One of the rope attempts",
+            },
+            {
+              src: "/soft-coded/godot-space-adventure/rope2.gif",
+              label: "One of the rope attempts",
+            },
+            {
+              src: "/soft-coded/godot-space-adventure/rope5.gif",
+              label: "One of the rope attempts",
+            },
+            {
+              src: "/soft-coded/godot-space-adventure/rope6.gif",
+              label: "One of the rope attempts",
+            },
+          ],
+        }
+      },
+      {
+        blockType: 3,
+        title: "Rope",
+        text: "There were a few glitches with the rope causing the boxes to make weird fast movement. I added a maximum stress-length that will cause the rope to break if the length becomes too much. And a different stress-length for when it’s on the bullet.\nThe rope itself has a collider, I had to disable collision between the rope layer and the player layer and between the ropes themselves to make it more of a real rope. After changing the texture, to an actual rope. I’m actually quite proud of the final result.\nOne thing I forgot was that the rope could attach to anything, even the planets… To prevent this I used godot’s groups, now whenever a bullet hits an object we check if it’s in the group “rope-attachable”, if it isn’t we simply cut the rope if it’s attached or don’t create a new rope. Groups in Godot is 99% the same as tags in unity.",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/what.gif",
+            label: "Rope working as inteded",
+          },
+        ],
+      },
+      {
+        blockType: 2,
+        title: "Buttons",
+        text: "Since I said I would have a bit of a 2d puzzle platformer I would net a button that requires progression!\n The button toggles on when an object enters its collider and toggles back off when an objects leaves the collider. It has two sprites which are just toggling of and on when they have to.\n Now to make the button actually do something, that was pretty simple… By “exporting” variables it’s possible to show variables in the inspector and assign them accordingly.\nNow I use this to disable and enable an atmosphere around a planet. This is were I ran in to an issue with godot… In this gif I disable it programmatically at the start and enable it when the button is pressed. This did work for the sprite but not for the collider. When I turn it of and on again through the inspector it suddenly does work and it was really frustrating.\n To solve it I had to do now.show() and .set_deferred('disabled',false) instead of what it recommended me to do; node.disabled = true",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/ropeAttach.gif",
+            label: "Rope working as inteded",
+          },
+        ],
+      },
+      {
+        blockType: 4,
+        title: "Hud, coins and win.",
+        text: "My game was lacking one thing: a HUD! I decided to add coins around the level and a HUD that keeps track of the score. I used the same code as the coins to make a quick end-flag that will pop-up a win condition when the player reaches the end.",
+        images: [
+          {
+            src: "/soft-coded/godot-space-adventure/hudshwocase.gif",
+            label: "Rope working as inteded",
+          },
+        ],
+      },
+      {
+        blockType: 7,
+        title: "Playthrough video",
+        text: "",
+        video: "/soft-coded/godot-space-adventure/godotSpaceAdventureWalkthrough.mp4",
       },
     ],
   }

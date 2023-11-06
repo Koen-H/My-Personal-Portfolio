@@ -18,7 +18,9 @@ import { useNavigate } from 'react-router';
 function FeaturedSlider(props) {
   const projects = props.projects;
 
-  const sliders = projects.map((project) =>
+  const sliderProjects = projects.filter(project => project.featured === true);
+
+  const sliders = sliderProjects.map((project) =>
     <SwiperSlide key={project.id}><SingleFeaturedSlider project={project} handleNewProjectPage={props.handleNewProjectPage} /></SwiperSlide>
   );
 

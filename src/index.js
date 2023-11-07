@@ -603,6 +603,274 @@ const projects = [
         video: "/soft-coded/godot-space-adventure/godotSpaceAdventureWalkthrough.mp4",
       },
     ],
+  },
+  {
+    id: 5,
+    name: "Raymarching in Unity ",
+    logo: false,
+    slug: "Raymarching-in-Unity",
+    usp: "Raymarching is a technique used in computer graphics for rendering 3D scenes. It involves casting rays from the camera through each pixel of the screen and marching along the ray until it hits an objects or reaches its distance treshold. ",
+    description: "The basic idea behind raymarching is to represent the scene as a mathematical function that takes a point in 3D space as input and returns a distance to the closest surface of the surface. This is done using signed distance functions (SDF), and it can be defined in various ways depending on the geometry of the scene. \n The key advantage of raymarching over other rendering techniques such as rasterization or ray tracing is its ability to handle complex geometry and lighting in a more efficient and flexible way. In particular, raymarching can be used to render scenes that are not easily represented by traditional 3D geometry, such as fractals, volumetric objects and smooth curves. However, it can be more computationally expensive than other techniques, especially for scenes with many objects or complex lighting.",
+    github: "https://github.com/Koen-H/Advanced-Tools/wiki",
+    date: '28-04-2023',
+    imageurl: ["/soft-coded/raymarching-in-unity/mandelbulb.png", "/soft-coded/raymarching-in-unity/hollowedCube.png", "/soft-coded/raymarching-in-unity/raymarch.gif", "/soft-coded/raymarching-in-unity/HollowedCubeInfinite.png", "/soft-coded/raymarching-in-unity/conclusion.png"],
+    videourl: "",
+    projectCategories: [
+
+    ],
+    background: {
+      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
+      video: false,
+      videoLoop: false,
+      disableFullScreen: false,
+      images: ["/soft-coded/raymarching-in-unity/mandelbulb.png"],
+      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
+      overlay: "rgba(0, 0, 0,0.4)"
+    },
+    css: {
+      textColor: "white",
+    },
+    pageContent: [
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 4,
+            title: "Raymarching and sphere tracing",
+            text: " In raymarching we 'march' along the ray until we find the point that intersects with an object. Once the distance to the surface of the object is below zero we have intersected with the object. (Left image)\n As you can see in the left image, the point that intersects with an object is a bit inaccurate, to make it more accurate we can use sphere tracing. Instead of moving the same amount of distance for each point, we use a SDF to get the distance to the closest objects in the scene. This will return a safe distance we can use to march further along the ray without intersecting an object for the next point.\n With sphere tracing we are able to get a way more accurate result and as you can see by the red dots, it required less calculations as well. The accuracy can be set manually by setting the min distance required of what is considered an intersection with the object. Do note that a higher accuracy will make a lot of steps once it gets close to the intersection.",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/raymarchExplained.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/sphereTracingExplained.png",
+                label: "Sphere tracing visualized",
+              },
+
+            ],
+          },
+        ]
+      },
+      {
+        blockType: 1,
+        title: "Signed Distance Functions (SDF) and Distance Function Operators",
+        text: "Distance functions are mathematical functions that can be used to get the distance between a point in 3D space and a surface or object in that space. In raymarching distance functions are used to render the 3D scenes. After a march a SDF is used to determine the distance with the objects within the scene. SDF can be used to represent a wide variety of objects.\n It's possible to combine multiple SDF together using distance function operators. These Distance function operators are used to measure the distance or similarity between two objects. In the following examples, I showcase my scene which has a box and a sphere where the sphere is one unit higher on the Y axis.",
+      },
+      {
+        blockType: 6,
+        title: "Distance function operators in action",
+        gallery: {
+          images: [
+            {
+              src: "/soft-coded/raymarching-in-unity/boxsphereSubstraction.gif",
+              label: "Substraction operator.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/raymarching-in-unity/boxsphereIntersection.gif",
+              label: "Intersection operator.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/raymarching-in-unity/boxspheresmoothUnion.gif",
+              label: "Smooth union operator",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/raymarching-in-unity/boxspheresmoothSubstraction.gif",
+              label: "Smooth substraction operator",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/raymarching-in-unity/boxspheresmoothIntersection.gif",
+              label: "Smooth intersection operator",
+              showLabel: true,
+            },
+          ],
+        }
+      },
+      {
+        blockType: 3,
+        title: "Testing",
+        text: "I'll be testing different geometries rendered with the raymarching shader. Now ofcourse, just one geometry wouldn't provide much of a result, therefore I'll be rendering them multiple times at once. I'll slowly increase the amount of iterations the raymarching shader is allowed and calculate the average fps during that iteration. \n To test this I've made a raymarching shader in unity following this tutorial and have these variables changeable through the inspector.\nI've setup a fps recorder that will be able to track the average fps, which can be tweened to be more accurate based on the amount of seconds each iteration should take. To make the graphs, I've imported a unity package and made a bunch of adjustments to make it fit for my needs.",
+        images: [
+          {
+            src: "/soft-coded/raymarching-in-unity/raymarchingInspector.png",
+            label: "Raymarching visualized",
+          },
+          {
+            src: "/soft-coded/raymarching-in-unity/testShowcase.gif",
+            label: "Sphere tracing visualized",
+          },
+
+        ],
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 4,
+            title: "Hollowed cube",
+            text: "The camera is placed in the direct center of all of them, and we are slowly increases the raymarching iterations treshold by one.",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/hollowedCube.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/hollowedCubeInside.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/hollowedCubeResult.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/hollowedCubeResultZoomedIn.png",
+                label: "Raymarching visualized",
+              },
+
+            ],
+          },
+          {
+            blockType: 4,
+            title: "Smooth Hexagonal Prism",
+            text: "One of them is made extremely long to see if the performance changes.",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/HexagonalPrism.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/HexagonalPrismLong.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/HexagonalPrismResult.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/HexagonalPrismLongResult.png",
+                label: "Raymarching visualized",
+              },
+
+            ],
+          },
+        ]
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 4,
+            title: "Thin torus",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/thinTorus.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/thinTorusResult.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/thinTorusResultZoomed.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/thinTorusResultZoomedTwo.png",
+                label: "Sphere tracing visualized",
+              },
+
+            ],
+          },
+          {
+            blockType: 4,
+            title: "Simple 3d Box",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/box.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/boxResult.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/boxResultZoomed.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/boxResultZoomedTwo.png",
+                label: "Sphere tracing visualized",
+              },
+            ],
+          },
+        ]
+      },
+
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 4,
+            title: "Analysing the results",
+            text: "At first glance when comparing the graphs, it's quite obvious that there is a heavy drop in fps up till around iteration 20, after that it becomes more stable, yet it still slowly drops in fps for each iteration that comes after. When comparing the zoomed in graph (at 40) from the box with the thin torus it becomes quite clear that the box has a solid 80 frames per second more at 100 iterations. The thin torus is a lot heavier. I decided to do the hollowed box again but this time instead of doing 100 iterations, it goes up to 500. \n This graph has been zoomed in by around 50 iterations, and it becomes quite clear that after 90 iterations it stabilizes at a solid 96fps. I decided to do one last test to see how where the limit of raymarching is, Instead of a 10x10x10 surrounding box, I made it infinite. \n Based on these graphs it becomes really clear where the limit is, in the zoomed in graph you can see at itteration 130 it becomes almost a straight line running smooth 65fps.",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/HollowedCubeInfinite.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/HollowedCube500.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/HollowedCubeInfiniteResult.png",
+                label: "Sphere tracing visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/HollowedCubeInfiniteResultZoomed.png",
+                label: "Sphere tracing visualized",
+              },
+    
+    
+    
+            ],
+          },
+          {
+            blockType: 4,
+            title: "Final Test",
+            text: "After making the hollowed cube infinite, I accidently tweaked the ball a little too much resultin in diamon shapes instead of a hollowed box and noticed a huge frame drop. I decided to do one more test based on this geometry which I can already tell, won't get far in iterations while maintaining high fps... \n I've zoomed in the graph to iteration 20, and it becomes very clear very fast that the framerate drops rapidly, on iteration 80it's already on 37fps and it's still dropping...",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/prism.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/prismResults.png",
+                label: "Sphere tracing visualized",
+              },
+    
+            ],
+          },
+        ]
+      },
+      
+      {
+        blockType: 4,
+        title: "Conclusion",
+        text: "The goal of this project was to learn about raymarching shader and how effectively it can render geometries on different itteratation tresholds. After testing the raymarching shader and observing the FPS based on the geometry and iteration treshold, I can conclude that the treshold does not matter that much for simple shapes, such as torus, hollowed cubes and boxes themselves. However in the last example it becomes very clear how much the treshold can affect the framerate, why this is the case is shown below in another beautiful example drawing.",
+        images: [
+          {
+            src: "/soft-coded/raymarching-in-unity/conclusion.png",
+            label: "Conclusion of testing visualized",
+          },
+
+        ],
+      },
+    ],
   }
 ]
 

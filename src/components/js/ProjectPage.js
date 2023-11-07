@@ -4,7 +4,7 @@ import ProjectBackground from './ProjectBackground';
 import ProjectLogo from './ProjectLogo';
 import ProjectDetails from './ProjectDetails';
 import ProjectBlocks from './ProjectBlocks';
-
+import NewlineText from './NewlineText';
 
 import '../css/ProjectPage.css';
 
@@ -13,16 +13,16 @@ function ProjectPage(props) {
 
   return (
     <section id='project-page' className='page' style={{ color: project.css.textColor }}>
-      <ProjectBackground project={project}/>
+      <ProjectBackground project={project} />
       <section className='project-page-header' style={{ background: project.background.headerOverlay }}>
         <ProjectLogo project={project} />
       </section>
       <section id='project-page-content' className='project-page-content' style={{ background: project.background.overlay }}>
-        <ProjectDetails project={project}/>
+        <ProjectDetails project={project} />
         <section className='project-description'>
-          <p>{project.description}</p>
+          <NewlineText text={project.description} />
         </section>
-        <ProjectBlocks project={project}/>
+        <ProjectBlocks project={project} />
       </section>
     </section>
   );

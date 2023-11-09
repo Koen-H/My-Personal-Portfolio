@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/index.css';
@@ -19,7 +19,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectPage from './components/js/ProjectPage';
 
 //TODO: Import from a database
-const projects = [
+const jsonProjects = [
   {
     id: 0,
     name: "Super Xenon Galaxy",
@@ -834,9 +834,9 @@ const projects = [
                 src: "/soft-coded/raymarching-in-unity/HollowedCubeInfiniteResultZoomed.png",
                 label: "Sphere tracing visualized",
               },
-    
-    
-    
+
+
+
             ],
           },
           {
@@ -852,12 +852,12 @@ const projects = [
                 src: "/soft-coded/raymarching-in-unity/prismResults.png",
                 label: "Sphere tracing visualized",
               },
-    
+
             ],
           },
         ]
       },
-      
+
       {
         blockType: 4,
         title: "Conclusion",
@@ -874,24 +874,50 @@ const projects = [
   }
 ]
 
-const projectPages =
-  projects.map((project) =>
-    <Route key={project.id} exact path={`/project/${project.slug}`} element={<ProjectPage project={project} />} />
-  );
+function App() {
+  const [projects, setProjects] = useState([]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+  useEffect(() => {
+    fetch('https://koenhankel.nl/api/api.php')
+      .then((response) => response.json())
+      .then((data) => setProjects(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
+
+  if (projects.length === 0) {
+    // Loading state, replace this with a loading spinner
+    return <div>Loading...</div>;
+  }
+  const projectPages = jsonProjects.map((project) => (
+    <Route
+      key={project.id}
+      exact
+      path={`/project/${project.slug}`}
+      element={<ProjectPage project={project} />}
+    />
+  ));
+
+  return (
     <Router>
       <ScrollTop />
       <Header />
       <Routes>
-        <Route path="/" element={<Home projects={projects} />} />
+        <Route path="/" element={<Home projects={jsonProjects} />} />
         {projectPages}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </Router>
+  );
+
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
   </React.StrictMode>
 );
 

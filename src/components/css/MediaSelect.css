@@ -1,0 +1,42 @@
+.media-select-container{
+    position: fixed;
+    background-color: white;
+    width: 80%;
+    left:10%;
+    top:20%;
+    border: 10px solid black;
+    padding: 5%;
+}
+
+.image-upload-form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.select-images-button{
+    border: 2px solid black;
+    position: relative;
+    width: 150px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.media-archive{
+    position:relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.media-item{
+    position: relative;
+    width: 18%;
+}
+.selected-indicator{
+    position: absolute;
+    top:0;
+    right:0;
+}
+.media-item>img{
+    width: 100%;
+}

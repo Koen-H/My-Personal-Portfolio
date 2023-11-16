@@ -14,9 +14,11 @@ import Footer from './components/js/Footer';
 
 import Home from './pages/Home';
 import ErrorPage from './pages/ErrorPage';
+import CreateProjectPage from './pages/CreateProjectPage';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProjectPage from './components/js/ProjectPage';
+import MediaSelect from './components/js/mediaSelect';
 
 //TODO: Import from a database
 const jsonProjects = [
@@ -907,6 +909,8 @@ function App() {
         <Route path="/" element={<Home projects={jsonProjects} />} />
         {projectPages}
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/upload" element={<MediaSelect />} />
+        <Route path="/create-project" element={<CreateProjectPage />} />
       </Routes>
       <Footer />
     </Router>

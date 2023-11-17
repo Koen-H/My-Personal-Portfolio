@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import MediaSelect from "./mediaSelect";
 
-function ProjectBlockForms() {
+function ProjectBlockForms(props) {
 
     const [blockForms, setBlockForms] = useState([{
         BLOCKTYPE: '',
         TITLE: '',
         TEXT: '',
         VIDEO: '',
-        HIGHLIGHTED_IMAGES: [],
+        GALLERY_IMAGES: [],
     }]);
 
     const addBlockForm = () => {
@@ -18,7 +18,7 @@ function ProjectBlockForms() {
             TITLE: '',
             TEXT: '',
             VIDEO: '',
-            HIGHLIGHTED_IMAGES: [],
+            GALLERY_IMAGES: [],
         }]);
     };
 
@@ -26,11 +26,14 @@ function ProjectBlockForms() {
         setBlockForms((prevForms) => prevForms.filter((_, i) => i !== index));
     };
 
-
+    const handleBlockFormsChange = (updatedBlockForms) => {
+        // Callback to send blockForms data to the parent component
+        props.onBlockFormsChange(updatedBlockForms);
+    };
 
     return (
         <div>
-            <fieldset onClick={() => console.log(blockForms)}>
+            <fieldset>
                 <legend style={{ fontSize: "40px" }}>Project blocks</legend>
                 {blockForms.map((blockData, index) => (
                     <ProjectBlockForm
@@ -40,6 +43,7 @@ function ProjectBlockForms() {
                             const updatedForms = [...blockForms];
                             updatedForms[index] = updatedData;
                             setBlockForms(updatedForms);
+                            handleBlockFormsChange(updatedForms);
                         }}
                         onRemove={() => removeBlockForm(index)}
                     />
@@ -50,6 +54,9 @@ function ProjectBlockForms() {
     );
 }
 export default ProjectBlockForms;
+ProjectBlockForms.propTypes = {
+    onBlockFormsChange: PropTypes.func,
+};
 
 
 

@@ -7,9 +7,6 @@ import '../css/MediaSelect.css';
 const MediaSelect = (props) => {
 
     const [selectedImages, setSelectedImages] = useState(props.previouslySelected ? props.previouslySelected : []);
-    console.log(selectedImages);
-
-
     //Start upload data
     const [file, setFile] = useState(null);
     const [altText, setAltText] = useState('');
@@ -51,7 +48,7 @@ const MediaSelect = (props) => {
     };
 
     //Start retrieve current images
-    const [images, setImages] = useState([]);
+    const [imagesData, setImagesData] = useState([]);
     const [imageAmount, setImageAmount] = useState(0);
     const ids = [1];
     const limit = 3000;
@@ -71,8 +68,7 @@ const MediaSelect = (props) => {
             });
             const result = await response.json();
             setImageAmount(result.imagesFound);
-            console.log(result.data);
-            setImages(result.data);
+            setImagesData(result.data);
         } catch (error) {
             console.error('Error fetching images:', error);
         }
@@ -111,10 +107,10 @@ const MediaSelect = (props) => {
                 Select Images
             </div>
             <div className='media-archive'>
-                {images.map((image) => (
-                    <div key={image.ID} className='media-item' data-id={image.ID} onClick={handleImageClick}>
-                        {selectedImages.includes(image.ID) && <div className="selected-indicator"><FontAwesomeIcon icon={faCheck} /></div>}
-                        <img src={image.ORIGINAL} alt={image.alt} />
+                {Object.values(imagesData).map((imageData) => (
+                    <div key={imageData.ID} className='media-item' data-id={imageData.ID} onClick={handleImageClick}>
+                        {selectedImages.includes(imageData.ID) && <div className="selected-indicator"><FontAwesomeIcon icon={faCheck} /></div>}
+                        <img src={imageData.ORIGINAL} alt={imageData.ALT} />
                     </div>
                 ))}
             </div>

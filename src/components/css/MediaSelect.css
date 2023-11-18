@@ -2,6 +2,7 @@
     position: fixed;
     background-color: white;
     width: 80%;
+    height: 70%;
     left:10%;
     top:20%;
     border: 10px solid black;
@@ -27,6 +28,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    overflow: auto;
+    height: 84%;
 }
 .media-item{
     position: relative;
@@ -34,8 +37,13 @@
 }
 .selected-indicator{
     position: absolute;
-    top:0;
-    right:0;
+    border: black solid;
+    background: rgb(255 255 255 / 41%);
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    top: 0;
+    right: 0;
 }
 .media-item>img{
     width: 100%;

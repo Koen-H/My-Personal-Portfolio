@@ -878,17 +878,23 @@ const jsonProjects = [
 
 function App() {
   const [projects, setProjects] = useState([]);
+  //Wether it fetched projects.
+  const [fetchedProjects, setfetchedProjects] = useState(false);
 
   useEffect(() => {
     fetch('https://koenhankel.nl/api/api.php')
       .then((response) => response.json())
-      .then((data) => setProjects(data))
+      .then((data) => {
+        setProjects(data)
+        setfetchedProjects(true);
+      })
       .catch((error) => {
         console.error('Error:', error);
       });
   }, []);
 
-  if (projects.length === 0) {
+  //While fetching projects, show a loading page
+  if (!fetchedProjects) {
     // Loading state, replace this with a loading spinner
     return <div>Loading...</div>;
   }

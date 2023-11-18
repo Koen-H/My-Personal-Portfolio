@@ -8,6 +8,7 @@ const MediaSelect = (props) => {
 
     const [selectedImages, setSelectedImages] = useState(props.previouslySelected ? props.previouslySelected : []);
     //Start upload data
+    const [isUploading, setIsUploading] = useState(false);
     const [file, setFile] = useState(null);
     const [altText, setAltText] = useState('');
     const [uploadResponse, setUploadResponse] = useState('');
@@ -24,7 +25,7 @@ const MediaSelect = (props) => {
         const formData = new FormData();
         formData.append('image', file);
         formData.append('altText', altText);
-
+        setIsUploading(true);
         try {
             const response = await fetch('https://koenhankel.nl/api/upload.php', {
                 method: 'POST',
@@ -38,19 +39,21 @@ const MediaSelect = (props) => {
                 setSelectedImages(updatedSelectedImages);
                 retrieveAllImages();
             }
-            else{
+            else {
                 setUploadResponse(`Error: ${result.message}`);
             }
         } catch (error) {
             console.error('Error uploading image:', error);
             setUploadResponse('Error uploading image: ' + error)
         }
+        //Done uploading image!
+        setIsUploading(false);
     };
 
     //Start retrieve current images
     const [imagesData, setImagesData] = useState([]);
     const [imageAmount, setImageAmount] = useState(0);
-    const ids = [7,4];
+    const ids = [7, 4];
     const limit = 3000;
 
     useEffect(() => {
@@ -60,7 +63,7 @@ const MediaSelect = (props) => {
     const retrieveAllImages = async () => {
         try {
             const response = await fetch(`https://koenhankel.nl/api/get_images.php`, {
-                 //const response = await fetch(`https://koenhankel.nl/api/get_images.php?ids=${ids.join(',')}`, {
+                //const response = await fetch(`https://koenhankel.nl/api/get_images.php?ids=${ids.join(',')}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +102,7 @@ const MediaSelect = (props) => {
             <div className='image-upload-form'>
                 <input type="file" onChange={handleFileChange} />
                 <textarea placeholder="ALT text" value={altText} onChange={handleAltTextChange} />
-                <button onClick={handleUpload}>Upload</button>
+                <button onClick={handleUpload} disabled={isUploading}>Upload</button>
                 <p>{uploadResponse}</p>
             </div>
             <div>
@@ -109,7 +112,7 @@ const MediaSelect = (props) => {
                 Select Images
             </div>
             <div className='media-archive'>
-                {Object.values(imagesData).map((imageData) => (
+                {Object.values(imagesData).reverse().map((imageData) => (
                     <div key={imageData.ID} className='media-item' data-id={imageData.ID} onClick={handleImageClick}>
                         {selectedImages.includes(imageData.ID) && <div className="selected-indicator"><FontAwesomeIcon icon={faCheck} /></div>}
                         <img src={imageData.ORIGINAL} alt={imageData.ALT} />
@@ -124,5 +127,5 @@ export default MediaSelect;
 MediaSelect.propTypes = {
     onImagesSelected: PropTypes.func,
     previouslySelected: PropTypes.array,
-    isOpen : PropTypes.bool,
+    isOpen: PropTypes.bool,
 };

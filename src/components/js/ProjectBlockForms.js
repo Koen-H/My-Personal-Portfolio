@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import MediaSelect from "./mediaSelect";
 
@@ -12,11 +12,11 @@ function ProjectBlockForms(props) {
         GALLERY_IMAGES: [],
     }
 
-    const [blockForms, setBlockForms] = useState(props.blockForms);
-
-    console.log("propsblock");
-    console.log(props.blockForms);
-    console.log(blockForms);
+    const [blockForms, setBlockForms] = useState([initialBlockForm]);
+    useEffect(() => {
+        console.log('Inside useEffect - props.blockForms:', props.blockForms);
+        setBlockForms(props.blockForms);
+    }, [props.blockForms]);
 
     const addBlockForm = () => {
         setBlockForms((prevForms) => [...prevForms, initialBlockForm]);
@@ -79,9 +79,9 @@ function ProjectBlockForm(props) {
     };
 
 
+    console.log(Array.isArray(props.blockData.GALLERY_IMAGES))
 
-
-    const [selectedGalleryMedia, setSelectedGalleryMedia] = useState([]);
+    const [selectedGalleryMedia, setSelectedGalleryMedia] = useState(props.blockData.GALLERY_IMAGES);
     const [gallerySelectOpen, setgallerySelectOpen] = useState(false);
     const toggleGallerySelect = () => {
         setgallerySelectOpen(!gallerySelectOpen);
@@ -89,7 +89,7 @@ function ProjectBlockForm(props) {
 
     const onGallerySelected = (selectedImages = []) => {
         setSelectedGalleryMedia(selectedImages);
-        props.blockData.HIGHLIGHTED_IMAGES = selectedImages;
+        props.blockData.GALLERY_IMAGES = selectedImages;
         setgallerySelectOpen(false);
     }
 

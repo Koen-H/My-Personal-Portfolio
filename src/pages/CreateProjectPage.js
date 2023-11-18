@@ -5,7 +5,7 @@ import ProjectBlockForms from "../components/js/ProjectBlockForms";
 function CreateProjectPage() {
 
     const initialFormData = {
-        project_id : null,
+        project_id: null,
         project: {
             IS_ACTIVE: true,
             PROJECT_NAME: "",
@@ -72,7 +72,7 @@ function CreateProjectPage() {
                 console.log(data.data);
                 const projectData = data.data;
                 const requestFormData = {
-                    project_id : value,
+                    project_id: value,
                     project: {
                         IS_ACTIVE: projectData.IS_ACTIVE ? projectData.IS_ACTIVE : initialFormData.project.IS_ACTIVE,
                         PROJECT_NAME: projectData.PROJECT_NAME ? projectData.PROJECT_NAME : initialFormData.project.PROJECT_NAME,
@@ -97,6 +97,7 @@ function CreateProjectPage() {
                     },
                     content_blocks: []
                 };
+                console.log(requestFormData);
                 setFormData(requestFormData);
                 getContentBlock(requestFormData.project_page.CONTENT_BLOCKS);
             })
@@ -207,12 +208,10 @@ function CreateProjectPage() {
             ...prevData,
             content_blocks: updatedBlockForms,
         }));
-        console.log(updatedBlockForms);
     };
-    const getContentBlock = async (ids) =>{
+    const getContentBlock = async (ids) => {
         try {
-            if(!ids) return;
-            console.log(Array.isArray(ids));
+            if (!ids) return;
             const api = 'https://koenhankel.nl/api/get_content_blocks.php';
             const queryString = `ids=${ids.join(',')}`;
             const url = `${api}?${queryString}`;
@@ -225,8 +224,14 @@ function CreateProjectPage() {
 
             const result = await response.json();
             if (result.status == 'success') {
-                console.log(result);
-                handleBlockFormsChange(Object.values(result.data))
+                //Make result object
+                const objResult = Object.values(result.data);
+                //Make the gallery_images an array
+                objResult.map(item => {
+                    item.GALLERY_IMAGES = JSON.parse(item.GALLERY_IMAGES);
+                    return item;
+                });
+                handleBlockFormsChange(objResult)
             }
             else {
                 console.error(result);
@@ -386,7 +391,7 @@ function CreateProjectPage() {
                     </label>
                     <br />
                 </fieldset>
-                <ProjectBlockForms onBlockFormsChange={handleBlockFormsChange} blockForms={formData.content_blocks}/>
+                <ProjectBlockForms onBlockFormsChange={handleBlockFormsChange} blockForms={formData.content_blocks} />
                 <button type="submit">Submit</button>
             </form>
         </div>

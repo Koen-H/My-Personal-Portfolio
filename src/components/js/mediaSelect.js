@@ -50,7 +50,7 @@ const MediaSelect = (props) => {
     //Start retrieve current images
     const [imagesData, setImagesData] = useState([]);
     const [imageAmount, setImageAmount] = useState(0);
-    const ids = [1];
+    const ids = [7,4];
     const limit = 3000;
 
     useEffect(() => {
@@ -60,7 +60,7 @@ const MediaSelect = (props) => {
     const retrieveAllImages = async () => {
         try {
             const response = await fetch(`https://koenhankel.nl/api/get_images.php`, {
-                // const response = await fetch(`https://koenhankel.nl/api/get_images.php?ids=${ids.join(',')}`, {
+                 //const response = await fetch(`https://koenhankel.nl/api/get_images.php?ids=${ids.join(',')}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,6 +69,8 @@ const MediaSelect = (props) => {
             const result = await response.json();
             setImageAmount(result.imagesFound);
             setImagesData(result.data);
+            console.log("IMAGES")
+            console.log(Array.isArray(result.data));
         } catch (error) {
             console.error('Error fetching images:', error);
         }

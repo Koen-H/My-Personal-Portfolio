@@ -4,22 +4,22 @@ import MediaSelect from "./mediaSelect";
 
 function ProjectBlockForms(props) {
 
-    const [blockForms, setBlockForms] = useState([{
-        BLOCKTYPE: '',
+    const initialBlockForm = {
+        BLOCK_TYPE: '',
         TITLE: '',
         TEXT: '',
         VIDEO: '',
         GALLERY_IMAGES: [],
-    }]);
+    }
+
+    const [blockForms, setBlockForms] = useState(props.blockForms);
+
+    console.log("propsblock");
+    console.log(props.blockForms);
+    console.log(blockForms);
 
     const addBlockForm = () => {
-        setBlockForms((prevForms) => [...prevForms, {
-            BLOCKTYPE: '',
-            TITLE: '',
-            TEXT: '',
-            VIDEO: '',
-            GALLERY_IMAGES: [],
-        }]);
+        setBlockForms((prevForms) => [...prevForms, initialBlockForm]);
     };
 
     const removeBlockForm = (index) => {
@@ -56,6 +56,7 @@ function ProjectBlockForms(props) {
 export default ProjectBlockForms;
 ProjectBlockForms.propTypes = {
     onBlockFormsChange: PropTypes.func,
+    blockForms: PropTypes.array,
 };
 
 
@@ -100,9 +101,9 @@ function ProjectBlockForm(props) {
                 <label>
                     Block Type:
                     <input
-                        type="text"
-                        name="BLOCKTYPE"
-                        value={props.blockData.BLOCKTYPE}
+                        type="number"
+                        name="BLOCK_TYPE"
+                        value={props.blockData.BLOCK_TYPE}
                         onChange={handleChange}
                     />
                 </label>

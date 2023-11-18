@@ -5,6 +5,7 @@ import ProjectBlockForms from "../components/js/ProjectBlockForms";
 function CreateProjectPage() {
 
     const initialFormData = {
+        project_id : null,
         project: {
             IS_ACTIVE: true,
             PROJECT_NAME: "",
@@ -71,6 +72,7 @@ function CreateProjectPage() {
                 console.log(data.data);
                 const projectData = data.data;
                 const requestFormData = {
+                    project_id : value,
                     project: {
                         IS_ACTIVE: projectData.IS_ACTIVE ? projectData.IS_ACTIVE : initialFormData.project.IS_ACTIVE,
                         PROJECT_NAME: projectData.PROJECT_NAME ? projectData.PROJECT_NAME : initialFormData.project.PROJECT_NAME,
@@ -86,16 +88,17 @@ function CreateProjectPage() {
                         HIGHLIGHTED_IMAGES: projectData.HIGHLIGHTED_IMAGES ? JSON.parse(projectData.HIGHLIGHTED_IMAGES) : initialFormData.project_details.HIGHLIGHTED_IMAGES,
                     },
                     project_page: {
-                        CONTENT_BLOCKS: projectData.CONTENT_BLOCKS ? projectData.CONTENT_BLOCKS : initialFormData.project_page.CONTENT_BLOCKS,
+                        CONTENT_BLOCKS: projectData.CONTENT_BLOCKS ? JSON.parse(projectData.CONTENT_BLOCKS) : initialFormData.project_page.CONTENT_BLOCKS,
                         BACKGROUND_CSS: projectData.BACKGROUND_CSS ? projectData.BACKGROUND_CSS : initialFormData.project_page.BACKGROUND_CSS,
                         BACKGROUND_VIDEO: projectData.BACKGROUND_VIDEO ? projectData.BACKGROUND_VIDEO : initialFormData.project_page.BACKGROUND_VIDEO,
-                        BACKGROUND_IMAGES: projectData.BACKGROUND_IMAGES ? projectData.BACKGROUND_IMAGES : initialFormData.project_page.BACKGROUND_IMAGES,
+                        BACKGROUND_IMAGES: projectData.BACKGROUND_IMAGES ? JSON.parse(projectData.BACKGROUND_IMAGES) : initialFormData.project_page.BACKGROUND_IMAGES,
                         HEADER_OVERLAY: projectData.HEADER_OVERLAY ? projectData.HEADER_OVERLAY : initialFormData.project_page.HEADER_OVERLAY,
                         OVERLAY: projectData.OVERLAY ? projectData.OVERLAY : initialFormData.project_page.OVERLAY,
                     },
                     content_blocks: []
                 };
                 setFormData(requestFormData);
+                getContentBlock(requestFormData.project_page.CONTENT_BLOCKS);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -128,9 +131,8 @@ function CreateProjectPage() {
         console.log(formData);
 
         try {
-            const api = selectedProject ? `https://koenhankel.nl/api/create_project.php?project_ID=${selectedProject}` : 'https://koenhankel.nl/api/create_project.php';
+            const api = selectedProject ? `https://koenhankel.nl/api/update_project.php` : 'https://koenhankel.nl/api/create_project.php';
             const jsonData = JSON.stringify(formData);
-            console.log(jsonData);
             const response = await fetch(api, {
                 method: 'POST',
                 body: jsonData,
@@ -139,7 +141,7 @@ function CreateProjectPage() {
             const result = await response.json();
             if (result.status == 'success') {
                 console.log("succes");
-                console.log(result);
+
             }
             else {
                 console.error(result);
@@ -203,9 +205,38 @@ function CreateProjectPage() {
     const handleBlockFormsChange = (updatedBlockForms) => {
         setFormData((prevData) => ({
             ...prevData,
-            project_blocks: updatedBlockForms,
+            content_blocks: updatedBlockForms,
         }));
+        console.log(updatedBlockForms);
     };
+    const getContentBlock = async (ids) =>{
+        try {
+            if(!ids) return;
+            console.log(Array.isArray(ids));
+            const api = 'https://koenhankel.nl/api/get_content_blocks.php';
+            const queryString = `ids=${ids.join(',')}`;
+            const url = `${api}?${queryString}`;
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const result = await response.json();
+            if (result.status == 'success') {
+                console.log(result);
+                handleBlockFormsChange(Object.values(result.data))
+            }
+            else {
+                console.error(result);
+            }
+        } catch (error) {
+            console.error('Error', error);
+
+        }
+    }
+
 
     return (
         <div style={{ paddingTop: "10%" }}>
@@ -355,7 +386,7 @@ function CreateProjectPage() {
                     </label>
                     <br />
                 </fieldset>
-                <ProjectBlockForms onBlockFormsChange={handleBlockFormsChange} />
+                <ProjectBlockForms onBlockFormsChange={handleBlockFormsChange} blockForms={formData.content_blocks}/>
                 <button type="submit">Submit</button>
             </form>
         </div>

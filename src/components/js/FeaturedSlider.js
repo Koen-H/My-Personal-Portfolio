@@ -17,13 +17,13 @@ import { useNavigate } from 'react-router';
 
 function FeaturedSlider(props) {
   const projects = props.projects;
+  const images = props.images;
 
-  const sliderProjects = projects.filter(project => project.featured === true);
-
-  const sliders = sliderProjects.map((project) =>
-    <SwiperSlide key={project.id}><SingleFeaturedSlider project={project} handleNewProjectPage={props.handleNewProjectPage} /></SwiperSlide>
+  //When there are no featured projects, show nothing
+  if (projects.length > 1) return;
+  const sliders = projects.map((project) =>
+    <SwiperSlide key={project.ID}><SingleFeaturedSlider project={project} images={images} handleNewProjectPage={props.handleNewProjectPage} /></SwiperSlide>
   );
-
 
   return (
     <section className='featured'>
@@ -73,6 +73,7 @@ function FeaturedSlider(props) {
 
 FeaturedSlider.propTypes = {
   projects: PropTypes.array,
+  images: PropTypes.object,
   handleNewProjectPage: PropTypes.func
 };
 
@@ -80,8 +81,8 @@ export default FeaturedSlider;
 
 function SingleFeaturedSlider(props) {
   const project = props.project;
-  const defaultThumbnailImage = project.imageurl[0];
-  const projectName = project.name;
+  const images = props.images;
+  const defaultThumbnailImage = images[project.THUMBNAIL].ORIGINAL;
 
   const [thumbnailImage, setThumbnailImage] = useState(defaultThumbnailImage);
   const [coverClasses, setCoverClasses] = useState('cover-img hidden');
@@ -91,14 +92,14 @@ function SingleFeaturedSlider(props) {
 
   const navigate = useNavigate();
 
-  const subThumbnails = project.imageurl.slice(0, 6).map((image, index) => (
+  const subThumbnails = project.HIGHLIGHTED_IMAGES.slice(0, 6).map((imageID, index) => (
     <div
       key={index}
       className='single-featured-slider-single-subthumbnail'
-      onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, image)}
+      onMouseEnter={(e) => handleSubThumbnailHoverEnter(e, images[imageID].ORIGINAL)}
       onMouseLeave={(e) => handleSubThumbnailHoverLeave(e)}
     >
-      <img src={image} />
+      <img src={images[imageID].THUMBNAIL} />
     </div>
   ));
 
@@ -158,18 +159,18 @@ function SingleFeaturedSlider(props) {
         </div>
         <div className='single-featured-slider-info-box'>
           <div className='single-featured-slider-info-box-top'>
-            <div className='single-featured-slider-projectname'><h2>{projectName}</h2></div>
+            <div className='single-featured-slider-projectname'><h2>{project.PROJECT_NAME}</h2></div>
           </div>
 
 
           <div className='single-featured-slider-info-box-bottom'>
             <div className='single-featured-slider-usp'>
-              <p>{project.description}</p>
+              <p>{project.DESCRIPTION}</p>
             </div>
             <div className='single-featured-slider-CTA-box'>
 
               <a onClick={() => {
-                navigate(`/project/${project.slug}`)
+                navigate(`/project/${project.PROJECT_SLUG}`)
               }}>Check it out!</a>
 
               <div className='icons'>
@@ -186,5 +187,6 @@ function SingleFeaturedSlider(props) {
 }
 SingleFeaturedSlider.propTypes = {
   project: PropTypes.object,
+  images: PropTypes.object,
   handleNewProjectPage: PropTypes.func
 };

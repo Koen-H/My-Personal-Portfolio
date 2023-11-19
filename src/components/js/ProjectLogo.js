@@ -6,22 +6,23 @@ import '../css/ProjectLogo.css';
 
 function ProjectLogo(props) {
   const project = props.project;
-
+  const images = props.images;
   return (
     <section className='project-logo'>
-      {(project.logo) ? (
+      {(project.LOGO) ? (
         <div className='project-logo-container'>
-          <img src={project.logo} alt={`Logo of ${project.name}`} />
+          <img src={images[project.LOGO].ORIGINAL} alt={`Logo of ${project.PROJECT_NAME}`} />
         </div>
-      ) : <h1>{project.name}</h1>}
-      <p>{project.usp}</p>
+      ) : <h1>{project.PROJECT_NAME}</h1>}
+      <p>{project.USP}</p>
     </section>
   );
 }
 
 export default ProjectLogo;
 ProjectLogo.propTypes = {
-  project: PropTypes.object
+  project: PropTypes.object,
+  images: PropTypes.object,
 };
 
 

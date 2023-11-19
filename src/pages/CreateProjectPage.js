@@ -16,14 +16,17 @@ function CreateProjectPage() {
             USP: "",
             DATE: "",
             DESCRIPTION: "",
-            THUMBNAIL: "",
-            VIDEO: "",
+            LOGO: null,
+            THUMBNAIL: null,
+            VIDEO: null,
             HIGHLIGHTED_IMAGES: [],
         },
         project_page: {
             CONTENT_BLOCKS: [],
             BACKGROUND_CSS: "",
-            BACKGROUND_VIDEO: "",
+            BACKGROUND_VIDEO: null,
+            LOOP_VIDEO: false,
+            CAN_FULLSCREEN: true,
             BACKGROUND_IMAGES: [],
             HEADER_OVERLAY: "",
             OVERLAY: "",
@@ -83,6 +86,7 @@ function CreateProjectPage() {
                         USP: projectData.USP ? projectData.USP : initialFormData.project_details.USP,
                         DATE: projectData.DATE ? projectData.DATE : initialFormData.project_details.DATE,
                         DESCRIPTION: projectData.DESCRIPTION ? projectData.DESCRIPTION : initialFormData.project_details.DESCRIPTION,
+                        LOGO: projectData.LOGO ? projectData.LOGO : initialFormData.project_details.LOGO,
                         THUMBNAIL: projectData.THUMBNAIL ? projectData.THUMBNAIL : initialFormData.project_details.THUMBNAIL,
                         VIDEO: projectData.VIDEO ? projectData.VIDEO : initialFormData.project_details.VIDEO,
                         HIGHLIGHTED_IMAGES: projectData.HIGHLIGHTED_IMAGES ? JSON.parse(projectData.HIGHLIGHTED_IMAGES) : initialFormData.project_details.HIGHLIGHTED_IMAGES,
@@ -91,6 +95,8 @@ function CreateProjectPage() {
                         CONTENT_BLOCKS: projectData.CONTENT_BLOCKS ? JSON.parse(projectData.CONTENT_BLOCKS) : initialFormData.project_page.CONTENT_BLOCKS,
                         BACKGROUND_CSS: projectData.BACKGROUND_CSS ? projectData.BACKGROUND_CSS : initialFormData.project_page.BACKGROUND_CSS,
                         BACKGROUND_VIDEO: projectData.BACKGROUND_VIDEO ? projectData.BACKGROUND_VIDEO : initialFormData.project_page.BACKGROUND_VIDEO,
+                        LOOP_VIDEO: projectData.LOOP_VIDEO ? projectData.LOOP_VIDEO : initialFormData.project_page.LOOP_VIDEO,
+                        CAN_FULLSCREEN:projectData.CAN_FULLSCREEN ? projectData.CAN_FULLSCREEN : initialFormData.project_page.CAN_FULLSCREEN,
                         BACKGROUND_IMAGES: projectData.BACKGROUND_IMAGES ? JSON.parse(projectData.BACKGROUND_IMAGES) : initialFormData.project_page.BACKGROUND_IMAGES,
                         HEADER_OVERLAY: projectData.HEADER_OVERLAY ? projectData.HEADER_OVERLAY : initialFormData.project_page.HEADER_OVERLAY,
                         OVERLAY: projectData.OVERLAY ? projectData.OVERLAY : initialFormData.project_page.OVERLAY,
@@ -207,7 +213,11 @@ function CreateProjectPage() {
         setFormData((prevData) => ({
             ...prevData,
             content_blocks: updatedBlockForms,
+            project_details: {
+                ...prevData.project_details,
+            }
         }));
+
     };
     const getContentBlock = async (ids) => {
         try {

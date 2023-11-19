@@ -6,10 +6,10 @@ function BackgroundVideo(props) {
 
   const project = props.project;
   const handleVideoEnded = props.handleVideoEnded;
-  const backgroundVideo = project.background.video;
+  const backgroundVideo = project.BACKGROUND_VIDEO;
   const videoRef = props.videoRef ? props.videoRef : useRef(null);
 
-  if (backgroundVideo && !project.background.videoLoop) {
+  if (backgroundVideo && !project.LOOP_VIDEO) {
     useEffect(() => {
       videoRef.current.addEventListener('ended', handleVideoEnded);
       
@@ -27,7 +27,7 @@ function BackgroundVideo(props) {
         src={backgroundVideo}
         autoPlay
         muted
-        loop={project.background.videoLoop}
+        loop={project.LOOP_VIDEO}
         ref={videoRef}
       />
     </section>

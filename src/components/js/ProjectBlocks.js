@@ -9,25 +9,28 @@ import '../css/ProjectBlocks.css';
 
 function ProjectBlocks(props) {
   const project = props.project;
+  const images = props.images;
+  const contentBlocks = props.contentBlocks
+  const orderedContentBlocks = project.CONTENT_BLOCKS.map(index => contentBlocks[index]);
 
 
-  const blocks = GetBlocks(project.pageContent);
+  const blocks = RenderBlocks(orderedContentBlocks);
 
 
-  function GetBlocks(_pageContent) {
-    return _pageContent.map((pageContent, index) => {
+  function RenderBlocks(blocks) {
+    return blocks.map((pageContent, index) => {
       let block = 'Block not found';
-      switch (pageContent.blockType) {
+      switch (pageContent.BLOCK_TYPE) {
         case 0:
           block = <div className='inner-block'>
-            {GetBlocks(pageContent.innerBlocks)}
+            {RenderBlocks(pageContent.innerBlocks)}
           </div>
           break;
         case 1:
           block = <TextBlock contentBlock={pageContent} />;
           break;
-        case 2:
-          block = <TextImageBlock contentBlock={pageContent} />;
+        case "2":
+          block = <TextImageBlock contentBlock={pageContent} images={images} />;
           break;
         case 3:
           block = <ImageTextBlock contentBlock={pageContent} />;
@@ -61,7 +64,9 @@ function ProjectBlocks(props) {
 
 export default ProjectBlocks;
 ProjectBlocks.propTypes = {
-  project: PropTypes.object
+  project: PropTypes.object,
+  images: PropTypes.object,
+  contentBlocks: PropTypes.object,
 };
 
 
@@ -88,16 +93,17 @@ function TextImageBlock(props) {
   const contentBlock = props.contentBlock;
   return (
     <>
-      <h2>{contentBlock.title}</h2>
+      <h2>{contentBlock.TITLE}</h2>
       <div className='project-block-content'>
-        <div><NewlineText text={contentBlock.text} /></div>
-        <Gallery images={contentBlock.images} />
+        <div><NewlineText text={contentBlock.TEXT} /></div>
+        <Gallery galleryImages={contentBlock.GALLERY_IMAGES} images={props.images}/>
       </div>
     </>
   );
 }
 TextImageBlock.propTypes = {
-  contentBlock: PropTypes.object
+  contentBlock: PropTypes.object,
+  images: PropTypes.object,
 };
 
 function ImageTextBlock(props) {
@@ -173,18 +179,19 @@ TextVideoBelowBlock.propTypes = {
 
 
 function Gallery(props) {
+  const galleryImages = props.galleryImages;
   const images = props.images;
-  const portraitSide = (images.length == 3 && images[0].portraitSide);
-  const imagesGallery = images.map((image, index) => (
+  // const portraitSide = (galleryImages.length == 3 && galleryImages[0].portraitSide);
+  const imagesGallery = galleryImages.map((imageID, index) => (
     <div className='image-container' key={index}>
-      <img src={image.src} alt={image.label} width={image.width ? image.width + "%" : '100%'} />
+      <img src={images[imageID].MEDIUM} alt={images[imageID].ALT} width={'100%'} />
     </div>
   ));
 
   return (
     <section className='image-gallery-container'>
       <section className='image-gallery'>
-        {!portraitSide ? imagesGallery : (
+        {/* {!portraitSide ? imagesGallery : (
           <>
             <div className='image-container portait'>
               <img src={images[0].src} alt={images[0].label} width={images[0].width ? images[0].width + "%" : '100%'} />
@@ -194,13 +201,15 @@ function Gallery(props) {
               <img src={images[2].src} alt={images[2].label} width={images[2].width ? images[2].width + "%" : '100%'} />
             </div>
           </>
-        )}
+        )} */}
+        {imagesGallery}
       </section>
     </section>
   );
 }
 Gallery.propTypes = {
-  images: PropTypes.array
+  galleryImages: PropTypes.array,
+  images: PropTypes.object,
 };
 
 

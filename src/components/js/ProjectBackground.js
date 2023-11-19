@@ -9,9 +9,11 @@ import '../css/ProjectBackground.css';
 function ProjectBackground(props) {
 
   const project = props.project;
-  const backgroundCSS = project.background.css;
+  const images = props.images;
+  const videos = props.videos;
+  const backgroundCSS = project.BACKGROUND_CSS;
 
-  const backgroundVideo = project.background.video;
+  const backgroundVideo = project.BACKGROUND_VIDEO;
   const videoRef = useRef(null);
   const [videoEnded, SetVideoEnded] = useState(false);
 
@@ -21,8 +23,8 @@ function ProjectBackground(props) {
 
   const backgroundImagesEnabled = (!backgroundVideo || videoEnded);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const backgroundImages = project.background.images;
-  const backgroundImage = backgroundImages[currentImageIndex];
+  const backgroundImages = project.BACKGROUND_IMAGES;
+  const backgroundImage = images[backgroundImages[currentImageIndex]].ORIGINAL;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -39,7 +41,7 @@ function ProjectBackground(props) {
     <>
       <section id='project-background' className='project-background' style={{ background: backgroundCSS }}>
         {(backgroundImagesEnabled) && backgroundImages.length > 0 && (
-          <img src={backgroundImage} alt={`Background image for ${project.name}`} />
+          <img src={backgroundImage} alt={`Background image for ${project.PROJECT_NAME}`} />
         )}
         {(backgroundVideo && !videoEnded) && (
           <BackgroundVideo project={project} handleVideoEnded={handleVideoEnded} videoRef={videoRef} />
@@ -56,5 +58,7 @@ function ProjectBackground(props) {
 export default ProjectBackground;
 
 ProjectBackground.propTypes = {
-  project: PropTypes.object
+  project: PropTypes.object,
+  images: PropTypes.object,
+  videos: PropTypes.object,
 };

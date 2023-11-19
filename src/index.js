@@ -879,30 +879,46 @@ const jsonProjects = [
 function App() {
   const [projects, setProjects] = useState([]);
   //Wether it fetched projects.
-  const [fetchedProjects, setfetchedProjects] = useState(false);
+  const [fetchedProjects, setFetchedProjects] = useState(false);
 
   useEffect(() => {
-    fetch('https://koenhankel.nl/api/api.php')
-      .then((response) => response.json())
-      .then((data) => {
-        setProjects(data)
-        setfetchedProjects(true);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    const fetchProjects = async () => {
+      try {
+        const api = 'https://koenhankel.nl/api/get_active_projects.php';
+        const response = await fetch(api, {
+          method: 'GET',
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+          //Parse the JSON array HIGHLIGHTED_IMAGES
+          const parsedData = result.data.map(project => {
+            return {
+              ...project,
+              HIGHLIGHTED_IMAGES: JSON.parse(project.HIGHLIGHTED_IMAGES),
+            };
+          });
+          setProjects(parsedData);
+          setFetchedProjects(true);
+        } else {
+          console.error(result);
+        }
+      } catch (error) {
+        console.error('Error', error);
+      }
+    };
+    fetchProjects();
   }, []);
 
   //While fetching projects, show a loading page
   if (!fetchedProjects) {
-    // Loading state, replace this with a loading spinner
     return <div>Loading...</div>;
   }
-  const projectPages = jsonProjects.map((project) => (
+
+  const projectPages = projects.map((project) => (
     <Route
-      key={project.id}
+      key={project.ID}
       exact
-      path={`/project/${project.slug}`}
+      path={`/project/${project.PROJECT_SLUG}`}
       element={<ProjectPage project={project} />}
     />
   ));
@@ -912,7 +928,7 @@ function App() {
       <ScrollTop />
       <Header />
       <Routes>
-        <Route path="/" element={<Home projects={jsonProjects} />} />
+        <Route path="/" element={<Home projects={projects} />} />
         {projectPages}
         <Route path="*" element={<ErrorPage />} />
         <Route path="/upload" element={<MediaSelect />} />

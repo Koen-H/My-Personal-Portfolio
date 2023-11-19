@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router';
 
 
 function ProjectArchive(props) {
-
     const projects = props.projects;
-
+    const images = props.images;
+    const videos = props.videos;
     const [filter, setFilter] = useState([
         {
             "label": "Categories",
@@ -79,7 +79,7 @@ function ProjectArchive(props) {
         });
         if (meetsCriteria) {
             return (
-                <SingleOverviewItem key={project.id} project={project} />
+                <SingleOverviewItem key={project.ID} project={project} images={images} videos={videos} />
             );
         }
         // Return null for projects that don't meet the criteria
@@ -90,7 +90,8 @@ function ProjectArchive(props) {
         <section className='overview-filter'>
             <div className='archive-top'>
                 <h2>Project archive</h2>
-                <DropdownFilter filter={filter} setFilter={setFilter} />
+                {/* Disable dropdown filter till implementation in database*/}
+                {/* <DropdownFilter filter={filter} setFilter={setFilter} /> */}
             </div>
             <div className='project-archive'>
                 {singleProjectItems.length === 0 ? (
@@ -107,7 +108,9 @@ function ProjectArchive(props) {
 }
 
 ProjectArchive.propTypes = {
-    projects: PropTypes.array
+    projects: PropTypes.array,
+    images: PropTypes.object,
+    videos: PropTypes.object,
 };
 
 
@@ -116,9 +119,12 @@ export default ProjectArchive;
 function SingleOverviewItem(props) {
 
     const project = props.project;
-    const projectThumbnails = project.imageurl;
+    const images = props.images;
+    const videos = props.videos;
+
+    const projectThumbnails = project.HIGHLIGHTED_IMAGES;
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [backgroundImage, setBackgroundImage] = useState(projectThumbnails[0]);
+    const [backgroundImage, setBackgroundImage] = useState(images[project.THUMBNAIL].MEDIUM);
 
     const timeoutDelay = 1500;
     const timeoutRef = useRef(null);
@@ -134,14 +140,14 @@ function SingleOverviewItem(props) {
     const handleSingleItemHoverLeave = () => {
         infoContainer.current.classList.add("d-none");
         clearTimeout(timeoutRef.current); // Clear the timeout
-        setBackgroundImage(projectThumbnails[0]);
+        setBackgroundImage(images[project.THUMBNAIL].MEDIUM);
     };
 
     const NextImage = (prevIndex) => {
         let nextIndex = prevIndex + 1;
         nextIndex = nextIndex === projectThumbnails.length ? 0 : nextIndex;
         setCurrentIndex(nextIndex);
-        setBackgroundImage(projectThumbnails[nextIndex]);
+        setBackgroundImage(images[projectThumbnails[nextIndex]].MEDIUM);
         timeoutRef.current = setTimeout(() => NextImage(nextIndex), timeoutDelay);
     };
     const navigate = useNavigate();
@@ -155,7 +161,7 @@ function SingleOverviewItem(props) {
     return (
         <div className='single-overview-item'
             onClick={() => {
-                navigate(`/project/${project.slug}`)
+                navigate(`/project/${project.PROJECT_SLUG}`)
             }}
             onMouseEnter={() => handleSingleItemHoverEnter()}
             onMouseLeave={() => handleSingleItemHoverLeave()}
@@ -167,8 +173,8 @@ function SingleOverviewItem(props) {
             </div>
             <div className='single-overview-info-container d-none' ref={infoContainer}>
                 <div className='single-overview-info'>
-                    <div className='single-overview-projectname'><h3>{project.name}</h3></div>
-                    <div className='single-overview-usp'>{project.usp}</div>
+                    <div className='single-overview-projectname'><h3>{project.PROJECT_NAME}</h3></div>
+                    <div className='single-overview-usp'>{project.USP}</div>
                 </div>
             </div>
         </div>
@@ -177,4 +183,6 @@ function SingleOverviewItem(props) {
 
 SingleOverviewItem.propTypes = {
     project: PropTypes.object,
+    images: PropTypes.object,
+    videos: PropTypes.object,
 };

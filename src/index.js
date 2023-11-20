@@ -834,9 +834,9 @@ const projects = [
                 src: "/soft-coded/raymarching-in-unity/HollowedCubeInfiniteResultZoomed.png",
                 label: "Sphere tracing visualized",
               },
-    
-    
-    
+
+
+
             ],
           },
           {
@@ -852,12 +852,12 @@ const projects = [
                 src: "/soft-coded/raymarching-in-unity/prismResults.png",
                 label: "Sphere tracing visualized",
               },
-    
+
             ],
           },
         ]
       },
-      
+
       {
         blockType: 4,
         title: "Conclusion",
@@ -869,6 +869,146 @@ const projects = [
           },
 
         ],
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Scarlet Escape",
+    logo: "/soft-coded/scarlet/scarletLogo.png",
+    featured: true,
+    slug: "scarlet-escape",
+    usp: "Scarlet escape is a co-op VR escape room where your partner using their phone",
+    description: "Scarlet escape is a co-op VR escape room. One person plays as the lost kid in VR and is stuck in the haunted mansion. Your job is to escape together with your friend, playing as the ghost. The ghost can use the gyroscope in their phone (or touch screen) to look around the room. However, they can not move throughout the room! The VR player can walk and interact within the room picking up items and lighting candles to see more. But most importantly, pick up and move the ghost around. The ghost is able to see things the VR player can't. Teamwork and communication is a must to escape this haunted mansion.",
+    github: "https://github.com/Koen-H/Scarlet-Escape-Quest-Standalone",
+    date: '28-04-2023',
+    imageurl: ["/soft-coded/scarlet/thumbnail.gif", "/soft-coded/scarlet/light.gif", "/soft-coded/scarlet/ghosttut.gif","/soft-coded/scarlet/vrtut.gif"],
+    videourl: "/soft-coded/scarlet/walkthrough.mp4",
+    projectCategories: [
+    ],
+    background: {
+      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
+      video: "/soft-coded/scarlet/scarletBackground.mp4",
+      videoLoop: true,
+      disableFullScreen: false,
+      images: [],
+      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
+      overlay: "rgba(0, 0, 0,0.4)"
+    },
+    css: {
+      textColor: "white",
+    },
+    pageContent: [
+      {
+        blockType: 2,
+        title: "Co-op Virtual Reality escape room with a phone partner",
+        text: "The VR player get's to do the most fun part, but the phone player gets to do the most important part. The vr player is able to pick up items and interact with the room, while the ghost is only able to look around from a statue's perspective (which the player can pick up and place somewhere else within the room!) The ghost is able to see things the VR player can't. Not only does the ghost have beter vision and sees a lighter room, they will also see glyphs on the wall or something glow within the room. The ghost is also able to use their ghostly power to request a hint, creating a shiny blue light at the items required to complete the puzzle ",
+        images: [
+          {
+            src: "/soft-coded/scarlet/scarletKidAndGhost.png",
+            label: "A picture of the lost kid (VR player) holding the ghost's statue (Phone player)",
+          },
+          {
+            src: "/soft-coded/scarlet/thumbnail.gif",
+            label: "The VR player playing around with the ghost's statue",
+          },
+        ]
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 4,
+            title: "Gyroscope on the phone",
+            text: "We didn't only want to make the VR player immerse within the room and make the ghost lest interesting to play as. We decided to use the gyroscope from the phone for the ghost player as camera movement. This will make the ghost player actively look around themself and creating a more fun and engaging way to play the game on phone. Some people got nausea while using the gyroscope so we decided to also create touchscreen controls and a option to disable the gyroscope.",
+            images: [
+              {
+                src: "/soft-coded/scarlet/UI_Turnaround_anim.gif",
+                label: "animation showcasing how to look around with the phone",
+              },
+              {
+                src: "/soft-coded/scarlet/ghostLookARound.gif",
+                label: "animation showcasing how to look around with the phone",
+              },
+            ],
+          },
+          {
+            blockType: 4,
+            title: "The ghosts are listening",
+            text: "We don't actually tell the players that the microphone is listening as we wanted to use it for surprises. For example there's this one puzzle where the VR player sees some glyphs and the ghost sees the translation for it. During the translation progress the players will communicate together, and once they solve the answer shout it out loud! Once this happen a paiting moves to the side revealing the next puzzel.\n But that wasn't the only part where we used it, I made it really easy to invoke certain events when certain phrases where said. We added a slow fade to the dark and back when someone says 'jumpscare",
+            images: [
+              {
+                src: "/soft-coded/raymarching-in-unity/raymarchExplained.png",
+                label: "Raymarching visualized",
+              },
+              {
+                src: "/soft-coded/raymarching-in-unity/sphereTracingExplained.png",
+                label: "Sphere tracing visualized",
+              },
+
+            ],
+          },
+        ]
+      },
+      {
+        blockType: 6,
+        title: "Tutorial and Puzzels",
+        gallery: {
+          images: [
+            {
+              src: "/soft-coded/scarlet/vrtut.gif",
+              label: "Tutorial for the VR player",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/ghosttut.gif",
+              label: "Tutorial for the phone player",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/clean.gif",
+              label: "The VR player cleaning up the window, revealing the correct order to light up candles which only the ghost can see.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/lightings.gif",
+              label: "VR player lighting up the candles in the correct order",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/scarletSymbol.gif",
+              label: "VR player placing the ghost inside it's statue, revealing a encrypted message to the VR player and the translation for the ghost player.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/ScarletOpen.gif",
+              label: "To correct translation was said, and the painting moves to the revealing the next puzzle",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/correctdisc.gif",
+              label: "VR player asking the ghost if he's holding the correct music disc.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/keyspit.gif",
+              label: "VR player entering the correct disc in the phonograph, resulting in the phonograph shooting out the key.",
+              showLabel: true,
+            },
+            {
+              src: "/soft-coded/scarlet/escape.gif",
+              label: "The vr player inserting the key, resulting in victory!",
+              showLabel: true,
+            },
+            
+          ],
+        }
+      },
+      {
+        blockType: 7,
+        title: "Playthrough video",
+        text: "Gameplay recorded on a phone and oculus link for the quest,note that standalone 72fps is possible on a quest2!\n The top left showcases the VR perspective while the bottom left showcases the phone perspective. The right showcases the player IRL.",
+        video: "/soft-coded/scarlet/Walkthrough.mp4",
       },
     ],
   }

@@ -102,7 +102,7 @@ const projects = [
               label: "A arcade poster made for super xenon galaxy",
             },
             {
-              src: "/soft-coded/xenon/ArcadeBoxSide.png",
+              src: "/soft-coded/xenon/arcadeboxside.png",
               label: "Concept art of how the side of the arcade box would look like if we were able to customize the full sized one.",
             },
 
@@ -326,7 +326,7 @@ const projects = [
     description: "Sea of Debris is a game made for a school project where we had 3 weeks to make a game for a charity and encourage the players to donate towards the charity. Our charity was TeamSeas where every $1 donated is one less pound of trash in the ocean. We developed a VR game based on the donation system where the player plays as the person cleaning up the ocean, hopefully evoking an emotional response to the huge amount of trash they get to clean up in the ocean.",
     github: "https://github.com/Koen-H/My-project-URP-test",
     date: '23-09-2022',
-    imageurl: ["/soft-coded/sea/Image1.png", "/soft-coded/sea/Image2.gif", "/soft-coded/sea/Image3.gif", "/soft-coded/sea/Image4.png"],
+    imageurl: ["/soft-coded/sea/SeaOfDebrisThumbnail.png", "/soft-coded/sea/turtle.png", "/soft-coded/sea/CleanOcean.png", "/soft-coded/sea/oceanverydirty.png", "/soft-coded/sea/aiming.png", "/soft-coded/sea/SeaOfDebrisEndScore.png"],
     videourl: "/soft-coded/sea/TrailerAE_V3.mp4",
     projectCategories: [
       'Games', 'Virtual Reality'
@@ -882,7 +882,7 @@ const projects = [
     description: "Scarlet escape is a co-op VR escape room. One person plays as the lost kid in VR and is stuck in the haunted mansion. Your job is to escape together with your friend, playing as the ghost. The ghost can use the gyroscope in their phone (or touch screen) to look around the room. However, they can not move throughout the room! The VR player can walk and interact within the room picking up items and lighting candles to see more. But most importantly, pick up and move the ghost around. The ghost is able to see things the VR player can't. Teamwork and communication is a must to escape this haunted mansion.",
     github: "https://github.com/Koen-H/Scarlet-Escape-Quest-Standalone",
     date: '28-04-2023',
-    imageurl: ["/soft-coded/scarlet/thumbnail.gif", "/soft-coded/scarlet/light.gif", "/soft-coded/scarlet/ghosttut.gif","/soft-coded/scarlet/vrtut.gif"],
+    imageurl: ["/soft-coded/scarlet/thumbnail.gif", "/soft-coded/scarlet/scarlettotem.png", "/soft-coded/scarlet/scarletroom2.png", "/soft-coded/scarlet/light.gif", "/soft-coded/scarlet/scarletroom.png", "/soft-coded/scarlet/vrtut.gif"],
     videourl: "/soft-coded/scarlet/walkthrough.mp4",
     projectCategories: [
     ],
@@ -938,15 +938,10 @@ const projects = [
             text: "We don't actually tell the players that the microphone is listening as we wanted to use it for surprises. For example there's this one puzzle where the VR player sees some glyphs and the ghost sees the translation for it. During the translation progress the players will communicate together, and once they solve the answer shout it out loud! Once this happen a paiting moves to the side revealing the next puzzel.\n But that wasn't the only part where we used it, I made it really easy to invoke certain events when certain phrases where said. We added a slow fade to the dark and back when someone says 'jumpscare",
             images: [
               {
-                src: "/soft-coded/raymarching-in-unity/raymarchExplained.png",
-                label: "Raymarching visualized",
+                src: "/soft-coded/scarlet/scarletroom2.png",
+                label: "the room",
               },
-              {
-                src: "/soft-coded/raymarching-in-unity/sphereTracingExplained.png",
-                label: "Sphere tracing visualized",
-              },
-
-            ],
+            ]
           },
         ]
       },
@@ -1000,7 +995,7 @@ const projects = [
               label: "The vr player inserting the key, resulting in victory!",
               showLabel: true,
             },
-            
+
           ],
         }
       },
@@ -1009,6 +1004,80 @@ const projects = [
         title: "Playthrough video",
         text: "Gameplay recorded on a phone and oculus link for the quest,note that standalone 72fps is possible on a quest2!\n The top left showcases the VR perspective while the bottom left showcases the phone perspective. The right showcases the player IRL.",
         video: "/soft-coded/scarlet/Walkthrough.mp4",
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "Pirates killed (WIP)",
+    logo: false,
+    featured: true,
+    slug: "pirates-killed",
+    usp: "Pirates killed is a VR multiplayer sailing game where your sail around islands,fight skeletons and enemy ships to gather loot.",
+    description: "Put on a VR headset and set sail with your friend on your own pirate ship in this VR multiplayer game! Sail (safely) to islands and use your canon to get rid off any threat you might encounter along the way. Once you arrive, you have to be careful of wandering skeletons on the island. Use your sword or guns to take them down. Depending on the island, loot a stronghold or fort, solve puzzles and dig up treasure hidden on the island.",
+    github: false,
+    date: '21-11-2023',
+    imageurl: ["/soft-coded/pirates-killed/background.png","/soft-coded/pirates-killed/dockedShore.png","/soft-coded/pirates-killed/sightseeing.png","/soft-coded/pirates-killed/shipsailing.png","/soft-coded/pirates-killed/lantern.png","/soft-coded/pirates-killed/pirateinventory.png"],
+    videourl: "/soft-coded/pirates-killed/gameplayproto1.mp4",
+    projectCategories: [
+    ],
+    background: {
+      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
+      video: false,
+      videoLoop: false,
+      disableFullScreen: false,
+      images: ["/soft-coded/pirates-killed/background.png"],
+      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
+      overlay: "rgba(0, 0, 0,0.4)"
+    },
+    css: {
+      textColor: "white",
+    },
+    pageContent: [
+      {
+        blockType: 1,
+        title: "Physics on the server",
+        text: "Since the game is multiplayer, we can put (almost) all the physics on to the server side to make the VR build less intensive. The ship itself is a special occasion as we want to have rigidbodies/cargo objects on the ship itself. However, placing cargo on top of the ship made the ship sink as rigidbodies on top of rigidbodies have that effect. To prevent this we actually have two versions of the ship, one is kinematic and following the physics version of the ship. The physics version is only on the server side and has it's own collision layer only colliding with terrain and other ships.",
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 7,
+            title: "Networked player movement on a moving platform",
+            text: "A big problem with networking is the latency. And in this case, the latency on a moving platform (ship) caused a huge desync between clients.\n To solve this huge desync I had parented the player to the ship and whenever they are parented the networked position will be in localspace instead of worldspace. This way the player is moved by the parent (ship) already and the player doesn't get a delayed position in worldspace.",
+            video: "/soft-coded/pirates-killed/lag.mp4",
+          },
+          {
+            blockType: 7,
+            title: "Inventory system.",
+            text: "I've made an inventory system where you can insert items in to inventory slots, in-game visible as floating bubbles.\n All the items have a unique inventory item ID which allows for synchronizations over the network. When the player tries to grab an item from the slot a request is send to the sever to spawn the object and grants ownership to the requesting client. Once the client received the ownership it is forced-grabbed in to the hand.\n Instead of having the slots around you, we decided to make a pocket barrel which contains a few inventory slots. The slots will be in-active when the player goes to far away and keep looking at you when you are in range.\n I've made some editor scripting to easily make inventory items. If the component is added to a prefab it will automatically get an ID and generate a mesh version of the gameobject with a correct pivot point which can be used inside the bubble.",
+            video: "/soft-coded/pirates-killed/pocketbarrel.mp4",
+          },
+        ],
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 7,
+            title: "Lantern handle physics and compass tutorial",
+            text: "I've made a lantern that can be toggled on and off while holding it in the hand, the player holds it at the handle and there are lantern physics on it so it behaves as expected.\n A second item I've made is the compass, it can point to anything we want and is synchronizable with the tutorial system. Whenever the tutorial changes objective, the compass can point at it. ",
+            video: "/soft-coded/pirates-killed/lanterncompass.mp4",
+          },
+          {
+            blockType: 1,
+            title: "Picking up items over the network",
+            text: "If a client wants to change, basically any property of a game object, they will have to be the ownership of the gameobject.\n I first made it so the player will request ownership when they hover over the object. However, this resulted in issues where a second player could hover over it and it would randomly drop out of your hand. Or the ownership is granted too late and it desyncs with the server.\n Once I had the inventory system working where I could force-grab items to a player's hand I re-worked this so it request ownership when the player tries to grab it, and when ownership is granted it force-grabs the object. This also made it possible to grab items out of another player's hand.",
+            video: "/soft-coded/pirates-killed/lanterncompass.mp4",
+          },
+        ],
+      },
+      {
+        blockType: 7,
+        title: "Playthrough prototype 1",
+        text: "Gameplay of the first prototype, contains player movement, swimming & climbing, steering the ship and raising/lowering the sails",
+        video: "/soft-coded/pirates-killed/gameplayproto1.mp4",
       },
     ],
   }

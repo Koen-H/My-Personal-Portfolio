@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { useNavigate } from 'react-router';
+import NewlineText from './NewlineText';
 
 
 function FeaturedSlider(props) {
@@ -164,7 +165,7 @@ function SingleFeaturedSlider(props) {
 
           <div className='single-featured-slider-info-box-bottom'>
             <div className='single-featured-slider-usp'>
-              <p>{project.description}</p>
+              <p><NewlineText text={project.description}/></p>
             </div>
             <div className='single-featured-slider-CTA-box'>
 

@@ -74,7 +74,7 @@ function TextBlock(props) {
       <h2>{contentBlock.title}</h2>
       <div className='project-block-content'>
         <p className={contentBlock.widthLimit ? 'width-limit' : ''}>
-          {contentBlock.text}
+          <NewlineText text={contentBlock.text} />
         </p>
       </div>
     </>

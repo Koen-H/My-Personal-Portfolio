@@ -133,7 +133,7 @@ function SingleFeaturedSlider(props) {
   }
 
   return (
-    <div>
+    <div >
       <div className='single-featured-slider'>
         <div className='single-featured-slider-media-box'>
           <div className='single-featured-slider-thumbnail-box'
@@ -157,7 +157,10 @@ function SingleFeaturedSlider(props) {
             {subThumbnails}
           </div>
         </div>
-        <div className='single-featured-slider-info-box'>
+        <div className='single-featured-slider-info-box'
+            onClick={() => {
+            navigate(`/${project.slug}`)
+          }}>
           <div className='single-featured-slider-info-box-top'>
             <div className='single-featured-slider-projectname'><h2>{projectName}</h2></div>
           </div>
@@ -165,12 +168,12 @@ function SingleFeaturedSlider(props) {
 
           <div className='single-featured-slider-info-box-bottom'>
             <div className='single-featured-slider-usp'>
-              <p><NewlineText text={project.description}/></p>
+              <p><NewlineText text={project.description} /></p>
             </div>
             <div className='single-featured-slider-CTA-box'>
 
               <a onClick={() => {
-                navigate(`/project/${project.slug}`)
+                navigate(`/${project.slug}`)
               }}>Check it out!</a>
 
               <div className='icons'>

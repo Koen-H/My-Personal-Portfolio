@@ -53,7 +53,7 @@ function DropdownFilter(props) {
     ));
 
     return (
-        <section className='dropdown-filter' ref={refPopup}>
+        <section className='dropdown-filter d-none' ref={refPopup}>
             <h3 onClick={() => setOpened(!opened)}>
                 <FontAwesomeIcon icon={faSliders} size="xs" className='filter-icon' />
                 Filters

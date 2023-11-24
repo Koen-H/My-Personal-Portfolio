@@ -155,7 +155,7 @@ function SingleOverviewItem(props) {
     return (
         <div className='single-overview-item'
             onClick={() => {
-                navigate(`/project/${project.slug}`)
+                navigate(`/${project.slug}`)
             }}
             onMouseEnter={() => handleSingleItemHoverEnter()}
             onMouseLeave={() => handleSingleItemHoverLeave()}

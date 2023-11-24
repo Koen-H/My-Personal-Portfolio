@@ -1080,12 +1080,86 @@ const projects = [
         video: "/soft-coded/pirates-killed/gameplayproto1.mp4",
       },
     ],
-  }
+  },
+  {
+    id: 8,
+    name: "Cosmic Campus",
+    logo: "/soft-coded/cosmic-campus/logo.png",
+    featured: true,
+    slug: "cosmic-campus",
+    usp: "Cosmic campus is a co-op multiplayer roguelike game with procedurally generated maps.",
+    description: "As the only team we took the assignment to create a game for the education, to be used for the open days. We settled on making a roguelike co-op game with three different roles, Artist, Designer and Engineer. Each having unique weapons and ablityies representing the different branches of the education.\n The objective of the game is to reach the end of the level and save the teacher, while traversing the level you will have to fight rock golems and help lost students find their teacher again.\n With steamworks implemented it is playable worldwide and each level is procedurally generated creating endless replayablity as no level is the same.",
+    github: "https://github.com/Koen-H/Cosmic-Campus",
+    date: '20-06-2023',
+    imageurl: ["/soft-coded/cosmic-campus/thumbnail-poster.png","/soft-coded/cosmic-campus/firstglance.png"],
+    videourl: "/soft-coded/cosmic-campus/cosmiccampustrailer.mp4",
+    projectCategories: [
+    ],
+    background: {
+      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
+      video: false,
+      videoLoop: false,
+      disableFullScreen: false,
+      images: ["/soft-coded/cosmic-campus/background.png"],
+      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
+      overlay: "rgba(0, 0, 0,0.4)"
+    },
+    css: {
+      textColor: "white",
+    },
+    pageContent: [
+      {
+        blockType: 1,
+        title: "Physics on the server",
+        text: "Since the game is multiplayer, we can put (almost) all the physics on to the server side to make the VR build less intensive. The ship itself is a special occasion as we want to have rigidbodies/cargo objects on the ship itself. However, placing cargo on top of the ship made the ship sink as rigidbodies on top of rigidbodies have that effect. To prevent this we actually have two versions of the ship, one is kinematic and following the physics version of the ship. The physics version is only on the server side and has it's own collision layer only colliding with terrain and other ships.",
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 7,
+            title: "Networked player movement on a moving platform",
+            text: "A big problem with networking is the latency. And in this case, the latency on a moving platform (ship) caused a huge desync between clients.\n To solve this huge desync I had parented the player to the ship and whenever they are parented the networked position will be in localspace instead of worldspace. This way the player is moved by the parent (ship) already and the player doesn't get a delayed position in worldspace.",
+            video: "/soft-coded/pirates-killed/lag.mp4",
+          },
+          {
+            blockType: 7,
+            title: "Inventory system.",
+            text: "I've made an inventory system where you can insert items in to inventory slots, in-game visible as floating bubbles.\n All the items have a unique inventory item ID which allows for synchronizations over the network. When the player tries to grab an item from the slot a request is send to the sever to spawn the object and grants ownership to the requesting client. Once the client received the ownership it is forced-grabbed in to the hand.\n Instead of having the slots around you, we decided to make a pocket barrel which contains a few inventory slots. The slots will be in-active when the player goes to far away and keep looking at you when you are in range.\n I've made some editor scripting to easily make inventory items. If the component is added to a prefab it will automatically get an ID and generate a mesh version of the gameobject with a correct pivot point which can be used inside the bubble.",
+            video: "/soft-coded/pirates-killed/pocketbarrel.mp4",
+          },
+        ],
+      },
+      {
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 7,
+            title: "Lantern handle physics and compass tutorial",
+            text: "I've made a lantern that can be toggled on and off while holding it in the hand, the player holds it at the handle and there are lantern physics on it so it behaves as expected.\n A second item I've made is the compass, it can point to anything we want and is synchronizable with the tutorial system. Whenever the tutorial changes objective, the compass can point at it. ",
+            video: "/soft-coded/pirates-killed/lanterncompass.mp4",
+          },
+          {
+            blockType: 1,
+            title: "Picking up items over the network",
+            text: "If a client wants to change, basically any property of a game object, they will have to be the ownership of the gameobject.\n I first made it so the player will request ownership when they hover over the object. However, this resulted in issues where a second player could hover over it and it would randomly drop out of your hand. Or the ownership is granted too late and it desyncs with the server.\n Once I had the inventory system working where I could force-grab items to a player's hand I re-worked this so it request ownership when the player tries to grab it, and when ownership is granted it force-grabs the object. This also made it possible to grab items out of another player's hand.",
+            video: "/soft-coded/pirates-killed/lanterncompass.mp4",
+          },
+        ],
+      },
+      {
+        blockType: 7,
+        title: "Playthrough prototype 1",
+        text: "Gameplay of the first prototype, contains player movement, swimming & climbing, steering the ship and raising/lowering the sails",
+        video: "/soft-coded/pirates-killed/gameplayproto1.mp4",
+      },
+    ],
+  },
 ]
 
 const projectPages =
   projects.map((project) =>
-    <Route key={project.id} exact path={`/project/${project.slug}`} element={<ProjectPage project={project} />} />
+    <Route key={project.id} exact path={`/${project.slug}`} element={<ProjectPage project={project} />} />
   );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

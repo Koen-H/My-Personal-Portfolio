@@ -49,19 +49,22 @@ function Navigation() {
   const navItems = [
     {
       title: "Home",
-      href: "/"
+      href: "/",
+      newBrowser: false,
     },
     {
       title: "Github",
-      href: "https://github.com/Koen-H"
+      href: "https://github.com/Koen-H",
+      newBrowser: true,
     },
     {
       title: "LinkedIn",
-      href: "https://www.linkedin.com/in/koen-hankel/"
+      href: "https://www.linkedin.com/in/koen-hankel/",
+      newBrowser: true,
     },
   ]
-  const listItems = navItems.map(({ title, href }) =>
-    <a href={href} key={title}><li>{title}</li></a>
+  const listItems = navItems.map(({ title, href, newBrowser }) =>
+    <a href={href} key={title} target={newBrowser ? "_blank" : "_self"} rel="noopener noreferrer"><li>{title}</li></a>
   )
   return (
     <nav className='header-nav'>

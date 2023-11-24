@@ -12,7 +12,8 @@ function ProjectDetails(props) {
 
   if (project.github) {
     details.push(
-      <div key="github-detail" className='project-detail-single'>
+      <div key="github-detail" className='project-detail-single'
+       onClick={() => window.open(project.github, '_blank')}>
         <div className='icon icontooltip'><FontAwesomeIcon icon={faGithub} />
           <span className='tooltipText'>Code Available on github</span>
         </div>

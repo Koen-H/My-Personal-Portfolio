@@ -50,7 +50,7 @@ const projects = [
       {
         blockType: 2,
         title: "Collect and match!",
-        text: "The main goal of the game is to stay alive for as long as possible by collecting the energy on time. Energy will only last for around 10 seconds and once it goes away you'll lose one heart. To pick up energy you need to match the color of the spaceship with the color of the energy and press the big white button on the controller. Whenever you succesfully pick up energy you get a small speed boost which will stack if you collect more.\n There are also space police enemies roaming around and they put you to a direct stop if you get in contact with them. There's also a star powerup which will collect all the energy of the color you are when you collide with it.\n The game is intended to be played with the custom made controllet, but is also playable with keyboard a keyboard.",
+        text: "The main goal of the game is to stay alive for as long as possible by collecting the energy on time. Energy will only last for around 10 seconds and once it goes away you'll lose one heart. To pick up energy you need to match the color of the spaceship with the color of the energy and press the big white button on the controller. Whenever you succesfully pick up energy you get a small speed boost which will stack if you collect more.\n There are space police enemies roaming around and they put you to a direct stop if you get in contact with them. There's also a star powerup which will collect all the energy of the color you are when you collide with it.\n The game is intended to be played with the custom made controller. But is also playable with a keyboard.",
         images: [
           {
             src: "/soft-coded/xenon/Image1.png",
@@ -153,14 +153,14 @@ const projects = [
       {
         blockType: 4,
         title: "Tiled level implementation",
-        text: "For the assignment, there were some big bonus points if you got the Tiled level editor implemented in the game. I managed to make quite a decent framework for the game itself that it allowed me to create interesting shaped levels.\n In tetris when a row dissapears all blocks fall down by the amount of rows that dissapeared. jowever, since I was using custom shapes it happens that a block will be floating in the air.",
+        text: "For the assignment, there were some big bonus points if you got the Tiled level editor implemented in the game. I managed to make quite a decent framework for the game itself that it allowed me to create interesting shaped levels.\n In tetris when a row dissapears all blocks fall down by the amount of rows that dissapeared. however, since I was using custom shapes it happens that a block will be floating in the air.",
         images: [
           {
             src: "/soft-coded/tetris/tiled.png",
             label: "Level 4, in tiled",
           },
           {
-            src: "/soft-coded/tetris/Levels/level4.png",
+            src: "/soft-coded/tetris/levels/level4.png",
             label: "The logo on top of the underwater scene",
           },
         ],
@@ -171,23 +171,23 @@ const projects = [
         gallery: {
           images: [
             {
-              src: "/soft-coded/tetris/Levels/level1.png",
+              src: "/soft-coded/tetris/levels/level1.png",
               label: "Level one of tetris",
             },
             {
-              src: "/soft-coded/tetris/Levels/level2.png",
+              src: "/soft-coded/tetris/levels/level2.png",
               label: "Level two of tetris",
             },
             {
-              src: "/soft-coded/tetris/Levels/level3.png",
+              src: "/soft-coded/tetris/levels/level3.png",
               label: "Level three of tetris",
             },
             {
-              src: "/soft-coded/tetris/Levels/level4.png",
+              src: "/soft-coded/tetris/levels/level4.png",
               label: "Level four of tetris",
             },
             {
-              src: "/soft-coded/tetris/Levels/level5.png",
+              src: "/soft-coded/tetris/levels/level5.png",
               label: "Level five of tetris",
             },
           ],
@@ -212,11 +212,11 @@ const projects = [
     name: "The Rolling cones",
     logo: "",
     slug: "The-Rolling-Cones",
-    usp: "In the physics game, The Rolling Cones, you roll around as a pinecone, place objects around the level to reach new areas and solve puzzles.",
-    description: "In The Rolling Cones you play as a pinecone, use your round bottom half and rough top half to conquer the snowy areas and return the treasures you lost!\nYou will have access to a number of items, but beware! You can only use these items in the designated areas, so use them wisely.\nOnce you have finished the game for the first time you can replay it again using the golden play button to try and complete each level in new and faster ways.",
+    usp: "In the physics game The Rolling Cones you roll around as a pinecone, place objects around the level to reach new areas and solve puzzles.",
+    description: "In The Rolling Cones you play as a pinecone, use your round bottom half and rough top half to conquer the snowy areas and return the treasures you lost!\nYou will have access to a number of items, but beware: you can only use these items in the designated areas, so use them wisely.\nOnce you have finished the game for the first time you can replay it using the golden play button to try and complete each level in new and faster way.",
     github: "",
     date: '12-05-2022',
-    imageurl: ["/soft-coded/cones/background.png", "/soft-coded/cones/image2.png", "/soft-coded/cones/image3.png", "/soft-coded/cones/image4.png"],
+    imageurl: ["/soft-coded/cones/thumbnail.png", "/soft-coded/cones/image2.png", "/soft-coded/cones/image3.png", "/soft-coded/cones/image4.png"],
     videourl: "/soft-coded/cones/Trailercones.mp4",
     projectCategories: [
       'Games',
@@ -235,7 +235,7 @@ const projects = [
       {
         blockType: 2,
         title: "Physics based puzzling",
-        text: "The main goal is to reach the end of the level, it's a shiny silver coin. To reach the coin you can utlize 3 different items that can affect the physics of the cone. These items can only be placed within certain area's where the aurora allows it.\n The first item you unlock is the geyser. Once you roll on to the geyser it will boost you up towards the sky allowing for vertical movement.\n The second item is the aurora field and it drags you towards it's center. It can be used to gain a speed boost or change the direction you go!\n The final item is the slingbush. When entering the slingbush you can shoot yourself in to a direction! However, you need to time it wisely as your aim goes up and down.\n As a pinecone you can also widen your spikes to glide further.\n Once you manage to finish the game you'll unlock newGame+ and it unlock all the items from the start allowing you to find new and faster ways to finish the levels.",
+        text: "The main goal is to reach the end of the level, which is a shiny silver coin. To reach the coin you can utlize 3 different items that can affect the physics of the cone. These items can only be placed within certain area's where the aurora allows it.\n The first item you unlock is the geyser. Once you roll on to the geyser it will boost you up towards the sky allowing for vertical movement.\n The second item is the aurora field and it drags you towards it's center. It can be used to gain a speed boost or change the direction you go!\n The final item is the slingbush. When entering the slingbush you can shoot yourself in to a direction! However, you need to time it wisely as your aim goes up and down.\n As a pinecone you can also widen your spikes to glide further.\n Once you manage to finish the game you'll unlock newGame+ and it unlock all the items from the start allowing you to find new and faster ways to finish the levels.",
         images: [
           {
             src: "/soft-coded/cones/infographic.jpg",
@@ -289,7 +289,7 @@ const projects = [
       {
         blockType: 4,
         title: "Merchandise",
-        text: "Part of the assignment was to make some merchandise (concepts) for it. We made real life plushies and stickers, alongside various",
+        text: "Part of the assignment was to make some merchandise (concepts) for it. We made real life plushies and stickers!",
         images: [
 
           {
@@ -303,17 +303,22 @@ const projects = [
         ],
       },
       {
-        blockType: 7,
-        title: "Trailer",
-        text: "",
-        video: "/soft-coded/cones/Trailercones.mp4",
-      },
-      {
-        blockType: 7,
-        title: "Playthrough",
-        text: "",
-        video: "/soft-coded/cones/ConePlaythrough.mp4",
-      },
+        blockType: 0,
+        innerBlocks: [
+          {
+            blockType: 7,
+            title: "Trailer",
+            text: "",
+            video: "/soft-coded/cones/Trailercones.mp4",
+          },
+          {
+            blockType: 7,
+            title: "Playthrough",
+            text: "",
+            video: "/soft-coded/cones/ConePlaythrough.mp4",
+          },
+        ]
+      }
     ],
   },
   {
@@ -347,7 +352,7 @@ const projects = [
       {
         blockType: 2,
         title: "Vacuum cleaner",
-        text: "The vacuum cleaner is the main mechanic of the game, without it you wouldn't be able to complete the game.It has two modes, suck and shoot. The sucking mode will suck items towards you and once its close enough it will suck the item in it's inventory, saved for later.\n To prevent players from constantly holding the button it will slowly overheat if you use it for too long. The player can feel and see how hot it is by the red bar around the gun and the vibration in the controller. Once the inventory is full you can toggle the mode by pressing the A button to set it in shooting mode.\n The current mode is displayed by the arrow on top of the gun.",
+        text: "The vacuum cleaner is the main mechanic of the game, without it you wouldn't be able to complete the game. It has two modes: suck and shoot. The sucking mode will suck items towards you and once its close enough it will suck the item in it's inventory, saved for later.\n To prevent players from constantly holding the button it will slowly overheat if you use it for too long. The player can feel and see how hot it is by the red bar around the gun and the vibration in the controller. Once the inventory is full you can toggle the mode by pressing the A button to set it in shooting mode.\n The current mode is displayed by the arrow on top of the gun.",
         images: [
           {
             src: "/soft-coded/sea/vacuum.gif",
@@ -358,7 +363,7 @@ const projects = [
       {
         blockType: 3,
         title: "Retrievable hook",
-        text: "In the other hand you have the retrievable hook, it's not as important as the vacuum cleaner as you can finish the game without it. However, it will help you get a higher score as you will be able to pull items closer to you that the vacuum cleaner can't reach.\n The first step is to shoot it out just like a gun, if it misses it comes back without any plastic. If it manages to hit something it will stick to the plastic until a pull back motion is made on the left hand.",
+        text: "In the other hand you have the retrievable hook, it's not as important as the vacuum cleaner as you can finish the game without it. However it will help you get a higher score as you will be able to pull items closer to you that the vacuum cleaner can't reach.\n The first step is to shoot it out just like a gun, if it misses it comes back without any plastic. If it manages to hit something it will stick to the plastic until a pull back motion is made on the left hand.",
         images: [
           {
             src: "/soft-coded/sea/LeftHandTutorial.png",
@@ -373,7 +378,7 @@ const projects = [
       {
         blockType: 4,
         title: "Scoring points",
-        text: "Once you set the vacuum cleaner in the blowing mode it will become a gun and you can shoot out the trash in the correct trash can.\n There are 3 different types of trash and it's recognizable by the background color of the item displayed on the vacuum. Mismatching the trash with the incorrect cargo container results in the container throwing back the trash in to the ocean. If you do it correctly and fast enough there will be bonus points awareded at the end of the game.",
+        text: "Once you set the vacuum cleaner in the blowing mode it will become a gun and you can shoot out the trash in the correct trash can.\n There are 3 different types of trash and it's recognizable by the background color of the item displayed on the vacuum. Mismatching the trash with the incorrect cargo container results in the container throwing back the trash into the ocean. If you do it correctly and fast enough there will be bonus points awarded at the end of the game.",
         images: [
           {
             src: "/soft-coded/sea/vacuumShooting.gif",
@@ -447,6 +452,154 @@ const projects = [
     ],
   },
   {
+    id: 8,
+    name: "Cosmic Campus",
+    logo: "/soft-coded/cosmic-campus/logo.png",
+    featured: true,
+    slug: "cosmic-campus",
+    usp: "Cosmic campus is a co-op multiplayer roguelike game with procedurally generated maps.",
+    description: "As the only team we took the assignment to create a game for the education, to be used for the open days. We settled on making a roguelike co-op game with three different roles, Artist, Designer and Engineer. Each having unique weapons and abilities representing the different branches of the education.\n The objective of the game is to reach the end of the level and save the teacher, while traversing the level you will have to fight rock golems and help lost students find their teacher again.\n With steamworks implemented it is playable worldwide and each level is procedurally generated creating endless replayablity as no level is the same.",
+    github: "https://github.com/Koen-H/Cosmic-Campus",
+    date: '20-06-2023',
+    imageurl: ["/soft-coded/cosmic-campus/thumbnail-poster-cropped-logo.png", "/soft-coded/cosmic-campus/firstglance.png", "/soft-coded/cosmic-campus/overviewmonsters.png", "/soft-coded/cosmic-campus/startAbove.png", "/soft-coded/cosmic-campus/topdownView.png", "/soft-coded/cosmic-campus/lavaish.png"],
+    videourl: "/soft-coded/cosmic-campus/cosmiccampustrailer.mp4",
+    projectCategories: [
+    ],
+    background: {
+      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
+      video: false,
+      videoLoop: false,
+      disableFullScreen: false,
+      images: ["/soft-coded/cosmic-campus/thumbnail-poster-cropped.png"],
+      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
+      overlay: "rgba(0, 0, 0,0.4)"
+    },
+    css: {
+      textColor: "white",
+    },
+    pageContent: [
+      {
+        blockType: 2,
+        title: "Online co-op through steam",
+        text: "Our idea was to put on steam once we finished it and brought some more updates out after the project released. That's why I implemented the steamworks api in to the game.\n Players are able to directly join and invite their friends through the steam overlay. In the lobby players will also get the option to quick join a server with the best ping or select a server from the serverlist.\n Once the game starts you will be able to see other player's name and steam avatar.",
+        images: [
+          {
+            src: "/soft-coded/cosmic-campus/steamingame.png",
+            label: "ingame icon and name",
+          }, {
+            src: "/soft-coded/cosmic-campus/serverlist.png",
+            label: "Lobby of the game",
+          }, {
+            src: "/soft-coded/cosmic-campus/lobby.png",
+            label: "Lobby of the game",
+          },
+        ]
+      },
+      {
+        blockType: 3,
+        title: "3 Weapons, 3 Colors",
+        text: "When we started development we wanted to give each role their unique weapon. During development we changed this so each role can choose one of the three weapons and made it so the weapons change color that matches the role. This includes the arrow and staff lightning colors.\n The first weapon is the bow and it shoots where the player is aiming. The player can hold the button down for increased damaged and projectile speed.\n The second weapon is the staff. The staff shoots out a chain lightning between the enemies where the first enemy takes the most damage and the further the chain goes the lesser damage it does.\n The final weapon is the sword which was either too strong or too weak. Originally it dealt a lot of damage but due to the short range you were forced to take a hit. We made it so the sword heals the player when they get a hit, this made the sword way to strong and we nerfed it a lot and added a small knockback to the sword making it easier to escape.",
+        images: [{
+          src: "/soft-coded/cosmic-campus/weaponbow.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/weaponsword.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/weaponstaff.png",
+          label: "Lobby of the game",
+        },]
+      },
+      {
+        blockType: 2,
+        title: "Teamwork should make the dream work",
+        text: "Since CMGT has a lot of team projects we wanted to bring people together combining their role's unique abilities to reach victory. Just like we do making our team projects.\n During testing we realized noone was actually staying together and did their own thing somewhere else on the map. This is where I got the idea of adding effectiveness and resistance to the enemies. Players have to match their colors with the enemy to deal the most amount of damage. If your color doesn't match with the enemy, your damage will be much weaker. This caused people to stick together and communicate more and giving call-outs for when there is a specific colored enemy. This did make the game harder for when you are playing solo so we added an option called 'fair play' which made sure no enemis would spawn when the related role wasn't in the game. This was also enabled when a player accidently got disconnected.\n For the boss you are actually forced to deal to correct damage and teamwork is a requirement.",
+        images: [{
+          src: "/soft-coded/cosmic-campus/coloreffectiveness.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/enemy_color_swap.gif",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/rangedcolored.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/enemycolored.png",
+          label: "Lobby of the game",
+        },]
+      },
+      {
+        blockType: 3,
+        title: "The engineer ability",
+        text: "Each role has a unique ability that has been reworked countless of times. Starting with the (best) ability from the engineer. The engineer creates the game, puts everything together and makes the game. \n Originally the ability from the engineer would create any object selected alive and make it run in to the enemy, resulting in an explosion. While it sounds great on concept, I came up with an even better idea mid-development.\n Using the body parts of the enemies and random objects throughout the level the engineer can create a giant ball and take full control over it. The more body parts are connected the larger the explosion and the more damage it does.\n There is no visual cap on how big the ball can become, but there is a hidden cap on the damage and range of the explosion",
+        images: [{
+          src: "/soft-coded/cosmic-campus/engineertut.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/enigearly.gif",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/engineerGameplay.gif",
+          label: "Lobby of the game",
+        },]
+      },
+      {
+        blockType: 2,
+        title: "The artist ability",
+        text: "The artist gives a game it's style, brings the characters alive and makes the environment breathtaking to look at.\n  Originally they would paint a lava and water texture on the ground making the enemies either slowed or on fire. During development I realized we could utilize the system I made for more effects and proposed the idea of using the crystals for different effects. Each vibrant color got their own unqiue effect such as fire, damage resistance, damage increase, speed boost, speed debuf and healing. Alongside their unique color, unique themed vfx was used to help visualize the effect.\n The artist is the only one that has an inventory, by right clicking on the crystal they can be drained. The artist can hold 5 different colors and select which one they want to use.\n The crystals have limited uses before they are drained empty and slowly refill.\n ",
+        images: [{
+          src: "/soft-coded/cosmic-campus/artisttut.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/artgif.gif",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/artistGameplay.gif",
+          label: "Lobby of the game",
+        },]
+      },
+      {
+        blockType: 3,
+        title: "The designer ability",
+        text: "The designer comes up with the ideas, create the levels and shapes the world.\n The original concept for the designer was their pick-up ability. They could pick-up specific items placed within the level and slam the object back down on the ground dealing damage to the enemies underneath it. This caused a lot of issues with networking, clipping enemies and players, it sometimes made it impossible to continue and was noone wanted to play with it after the reworked abilities for the other roles.\n I proposed to remove the picking up and placing down and change it to a giant item falling from the sky that deals damage and knockback. Kind of how fortnite's junkrift worked. After a simple demo it already felt really satisfying and good to use but we had no clue what we could drop from the sky... Until our designer came up with an amazing collab with the education!",
+        images: [{
+          src: "/soft-coded/cosmic-campus/designertut.png",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/designerearly.gif",
+          label: "Lobby of the game",
+        }, {
+          src: "/soft-coded/cosmic-campus/designerfinal.gif",
+          label: "Lobby of the game",
+        },]
+      },
+      {
+        blockType: 2,
+        title: "A true CMGT game",
+        text: "Our designer thought it would be cool to include as many student projects as possible, because everyone is part of the CMGT. People from the education were able to submit their assets from other projects and we would randomly spawn them throughout the map and let the designer throw giant versions of the assets out of the sky. Making the game a true CMGT game build by the education.\n We wanted to bring the teachers in to our game as well, luckily for us they made some funny videos in the past that turned in to gifs. This resulted in to the CMGTV, one of the items the designer can drop out of the sky and contains one of the teachers gifs on it.",
+        images: [
+          {
+            src: "/soft-coded/cosmic-campus/cmg-tv.gif",
+            label: "Lobby of the game",
+          },
+          {
+            src: "/soft-coded/cosmic-campus/aligator.gif",
+            label: "Lobby of the game",
+          }, {
+            src: "/soft-coded/cosmic-campus/cmgtcollab.png",
+            label: "Lobby of the game",
+          },
+        ]
+      },
+      {
+        blockType: 7,
+        title: "Playthrough",
+        text: "A full playthrough of the (allmost) finished product.",
+        video: "/soft-coded/cosmic-campus/cosmiccampusgameplay.mp4",
+      },
+    ],
+  },
+  {
     id: 4,
     name: "Godot Space Adventure ",
     logo: false,
@@ -476,7 +629,7 @@ const projects = [
       {
         blockType: 2,
         title: "Let’s a godot",
-        text: "I’ve heard a lot of good things about godot the last two years and that it might even replace unity,  that was the reason I decided to learn about Godot.\nI’m very familiar with unity so it was time to find out how this game engine worked. By the first glance, it looks like we got an inspector, a scene view. Files are bottom left, console bottom. Not that different from unity. One small (big) problem was that Godot released version 4.0 not that long ago and it has a lot of big differences compared with Godot 3. There came a thought in my mind to change to godot 3 but decided to stick with 4.0 as I didn’t see any real value in learning something outdated. ",
+        text: "I’ve heard a lot of good things about godot the last two years and that it might even replace Unity,  that was the reason I decided to learn about Godot.\nI’m very familiar with unity so it was time to find out how this game engine worked. By the first glance, it looks like we got an inspector, a scene view. Not that different from Unity. One small (big) problem was that Godot released version 4.0 recently and it has a lot of big differences compared with Godot 3. There came a thought in my mind to change to Godot 3 but decided to stick with 4.0 as I didn’t see any real value in learning something outdated. ",
         images: [
           {
             src: "/soft-coded/godot-space-adventure/godotInterface.png",
@@ -1014,10 +1167,10 @@ const projects = [
     featured: true,
     slug: "pirates-killed",
     usp: "Pirates killed is a VR multiplayer sailing game where your sail around islands,fight skeletons and enemy ships to gather loot.",
-    description: "Put on a VR headset and set sail with your friend on your own pirate ship in this VR multiplayer game! Sail (safely) to islands and use your canon to get rid off any threat you might encounter along the way. Once you arrive, you have to be careful of wandering skeletons on the island. Use your sword or guns to take them down. Depending on the island, loot a stronghold or fort, solve puzzles and dig up treasure hidden on the island.",
+    description: "Put on a VR headset and set sail with your friend on your own pirate ship in this VR multiplayer game! Sail (safely) to islands and use your canon to get rid off any threat you might encounter along the way. Once you arrive you have to be careful of wandering skeletons on the island. Use your sword or guns to take them down. Depending on the island, loot a stronghold or fort, solve puzzles and dig up treasure hidden on the island.",
     github: false,
     date: '21-11-2023',
-    imageurl: ["/soft-coded/pirates-killed/background.png","/soft-coded/pirates-killed/dockedShore.png","/soft-coded/pirates-killed/sightseeing.png","/soft-coded/pirates-killed/shipsailing.png","/soft-coded/pirates-killed/lantern.png","/soft-coded/pirates-killed/pirateinventory.png"],
+    imageurl: ["/soft-coded/pirates-killed/background.png", "/soft-coded/pirates-killed/dockedShore.png", "/soft-coded/pirates-killed/sightseeing.png", "/soft-coded/pirates-killed/shipsailing.png", "/soft-coded/pirates-killed/lantern.png", "/soft-coded/pirates-killed/pirateinventory.png"],
     videourl: "/soft-coded/pirates-killed/gameplayproto1.mp4",
     projectCategories: [
     ],
@@ -1081,80 +1234,7 @@ const projects = [
       },
     ],
   },
-  {
-    id: 8,
-    name: "Cosmic Campus",
-    logo: "/soft-coded/cosmic-campus/logo.png",
-    featured: true,
-    slug: "cosmic-campus",
-    usp: "Cosmic campus is a co-op multiplayer roguelike game with procedurally generated maps.",
-    description: "As the only team we took the assignment to create a game for the education, to be used for the open days. We settled on making a roguelike co-op game with three different roles, Artist, Designer and Engineer. Each having unique weapons and ablityies representing the different branches of the education.\n The objective of the game is to reach the end of the level and save the teacher, while traversing the level you will have to fight rock golems and help lost students find their teacher again.\n With steamworks implemented it is playable worldwide and each level is procedurally generated creating endless replayablity as no level is the same.",
-    github: "https://github.com/Koen-H/Cosmic-Campus",
-    date: '20-06-2023',
-    imageurl: ["/soft-coded/cosmic-campus/thumbnail-poster.png","/soft-coded/cosmic-campus/firstglance.png"],
-    videourl: "/soft-coded/cosmic-campus/cosmiccampustrailer.mp4",
-    projectCategories: [
-    ],
-    background: {
-      css: "linear-gradient(69.5deg, rgb(40, 48, 68) 2.3%, rgb(95 95 95) 97.6%)",
-      video: false,
-      videoLoop: false,
-      disableFullScreen: false,
-      images: ["/soft-coded/cosmic-campus/background.png"],
-      headerOverlay: "linear-gradient(rgba(0, 0, 0,0)80%, rgba(0, 0, 0,0.4) 100%)",
-      overlay: "rgba(0, 0, 0,0.4)"
-    },
-    css: {
-      textColor: "white",
-    },
-    pageContent: [
-      {
-        blockType: 1,
-        title: "Physics on the server",
-        text: "Since the game is multiplayer, we can put (almost) all the physics on to the server side to make the VR build less intensive. The ship itself is a special occasion as we want to have rigidbodies/cargo objects on the ship itself. However, placing cargo on top of the ship made the ship sink as rigidbodies on top of rigidbodies have that effect. To prevent this we actually have two versions of the ship, one is kinematic and following the physics version of the ship. The physics version is only on the server side and has it's own collision layer only colliding with terrain and other ships.",
-      },
-      {
-        blockType: 0,
-        innerBlocks: [
-          {
-            blockType: 7,
-            title: "Networked player movement on a moving platform",
-            text: "A big problem with networking is the latency. And in this case, the latency on a moving platform (ship) caused a huge desync between clients.\n To solve this huge desync I had parented the player to the ship and whenever they are parented the networked position will be in localspace instead of worldspace. This way the player is moved by the parent (ship) already and the player doesn't get a delayed position in worldspace.",
-            video: "/soft-coded/pirates-killed/lag.mp4",
-          },
-          {
-            blockType: 7,
-            title: "Inventory system.",
-            text: "I've made an inventory system where you can insert items in to inventory slots, in-game visible as floating bubbles.\n All the items have a unique inventory item ID which allows for synchronizations over the network. When the player tries to grab an item from the slot a request is send to the sever to spawn the object and grants ownership to the requesting client. Once the client received the ownership it is forced-grabbed in to the hand.\n Instead of having the slots around you, we decided to make a pocket barrel which contains a few inventory slots. The slots will be in-active when the player goes to far away and keep looking at you when you are in range.\n I've made some editor scripting to easily make inventory items. If the component is added to a prefab it will automatically get an ID and generate a mesh version of the gameobject with a correct pivot point which can be used inside the bubble.",
-            video: "/soft-coded/pirates-killed/pocketbarrel.mp4",
-          },
-        ],
-      },
-      {
-        blockType: 0,
-        innerBlocks: [
-          {
-            blockType: 7,
-            title: "Lantern handle physics and compass tutorial",
-            text: "I've made a lantern that can be toggled on and off while holding it in the hand, the player holds it at the handle and there are lantern physics on it so it behaves as expected.\n A second item I've made is the compass, it can point to anything we want and is synchronizable with the tutorial system. Whenever the tutorial changes objective, the compass can point at it. ",
-            video: "/soft-coded/pirates-killed/lanterncompass.mp4",
-          },
-          {
-            blockType: 1,
-            title: "Picking up items over the network",
-            text: "If a client wants to change, basically any property of a game object, they will have to be the ownership of the gameobject.\n I first made it so the player will request ownership when they hover over the object. However, this resulted in issues where a second player could hover over it and it would randomly drop out of your hand. Or the ownership is granted too late and it desyncs with the server.\n Once I had the inventory system working where I could force-grab items to a player's hand I re-worked this so it request ownership when the player tries to grab it, and when ownership is granted it force-grabs the object. This also made it possible to grab items out of another player's hand.",
-            video: "/soft-coded/pirates-killed/lanterncompass.mp4",
-          },
-        ],
-      },
-      {
-        blockType: 7,
-        title: "Playthrough prototype 1",
-        text: "Gameplay of the first prototype, contains player movement, swimming & climbing, steering the ship and raising/lowering the sails",
-        video: "/soft-coded/pirates-killed/gameplayproto1.mp4",
-      },
-    ],
-  },
+
 ]
 
 const projectPages =
